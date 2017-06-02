@@ -53,7 +53,7 @@
                 <ul class="nav navbar-nav navbar-left">
              		<li class="active"><a href="home">Inicio</a></li>
                     <li><a href="bandas">Bandas</a></li>
-                    <li><a href="#">Eventos</a></li>
+                    <li><a href="eventos">Eventos</a></li>
 	                <li><a href="#">Contacto</a></li>
                	</ul>
             </div>
@@ -66,7 +66,7 @@
            	<div class="container">
 				<div class="col-md-12">
 					<ul class="breadcrumb">
-                       	<li><a href="index">Inicio</a></li>
+                       	<li><a href="home">Inicio</a></li>
                         <li>Login</li>
                     </ul>
                 </div>
@@ -84,11 +84,14 @@
 							<br> 
 							<button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Ingresar</button>  			
 						</form:form>
-					
-						<c:if test="${not empty error}">
-				    	    <h4><span>${error}</span></h4>
-				        	<br>
-			        	</c:if>
+						
+							<c:if test="${not empty error}">
+							<div class="alert alert-dismissible alert-danger">
+					    	    <h4><span>${error}</span></h4>
+					        	<br>
+					        </div>
+				        	</c:if>
+				        
 					</div>
 				</div>
 			</div>

@@ -25,9 +25,17 @@
     	<div class="container">
         	<div class="col-md-12" data-animate="fadeInDown">
             	<ul class="menu nav-right">
-                	<li><a href="#">${user}</a></li>
-                    <li><a href="#">Mis Bandas</a></li>
-                    <li><a href="index">Salir</a></li>
+                	<c:choose>
+            		<c:when test="${user != null}">
+	                	<li><a href="#">${user}</a></li>
+	                    <li><a href="#">Mis Bandas</a></li>
+	                    <li><a href="home">Salir</a></li>
+            		</c:when>
+            		<c:otherwise>
+	                	<li><a href="login">Login</a></li>
+                    	<li><a href="#">Registrarse</a></li>
+            		</c:otherwise>
+            	</c:choose>
                 </ul>
             </div>
         </div>
@@ -53,8 +61,8 @@
             <div class="navbar-collapse collapse" id="navigation">
                 <ul class="nav navbar-nav navbar-left">
                     <li class="active"><a href="home">Inicio</a></li>
-                    <li><a href="#">Bandas</a></li>
-                    <li><a href="#">Eventos</a></li>
+                    <li><a href="bandas">Bandas</a></li>
+                    <li><a href="eventos">Eventos</a></li>
                     <li><a href="#">Contacto</a></li>
                 </ul>
             </div>
@@ -67,7 +75,7 @@
            	<div class="container">
                	<div class="col-md-12">
                    	<ul class="breadcrumb">
-                       	<li><a href="index">Inicio</a></li>
+                       	<li><a href="home">Inicio</a></li>
                        	<li>Bandas</li>
                    	</ul>
                	</div>
@@ -94,28 +102,28 @@
                    	<div class="row products">
                     	<c:forEach items = "${bandas}" var="bandas">
 		                   	<div class="col-md-4 col-sm-6">
-                            	<div class="product">
-                                	<div class="flip-container">
-                                    	<div class="flipper">
-                                        	<div class="front">
-	                                        	<img src="${bandas.imagen}" alt="" class="img-responsive">
-	                                    	</div>
-	                                    	<div class="back">
-	                                        	<img src="${bandas.imagen}" alt="" class="img-responsive">
-	                                    	</div>
-	                                	</div>
-		                        	</div>
-	                            	<div class="invisible">
-		                            	<img src="${bandas.imagen}" alt="" class="img-responsive">
-	                            	</div>
-		                        	<div class="text">
-	                                	<h3>${bandas.nombre}</h3>
-	                                    <p class="buttons">
-	                                    	<a href="#" class="btn btn-default">+ info</a>
-	                                    	<a href="#" class="btn btn-primary">Adherirse</a>
-	                                    </p>
-	                                </div>
-	                            </div>
+	                            	<div class="product">
+	                                	<div class="flip-container">
+	                                    	<div class="flipper">
+	                                        	<div class="front">
+		                                        	<img src="${bandas.imagen}" alt="" class="img-responsive">
+		                                    	</div>
+		                                    	<div class="back">
+		                                        	<img src="${bandas.imagen}" alt="" class="img-responsive">
+		                                    	</div>
+		                                	</div>
+			                        	</div>
+		                            	<div class="invisible">
+			                            	<img src="${bandas.imagen}" alt="" class="img-responsive">
+		                            	</div>
+			                        	<div class="text">
+		                                	<h3>${bandas.nombre}</h3>
+		                                    <p class="buttons">
+		                                    	<a href="#" class="btn btn-default">+ info</a>
+		                                    	<a href="#" class="btn btn-primary">Adherirse</a>
+		                                    </p>
+		                                </div>
+		                            </div>
                          	</div>
                        	</c:forEach>
                    	</div>

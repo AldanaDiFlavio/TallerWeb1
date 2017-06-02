@@ -5,7 +5,7 @@
 <head>
 	<meta charset="utf-8">
     <meta name="robots" content="all,follow">
-    <meta name="googlebot" content="index,follow,snippet,archive">
+   	<meta name="googlebot" content="index,follow,snippet,archive">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>MeetMusic</title>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
@@ -26,16 +26,16 @@
         	<div class="col-md-12" data-animate="fadeInDown">
             	<ul class="menu nav-right">
                 	<c:choose>
-            		<c:when test="${user != null}">
-	                	<li><a href="#">${user}</a></li>
-	                    <li><a href="#">Mis Bandas</a></li>
-	                    <li><a href="home">Salir</a></li>
-            		</c:when>
-            		<c:otherwise>
-	                	<li><a href="login">Login</a></li>
-                    	<li><a href="#">Registrarse</a></li>
-            		</c:otherwise>
-            	</c:choose>
+	            		<c:when test="${user != null}">
+		                	<li><a href="#">${user}</a></li>
+		                    <li><a href="#">Mis Bandas</a></li>
+		                    <li><a href="home">Salir</a></li>
+	            		</c:when>
+	            		<c:otherwise>
+		                	<li><a href="login">Login</a></li>
+	                    	<li><a href="#">Registrarse</a></li>
+	            		</c:otherwise>
+	            	</c:choose>
                 </ul>
             </div>
         </div>
@@ -72,89 +72,49 @@
 <!-- _________________________________________________________________________________________________________________ -->
     <div id="all">
 		<div id="content">
-            <div class="container">
-                <div class="col-md-12">
-	            	<div id="main-slider">
-                    	<div class="item">
-                            <img src="images/main-silder/main-slider1.jpg" alt="" class="img-responsive">
-                        </div>
-                        <div class="item">
-                            <img class="img-responsive" src="images/main-silder/main-slider2.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img class="img-responsive" src="images/main-silder/main-slider3.jpg" alt="">
-                        </div>
-                        <div class="item">
-                            <img class="img-responsive" src="images/main-silder/main-slider4.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-<!-- _________________________________________________________________________________________________________________ -->
-			<div id="hot">
-                <div class="box">
-                    <div class="container">
-                        <div class="col-md-12">
-                            <h2>Bandas Recomendadas </h2>
-                        </div>
-                    </div>
-                </div>
+           	<div class="container">
+               	<div class="col-md-12">
+                   	<ul class="breadcrumb">
+                       	<li><a href="home">Inicio</a></li>
+                       	<li>Eventos</li>
+                   	</ul>
+               	</div>
+               	
+               	<div class="col-md-3">
+                   	<div class="panel panel-default sidebar-menu">
+                       	<div class="panel-heading">
+                           	<h3 class="panel-title">Género</h3>
+                       	</div>
+                       	<div class="panel-body">
+                           	<ul class="nav nav-pills nav-stacked category-menu">
+                               	<li class="active"><a href="#">Todos<span class="badge pull-right">8</span></a></li>
+                               	<li><a href="#">Rock Nacional<span class="badge pull-right">4</span></a></li>
+                                <li><a href="#">Rock Internacional<span class="badge pull-right">4</span></a></li>
+                      		</ul>
+                       	</div>
+                   	</div>
+               	</div>
 
-                <div class="container">
-                    <div class="product-slider">
-                    	<c:forEach items = "${bandas}" var="bandas">
-	                        <div class="item">
-	                            <div class="product">
-	                                <div class="flip-container">
-	                                    <div class="flipper">
-	                                        <div class="front">
-	                                            <img src="${bandas.imagen}" alt="" class="img-responsive">
-	                                        </div>
-	                                        <div class="back">
-	                                            <img src="${bandas.imagen}" alt="" class="img-responsive">
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                                <div class="invisible">
-	                                    <img src="${bandas.imagen}" alt="" class="img-responsive">
-	                                </div>
-	                                <div class="text">
-	                                    <h3>${bandas.nombre}</h3>
-	                                    <p class="buttons">
-	                                        <a href="#" class="btn btn-default">+ info</a>
-	                                        <a href="#" class="btn btn-primary">Adherirse</a>
-	                                    </p>
-	                                </div>
-	                            </div>
-	                        </div>
-	                	</c:forEach>
-					</div>
-            	</div>
-			</div>	
-<!-- _________________________________________________________________________________________________________________ -->
-		<div id="hot">
-			<div class="box">
-				<div class="container">
-					<div class="col-md-12">
-						<h2>Próximos eventos</h2>
-					</div>
-				</div>
-			</div>
-			<div class="container">
-        		<div class="product-slider">
-        			<c:forEach items = "${eventos}" var="eventos">
-	            		<div class="item">
-	                		<div class="product">
-	                    		<div class="flip-container">
-	                        		<div class="flipper">
-	                            		<div class="front">
-	                       					<img src="${eventos.imagen}" alt="" class="img-responsive">
-	                           			</div>
-	                            		<div class="back">
-	                                		<img src="${eventos.imagen}" alt="" class="img-responsive">
-	                            		</div>
-	                        		</div>
-	                    		</div>
+               	<div class="col-md-9">
+                   	<div class="box">
+                       	<h1>Eventos</h1>
+                   	</div>
+                   	
+                   	                 
+                   	<div class="row products">
+                    	<c:forEach items = "${eventos}" var="eventos">
+                    	<div class="col-md-4 col-sm-6">
+                			<div class="product">
+                    			<div class="flip-container">
+                        			<div class="flipper">
+                            			<div class="front">
+                       						<img src="${eventos.imagen}" alt="" class="img-responsive">
+                           				</div>
+                            			<div class="back">
+                                			<img src="${eventos.imagen}" alt="" class="img-responsive">
+                            			</div>
+                        			</div>
+                    			</div>
 	                    		<div class="invisible">
 	                        		<img src="${eventos.imagen}" alt="" class="img-responsive">
 	                   			</div>
@@ -167,47 +127,44 @@
 		                        	</p>
 		                    	</div>  
 		                	</div>
-		            	</div>
+			            </div>
 		            </c:forEach>
-	        	</div>
-			</div>
-		</div>
-	</div>			
-<!-- ____________________________________________________________________________________________________________ -->
-		<div id="footer" data-animate="fadeInUp">
-        	<div class="container">
-	        	<div class="row">
-	            	<div class="col-md-3 col-sm-6">
-	                	<h4>Panel de administrador</h4>
+                   	</div>
+		    	</div>          
+           	</div>
+       	</div>
+<!-- __________________________________________________________________________________________________________________ -->
+        <div id="footer" data-animate="fadeInUp">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <h4>Panel de administrador</h4>
                         <ul>
                             <li><a href="login">Login</a></li>
 	                    </ul>
-	                    <hr class="hidden-md hidden-lg hidden-sm">
-					</div>
-	
-	                <div class="col-md-3 col-sm-6">
-                    	<h4>Menú</h4>
-                        <ul>
-                        	<li><a href="bandas">Bandas</a></li>
-                            <li><a href="#">Eventos</a></li>
-	                    </ul>
-	                    <hr class="hidden-md hidden-lg">
+                        <hr class="hidden-md hidden-lg hidden-sm">
                     </div>
-	
-	                <div class="col-md-3 col-sm-6">
-                    	<h4>¿Dónde nos encontramos?</h4>
+                    <div class="col-md-3 col-sm-6">
+                        <h4>Menú</h4>
+                        <ul>
+                            <li><a href="bandas">Bandas</a></li>
+                            <li><a href="#">Eventos</a></li>
+                        </ul>
+                        <hr class="hidden-md hidden-lg">
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <h4>¿Dónde nos encontramos?</h4>
                         <p><strong>MeetMusic - Viví tu música</strong>
-                        	<br>Florencio Varela 1905
-                        	<br>San Justo
-                        	<br>BA1754
-                        	<br>Buenos Aires
-                        	<br>
-                        	<strong>Argentina</strong>
+                            <br>Florencio Varela 1905
+                            <br>San Justo
+                            <br>BA1754
+                            <br>Buenos Aires
+                            <br>
+                            <strong>Argentina</strong>
                         </p>
                         <a href="#">Contacto</a>
                         <hr class="hidden-md hidden-lg">
                     </div>
-
                     <div class="col-md-3 col-sm-6">
                         <h4>Suscribite ya!!</h4>
                         <p class="text-muted">Te enviaremos las últimas bandas agregadas y lo próximos eventos!!</p>
@@ -220,7 +177,6 @@
                             </div>
                         </form>
                         <hr>
-	
                         <h4>Redes Sociales</h4>
                         <p class="social">
                             <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
@@ -233,17 +189,16 @@
                 </div>
             </div>
         </div>
- 	
-<!--  __________________________________________________________________________________________________________________________ -->
-		<div id="copyright">
+<!-- __________________________________________________________________________________________________________________________ -->
+        <div id="copyright">
             <div class="container">
                 <div class="col-md-6">
                     <p class="pull-left">© 2017 MeetMusic</p>
                 </div>
             </div>
-       </div>
-	</div>
-	
+        </div>
+    </div>
+
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.cookie.js"></script>
@@ -254,4 +209,3 @@
     <script src="js/front.js"></script>
 </body>
 </html>
-

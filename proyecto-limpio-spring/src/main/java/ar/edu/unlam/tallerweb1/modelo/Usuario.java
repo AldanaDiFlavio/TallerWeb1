@@ -16,14 +16,11 @@ public class Usuario {
 	private String apellido;
 	private String email;
 	private String password;
-	private String genero;
 	
-	public String getGenero() {
-		return genero;
+	public Usuario(){
+		
 	}
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
+	
 	public Long getId() {
 		return id;
 	}
