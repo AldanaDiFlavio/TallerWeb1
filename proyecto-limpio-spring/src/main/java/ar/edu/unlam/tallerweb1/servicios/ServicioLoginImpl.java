@@ -8,17 +8,15 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unlam.tallerweb1.dao.UsuarioDao;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
-
-@Service("servicioLogin")
+@Service("loginService")
 @Transactional
-public class ServicioLoginImpl implements ServicioLogin {
+public class ServicioLoginImpl implements ServicioLogin{
 
-	@Inject
-	private UsuarioDao servicioLoginDao;
+		@Inject
+		private UsuarioDao servicioLoginDao;
 
-	@Override
-	public Usuario consultarUsuario (Usuario usuario) {
-		return servicioLoginDao.consultarUsuario(usuario);
-	}
-
+		@Override
+		public Usuario consultarUsuario(Usuario usuario) {
+			return servicioLoginDao.consultarUsuario(usuario);
+		}
 }

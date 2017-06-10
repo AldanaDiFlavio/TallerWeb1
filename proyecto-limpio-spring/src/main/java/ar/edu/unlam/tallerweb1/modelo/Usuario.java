@@ -1,9 +1,12 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Usuario {
@@ -12,13 +15,12 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id;
 	private String user;
-	private String nombre;
-	private String apellido;
-	private String email;
 	private String password;
-	
+	@OneToOne(optional=false, cascade=CascadeType.ALL)
+	@JoinColumn(name="idCBU")
+	private CBU cbu;
+
 	public Usuario(){
-		
 	}
 	
 	public Long getId() {
@@ -27,24 +29,14 @@ public class Usuario {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNombre() {
-		return nombre;
+	
+	public String getUser() {
+		return user;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setUser(String user) {
+		this.user = user;
 	}
-	public String getApellido() {
-		return apellido;
-	}
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-	public String getEmail() {
-		return email;
-	}
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	
 	public String getPassword() {
 		return password;
 	}
@@ -52,10 +44,11 @@ public class Usuario {
 		this.password = password;
 	}
 	
-	public String getUser() {
-		return user;
+	public CBU getCbu() {
+		return cbu;
 	}
-	public void setUser(String user) {
-		this.user = user;
+
+	public void setCbu(CBU cbu) {
+		this.cbu = cbu;
 	}
 }

@@ -26,7 +26,7 @@
         	<div class="col-md-12" data-animate="fadeInDown">
             	<ul class="menu nav-right">
                 	<li><a href="login">Login</a></li>
-                    <li><a href="#">Registrarse</a></li>
+                    <li><a href="registroUsuario">Registrarse</a></li>
                 </ul>
             </div>
         </div>

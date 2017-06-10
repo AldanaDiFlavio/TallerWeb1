@@ -21,10 +21,16 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		final Session session = sessionFactory.getCurrentSession();
 		
 		return (Usuario) session.createCriteria(Usuario.class)
-				.add(Restrictions.eq("email", usuario.getEmail()))
+				.add(Restrictions.eq("user", usuario.getUser()))
 				.add(Restrictions.eq("password", usuario.getPassword()))
 				.uniqueResult();
-		
+
+	}
+
+	@Override
+	public void guardarUsuario(Usuario usuario) {
+		final Session session = sessionFactory.getCurrentSession();
+		session.save(usuario);		
 	}
 
 }
