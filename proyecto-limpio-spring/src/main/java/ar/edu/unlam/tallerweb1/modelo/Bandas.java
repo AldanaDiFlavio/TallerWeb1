@@ -1,54 +1,53 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
-/*import javax.persistence.Entity;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;*/
+import javax.persistence.Id;
 
-//@Entity
+@Entity
 public class Bandas {
-	//@Id 
-	//@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id;
 	private String nombre;
-	private String imagen;
-	private String genero;
-	private Integer cantidadAdeheridos;
+	private String urlYtb;
+	private Integer cantidadAdheridos;
 	
 	public Bandas(){
 
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getNombre() {
 		return nombre;
 	}
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getImagen() {
-		return imagen;
-	}
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
-	}
-	public Integer getCantidadAdeheridos() {
-		return cantidadAdeheridos;
-	}
-	public void setCantidadAdeheridos(Integer cantidadAdeheridos) {
-		this.cantidadAdeheridos = cantidadAdeheridos;
+
+	public String getUrlYtb() {
+		return urlYtb;
 	}
 
-	public String getGenero() {
-		return genero;
+	public void setUrlYtb(String urlYtb) {
+		this.urlYtb = urlYtb;
 	}
-	public void setGenero(String genero) {
-		this.genero = genero;
+
+	public Integer getCantidadAdheridos() {
+		return cantidadAdheridos;
+	}
+
+	public void setCantidadAdheridos(Integer cantidadAdheridos) {
+		this.cantidadAdheridos = cantidadAdheridos;
 	}
 	
 }

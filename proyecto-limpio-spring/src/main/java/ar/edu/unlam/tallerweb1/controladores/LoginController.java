@@ -18,7 +18,7 @@ public class LoginController {
 	@Inject
 	private ServicioLogin servicioLogin;
 	
-	@RequestMapping(path = "/login", method = RequestMethod.GET)
+	@RequestMapping(path = "/login")
 	public ModelAndView Login() {
 		ModelMap model = new ModelMap();
 		Usuario usuario = new Usuario();
@@ -26,26 +26,18 @@ public class LoginController {
 		return new ModelAndView("login", model);
 	}
 	
-	
-	@RequestMapping(path = "/home", method = RequestMethod.POST)
-	public ModelAndView ingresarUsuario(@ModelAttribute("usuario") Usuario usuario) {
-		ModelMap model = new ModelMap();
-		model.put("user", usuario.getUser());
-		model.put("password", usuario.getPassword());
-		return new ModelAndView("home", model);
-	}
-	
-
-	
 	@RequestMapping(path = "/validar-login", method = RequestMethod.POST)
 	public ModelAndView validarLogin(@ModelAttribute("usuario") Usuario usuario) {
 		ModelMap model = new ModelMap();
 
 		if (servicioLogin.consultarUsuario(usuario) != null) {
-			return new ModelAndView("redirect:/home");
+			model.put("user", usuario.getUser());
+			model.put("password", usuario.getPassword());
+			return new ModelAndView("home", model);
 		} else {
 			model.put("error", "Usuario o clave incorrecta");
 		}
 		return new ModelAndView("login", model);
 	}
+
 }
