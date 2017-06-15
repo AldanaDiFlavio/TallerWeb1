@@ -1,18 +1,24 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Usuario {
 	
 	@Id 
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idUsuario")
 	private Long id;
 	private String nombreCompleto;
 	private float ubicacionLongitud;
@@ -24,10 +30,13 @@ public class Usuario {
 	private Integer seguidores;
 	private Integer siguiendo;
 	
-	/*ESTO NO VA BORRAR*/
-	@OneToOne(optional=false, cascade=CascadeType.ALL)
-	@JoinColumn(name="idCBU")
-	private CBU cbu;
+	/*Relación N a N entre usuarios y usuarios*/
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(	name = "Seguidor-Siguiendo",
+				joinColumns = { @JoinColumn(name = "idSeguidor") }, 
+				inverseJoinColumns = {@JoinColumn(name = "idSiguiendo")})
+	private Set <Usuario> usuarios = new HashSet <Usuario>(0);
+
 
 	public Usuario(){
 	}
@@ -112,14 +121,12 @@ public class Usuario {
 		this.siguiendo = siguiendo;
 	}
 
-	public CBU getCbu() {
-		return cbu;
+	public Set <Usuario> getUsuarios() {
+		return usuarios;
 	}
-
-	public void setCbu(CBU cbu) {
-		this.cbu = cbu;
-	}
-
 	
+	public void setUsuarios(Set <Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 	
 }

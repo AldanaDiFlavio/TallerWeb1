@@ -1,18 +1,40 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+@Entity
 public class Eventos {
 	
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idEvento")
 	private Long id;
 	private String nombre;
-	private String banda;
-	private String imagen;
 	private String descripcion;
-	private String lugar;
-	private String fecha;
+	private	float latitud;
+	private float longitud;
+	private Date fecha;
 	private Integer comienzo;
 	private Integer finalizacion;
-	private Usuario organizador; /*id del usuario que lo organice*/
-	private int cantidadAsistencias;
+	
+	/*Relación N a N entre usuarios y eventos*/
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(	name = "Usuarios-Eventos",
+				joinColumns = { @JoinColumn(name = "idEvento") }, 
+				inverseJoinColumns = {@JoinColumn(name = "idUsuario")})
+	private Set <Usuario> usuarios = new HashSet <Usuario>(0);
 	
 	public Eventos(){
 		
@@ -21,67 +43,72 @@ public class Eventos {
 	public Long getId() {
 		return id;
 	}
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
 	public String getNombre() {
 		return nombre;
 	}
+	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getImagen() {
-		return imagen;
-	}
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
-	}
+	
 	public String getDescripcion() {
 		return descripcion;
 	}
+	
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public String getLugar() {
-		return lugar;
-	}
-	public void setLugar(String lugar) {
-		this.lugar = lugar;
-	}
+	
 	public Integer getComienzo() {
 		return comienzo;
 	}
+	
 	public void setComienzo(Integer comienzo) {
 		this.comienzo = comienzo;
 	}
+	
 	public Integer getFinalizacion() {
 		return finalizacion;
 	}
+	
 	public void setFinalizacion(Integer finalizacion) {
 		this.finalizacion = finalizacion;
 	}
-	public Usuario getOrganizador() {
-		return organizador;
-	}
-	public void setOrganizador(Usuario organizador) {
-		this.organizador = organizador;
-	}
-	public int getCantidadAsistencias() {
-		return cantidadAsistencias;
-	}
-	public void setCantidadAsistencias(int cantidadAsistencias) {
-		this.cantidadAsistencias = cantidadAsistencias;
-	}
-	public String getBanda() {
-		return banda;
-	}
-	public void setBanda(String banda) {
-		this.banda = banda;
-	}
-	public String getFecha() {
+	
+	public Date getFecha() {
 		return fecha;
 	}
-	public void setFecha(String fecha) {
+	
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
-	}	
+	}
+	
+	public float getLatitud() {
+		return latitud;
+	}
+	
+	public void setLatitud(float latitud) {
+		this.latitud = latitud;
+	}
+	
+	public float getLongitud() {
+		return longitud;
+	}
+	
+	public void setLongitud(float longitud) {
+		this.longitud = longitud;
+	}
+	
+	public Set <Usuario> getUsuarios() {
+		return usuarios;
+	}
+	
+	public void setUsuarios(Set <Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 }

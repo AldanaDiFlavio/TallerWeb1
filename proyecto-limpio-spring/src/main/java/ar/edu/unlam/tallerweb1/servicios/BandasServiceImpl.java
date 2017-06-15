@@ -17,9 +17,9 @@ public class BandasServiceImpl implements BandasService {
 	public List<Bandas> obtenerGenero(List<Bandas> todasLasBandas, String genero){
 		List<Bandas> generoBandas = new LinkedList<Bandas>();
 		for (Bandas banda: todasLasBandas){
-			if(banda.getGenero() == genero){
+			/*if(banda.getGenero() == genero){ 
 				generoBandas.add(banda);
-			}
+			}*/
 		}
 		
 		return generoBandas;
@@ -31,9 +31,9 @@ public class BandasServiceImpl implements BandasService {
 		
 		List<Bandas> generoBandas = new LinkedList<Bandas>();
 		for (Bandas banda: todasLasBandas){
-			if(banda.getCantidadAdeheridos() >= 100){
+			/*if(banda.getCantidadAdheridos() >= 100){
 				generoBandas.add(banda);
-			}
+			}*/
 		}
 		
 		return generoBandas;

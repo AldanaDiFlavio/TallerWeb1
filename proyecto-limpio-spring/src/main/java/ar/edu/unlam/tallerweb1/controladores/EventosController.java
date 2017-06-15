@@ -19,7 +19,7 @@ public class EventosController {
 		ModelMap miMapa = new ModelMap();
 		List<Eventos> eventos = new LinkedList<Eventos>();
 		
-		Eventos e1 = new Eventos();
+		/*Eventos e1 = new Eventos();
 		e1.setBanda("Babasónicos");
 		e1.setImagen("images/eventos/evento1.jpg");
 		e1.setLugar("Teatro Gran Rex");
@@ -73,7 +73,7 @@ public class EventosController {
 		e8.setImagen("images/eventos/evento8.jpg");
 		e8.setLugar("AcercArte");
 		e8.setFecha("2017-05-14");
-		eventos.add(e8);
+		eventos.add(e8);*/
 
 		miMapa.put("eventos", eventos);
 		

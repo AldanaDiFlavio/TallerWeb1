@@ -8,12 +8,12 @@
                 	<c:choose>
 	            		<c:when test="${user != null}">
 		                	<li><a href="#">${user}</a></li>
-		                    <li><a href="#">Mis Bandas</a></li>
+		                    <li><a href="#">Perfil</a></li>
 		                    <li><a href="home">Salir</a></li>
 	            		</c:when>
 	            		<c:otherwise>
 		                	<li><a href="login">Login</a></li>
-	                    	<li><a href="#">Registrarse</a></li>
+	                    	<li><a href="registro">Registrarse</a></li>
 	            		</c:otherwise>
             		</c:choose>
                 </ul>

@@ -33,4 +33,16 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		session.save(usuario);		
 	}
 
+	@Override
+	public Usuario buscarUsuario(Usuario usuario) {
+
+		final Session session = sessionFactory.getCurrentSession();
+		
+		return (Usuario) session.createCriteria(Usuario.class)
+				.add(Restrictions.eq("user", usuario.getUser()))
+				.add(Restrictions.eq("password", usuario.getPassword()))
+				.uniqueResult();
+
+	}
+
 }

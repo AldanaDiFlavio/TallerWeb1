@@ -49,58 +49,58 @@ public class InicioController {
 
 		Bandas b1 = new Bandas();
 		b1.setNombre("La Beriso");
-		b1.setImagen("images/bandas/banda1.jpg");
+		/*b1.setImagen("images/bandas/banda1.jpg");
 		b1.setGenero("Rock Nacional");
-		b1.setCantidadAdeheridos(70);
+		b1.setCantidadAdeheridos(70);*/
 		bandas.add(b1);
 
 		Bandas b2 = new Bandas();
 		b2.setNombre("Callejeros");
-		b2.setImagen("images/bandas/banda2.jpg");
-		b1.setGenero("Rock Nacional");
-		b2.setCantidadAdeheridos(130);
+		/*b2.setImagen("images/bandas/banda2.jpg");
+		b2.setGenero("Rock Nacional");
+		b2.setCantidadAdeheridos(130);*/
 		bandas.add(b2);
 
 		Bandas b3 = new Bandas();
 		b3.setNombre("La Renga");
-		b3.setImagen("images/bandas/banda3.jpg");
-		b1.setGenero("Rock Nacional");
-		b3.setCantidadAdeheridos(135);
+		/*b3.setImagen("images/bandas/banda3.jpg");
+		b3.setGenero("Rock Nacional");
+		b3.setCantidadAdeheridos(135);*/
 		bandas.add(b3);
 
 		Bandas b4 = new Bandas();
 		b4.setNombre("Cielo Razzo");
-		b4.setImagen("images/bandas/banda4.jpg");
-		b1.setGenero("Rock Nacional");
-		b4.setCantidadAdeheridos(80);
+		/*b4.setImagen("images/bandas/banda4.jpg");
+		b4.setGenero("Rock Nacional");
+		b4.setCantidadAdeheridos(80);*/
 		bandas.add(b4);
 
 		Bandas b5 = new Bandas();
 		b5.setNombre("AC DC");
-		b5.setImagen("images/bandas/banda5.jpg");
-		b1.setGenero("Rock Internacional");
-		b5.setCantidadAdeheridos(85);
+		/*b5.setImagen("images/bandas/banda5.jpg");
+		b5.setGenero("Rock Internacional");
+		b5.setCantidadAdeheridos(85);*/
 		bandas.add(b5);
 
 		Bandas b6 = new Bandas();
 		b6.setNombre("Metallica");
-		b6.setImagen("images/bandas/banda6.jpg");
-		b1.setGenero("Rock Internacional");
-		b6.setCantidadAdeheridos(150);
+		/*b6.setImagen("images/bandas/banda6.jpg");
+		b6.setGenero("Rock Internacional");
+		b6.setCantidadAdeheridos(150);*/
 		bandas.add(b6);
 
 		Bandas b7 = new Bandas();
 		b7.setNombre("System Of A Down");
-		b7.setImagen("images/bandas/banda7.jpg");
-		b1.setGenero("Rock Internacional");
-		b7.setCantidadAdeheridos(120);
+		/*b7.setImagen("images/bandas/banda7.jpg");
+		b7.setGenero("Rock Internacional");
+		b7.setCantidadAdeheridos(120);*/
 		bandas.add(b7);
 
 		Bandas b8 = new Bandas();
 		b8.setNombre("Iron Maiden");
-		b8.setImagen("images/bandas/banda8.jpg");
-		b1.setGenero("Rock Internacional");
-		b8.setCantidadAdeheridos(100);
+		/*b8.setImagen("images/bandas/banda8.jpg");
+		b8.setGenero("Rock Internacional");
+		b8.setCantidadAdeheridos(100);*/
 		bandas.add(b8);
 
 		return bandasService.bandasRecomendadas(bandas);
@@ -110,7 +110,7 @@ public class InicioController {
 	public List<Eventos> buscarEventos() {
 		List<Eventos> eventos = new LinkedList<Eventos>();
 
-		Eventos e1 = new Eventos();
+		/*Eventos e1 = new Eventos();
 		e1.setBanda("Babasónicos");
 		e1.setImagen("images/eventos/evento1.jpg");
 		e1.setLugar("Teatro Gran Rex");
@@ -172,7 +172,7 @@ public class InicioController {
 		e8.setLugar("AcercArte");
 		e8.setFecha("2017-05-14");
 		e8.setCantidadAsistencias(500);
-		eventos.add(e8);
+		eventos.add(e8);*/
 
 		return eventosService.eventosRecomendados(eventos);
 	}

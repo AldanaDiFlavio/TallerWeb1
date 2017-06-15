@@ -17,9 +17,9 @@ public class EventosServiceImpl  implements EventosService {
 		
 		List<Eventos> eventoRecomendado = new LinkedList<Eventos>();
 		for (Eventos evento: todosLosEventos){
-			if(evento.getCantidadAsistencias() >= 200){
+			/*if(evento.getCantidadAsistencias() >= 200){
 				eventoRecomendado.add(evento);
-			}
+			}*/
 		}
 		
 		return eventoRecomendado;

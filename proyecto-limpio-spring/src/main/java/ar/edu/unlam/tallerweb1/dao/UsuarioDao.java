@@ -6,4 +6,5 @@ public interface UsuarioDao {
 	
 	Usuario consultarUsuario (Usuario usuario);
 	void guardarUsuario(Usuario usuario);
+	Usuario buscarUsuario(Usuario usuario);
 }
