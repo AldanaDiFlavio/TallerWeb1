@@ -29,7 +29,8 @@
                	<div class="col-md-12">
                    	<ul class="breadcrumb">
                        	<li><a href="home">Inicio</a></li>
-                       	<li>Bandas</li>
+                       	<li><a href="bandas">Bandas</a></li>
+                       	<li><a href="#">Albumes</a></li></li>
                    	</ul>
                	</div>
                	<div class="col-md-3">
@@ -49,37 +50,37 @@
 
                	<div class="col-md-9">
                    	<div class="box">
-                       	<h1>Bandas</h1>
+                       	<h1>Albumes</h1>
                    	</div>
-                  
                    	<div class="row products">
-                    	<c:forEach items = "${bandas}" var="bandas">
+                    	<c:forEach items = "${album}" var="album">
 		                   	<div class="col-md-4 col-sm-6">
 	                            	<div class="product">
 	                                	<div class="flip-container">
 	                                    	<div class="flipper">
 	                                        	<div class="front">
-		                                        	<img src="images/bandas/${bandas.imagen}" alt="" class="img-responsive">
+		                                        	<img src="images/bandas/albumes/${album.imagen}" alt="" class="img-responsive">
 		                                    	</div>
 		                                    	<div class="back">
-		                                        	<img src="images/bandas/${bandas.imagen}" alt="" class="img-responsive">
+		                                        	<img src="images/bandas/albumes/${album.imagen}" alt="" class="img-responsive">
 		                                    	</div>
 		                                	</div>
 			                        	</div>
 		                            	<div class="invisible">
-			                            	<img src="images/bandas/${bandas.imagen}" alt="" class="img-responsive">
+			                            	<img src="images/bandas/albumes/${album.imagen}" alt="" class="img-responsive">
 		                            	</div>
 			                        	<div class="text">
-		                                	<h3>${bandas.nombre}</h3>
-		                                    <p class="buttons">	                                        
-		                                    	<a href="infobandas?id=${bandas.id}" class="btn btn-default">+ info</a>
-		                                    	<a href="#" class="btn btn-primary">Adherirse</a>
+		                                	<h3>${album.nombre}</h3>
+		                                	<h3>${album.anio}</h3>
+		                                	<p class="buttons">	                                        
+		                                    	<a href="escucharalbum?id=${album.id}" class="btn btn-default">-> Escuchar</a>
+		                                    	<a href="bandas" class="btn btn-primary">Volver a bandas</a>
 		                                    </p>
-		                                </div>
+		                                </div>		                                
 		                            </div>
                          	</div>
                        	</c:forEach>
-                   	</div>
+                   	</div>                	
 		    	</div>          
            	</div>
        	</div>

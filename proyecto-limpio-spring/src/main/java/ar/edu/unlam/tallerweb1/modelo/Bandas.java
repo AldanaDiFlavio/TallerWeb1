@@ -1,29 +1,29 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Bandas {
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idBanda")
+	@Column(name = "id_Banda")
 	private Long id;
 	private String nombre;
-	private String urlYtb;
+	private String imagen;
 	private Integer cantidadAdheridos;
+
+	 @OneToMany(mappedBy="bandas" )
+	    private List<Album> listaAlbum;
 	
-	/*Relación N a N entre banda y evento*/
+	/*Relación N a N entre banda y evento
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(	name = "Eventos-Bandas",
@@ -31,18 +31,32 @@ public class Bandas {
 				inverseJoinColumns = {@JoinColumn(name = "idEvento")})
 	private Set <Eventos> eventos = new HashSet <Eventos>(0);
 	
-	/*Relación N a N entre banda usuario*/
+	/*Relación N a N entre banda usuario
 	
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(	name = "Usuarios-Bandas",
 				joinColumns = { @JoinColumn(name = "idBanda") }, 
 				inverseJoinColumns = {@JoinColumn(name = "idUsuario")})
-	private Set <Usuario> usuarios = new HashSet <Usuario>(0);
+	private Set <Usuario> usuarios = new HashSet <Usuario>(0); */
 	
 	public Bandas(){
-
+		super();
+        listaAlbum =new ArrayList<Album>();
 	}
 
+	public List<Album> getListaAlbum() {
+	        return listaAlbum;
+	}
+	 
+	public void addAlbum(Album al) {
+	 
+	listaAlbum.add(al);
+	}
+	 
+	public void setListaAlbumnes(List<Album> listaAlbum) {
+	this.listaAlbum = listaAlbum;
+	}	
+		
 	public Long getId() {
 		return id;
 	}
@@ -59,14 +73,6 @@ public class Bandas {
 		this.nombre = nombre;
 	}
 
-	public String getUrlYtb() {
-		return urlYtb;
-	}
-
-	public void setUrlYtb(String urlYtb) {
-		this.urlYtb = urlYtb;
-	}
-
 	public Integer getCantidadAdheridos() {
 		return cantidadAdheridos;
 	}
@@ -74,7 +80,7 @@ public class Bandas {
 	public void setCantidadAdheridos(Integer cantidadAdheridos) {
 		this.cantidadAdheridos = cantidadAdheridos;
 	}
-	
+	/*
 	public Set <Eventos> getEventos() {
 		return eventos;
 	}
@@ -90,4 +96,13 @@ public class Bandas {
 	public void setUsuarios(Set <Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
+	*/
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+
 }

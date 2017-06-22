@@ -3,15 +3,21 @@ package ar.edu.unlam.tallerweb1.servicios;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.edu.unlam.tallerweb1.dao.BandasDao;
 import ar.edu.unlam.tallerweb1.modelo.Bandas;
 
 
 @Service("BandasService")
 @Transactional
 public class BandasServiceImpl implements BandasService {
+	
+	@Inject
+	private BandasDao servicioBandasDao;
 	
 	@Override
 	public List<Bandas> obtenerGenero(List<Bandas> todasLasBandas, String genero){
@@ -38,4 +44,12 @@ public class BandasServiceImpl implements BandasService {
 		
 		return generoBandas;
 	}
+
+
+	@Override
+	public List<Bandas> traerListaBandas() {
+		return servicioBandasDao.traerListaBandas();
+	}
+	
+	
 }

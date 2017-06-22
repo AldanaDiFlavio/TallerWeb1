@@ -1,26 +1,60 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+@Entity
 public class Album {
 	@Id 
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_Album") // LO AGREGUE CUANDO HICE ONETOoMANY
 	private Long id;
 	private String nombre;
-	private Integer cantidadCanciones;
-	private String urlSpotify;
-	@ManyToOne(optional=false, cascade=CascadeType.ALL)
-	@JoinColumn(name="idBandas")
-	private Bandas idBandas;
+	private Integer anio;
+	private String imagen;
+	
+	@OneToMany(mappedBy="album" ) 	// RELACION 1 A N ENTRE ALBUNES Y TEMAS
+	    private List<Tema> listaTemas;
+
+	@ManyToOne(optional=false, cascade=CascadeType.ALL) // RELACION 1 A N ENTRE BANDAS Y ALBUMNES
+	@JoinColumn(name="id_Banda")
+	private Bandas bandas;
+	
+	public Bandas getIdBandas() {
+		return this.bandas;
+	}
+
+	public void setIdBandas(Bandas b) {
+		this.bandas = b;
+	}
 	
 	public Album() {
-		
+		super();
+		 listaTemas =new ArrayList<Tema>();
 	}
+
+	public List<Tema> getListaTemas() {
+        return listaTemas;
+	}
+ 
+	public void addTemas(Tema te) {
+ 
+		listaTemas.add(te);
+	}
+ 
+	public void setListaTemas(List<Tema> listaTemas) {
+		this.listaTemas = listaTemas;
+	}	
 	
 	public Long getId() {
 		return id;
@@ -35,28 +69,20 @@ public class Album {
 		this.nombre = nombre;
 	}
 	
-	public Integer getCantidadCanciones() {
-		return cantidadCanciones;
+	public String getImagen() {
+		return imagen;
 	}
 
-	public void setCantidadCanciones(Integer cantidadCanciones) {
-		this.cantidadCanciones = cantidadCanciones;
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
-	public String getUrlSpotify() {
-		return urlSpotify;
+	public Integer getAnio() {
+		return anio;
 	}
 
-	public void setUrlSpotify(String urlSpotify) {
-		this.urlSpotify = urlSpotify;
+	public void setAnio(Integer anio) {
+		this.anio = anio;
 	}
-
-	public Bandas getIdBandas() {
-		return idBandas;
-	}
-	public void setIdBandas(Bandas idBandas) {
-		this.idBandas = idBandas;
-	}
-	
-	
+			
 }

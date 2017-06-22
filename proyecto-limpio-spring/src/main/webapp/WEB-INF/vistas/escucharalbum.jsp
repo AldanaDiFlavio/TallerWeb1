@@ -29,7 +29,9 @@
                	<div class="col-md-12">
                    	<ul class="breadcrumb">
                        	<li><a href="home">Inicio</a></li>
-                       	<li>Bandas</li>
+                       	<li><a href="bandas">Bandas</a></li>
+                       	<li><a href="#">Albumes</a></li></li>
+                       	<li><a href="#">Temas</a></li></li>
                    	</ul>
                	</div>
                	<div class="col-md-3">
@@ -47,40 +49,42 @@
                    	</div>
                	</div>
 
-               	<div class="col-md-9">
-                   	<div class="box">
-                       	<h1>Bandas</h1>
-                   	</div>
-                  
-                   	<div class="row products">
-                    	<c:forEach items = "${bandas}" var="bandas">
-		                   	<div class="col-md-4 col-sm-6">
-	                            	<div class="product">
-	                                	<div class="flip-container">
-	                                    	<div class="flipper">
-	                                        	<div class="front">
-		                                        	<img src="images/bandas/${bandas.imagen}" alt="" class="img-responsive">
-		                                    	</div>
-		                                    	<div class="back">
-		                                        	<img src="images/bandas/${bandas.imagen}" alt="" class="img-responsive">
-		                                    	</div>
-		                                	</div>
-			                        	</div>
-		                            	<div class="invisible">
-			                            	<img src="images/bandas/${bandas.imagen}" alt="" class="img-responsive">
-		                            	</div>
-			                        	<div class="text">
-		                                	<h3>${bandas.nombre}</h3>
-		                                    <p class="buttons">	                                        
-		                                    	<a href="infobandas?id=${bandas.id}" class="btn btn-default">+ info</a>
-		                                    	<a href="#" class="btn btn-primary">Adherirse</a>
-		                                    </p>
-		                                </div>
-		                            </div>
-                         	</div>
-                       	</c:forEach>
-                   	</div>
-		    	</div>          
+				 <div class="col-md-9" id="customer-orders">				  	
+                    <div class="box">
+                        
+					
+					
+					
+							<p class="lead">Temas</p>
+
+ 		
+                        <hr>						
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Tema</th>
+                                        <th>Nombre</th>
+                                        <th>Duración</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                	<c:forEach items = "${tema}" var="tema">                              	
+                                    <tr>
+                                    	<c:set var="test" value="${tema.link}" scope="page" />
+                                        <th>${tema.posicion}</th>
+                                        <td>${tema.nombre}</td>
+                                        <td>${tema.duracion}</td>
+                                        <td><a rel="external" href="https://<c:out value="${test}" />" target="_framename" class="btn btn-primary btn-sm">Escuchar</a></td>                                                      
+                                    </tr>                                                                                                   
+                                    </c:forEach>                                                                                                 
+                                </tbody>
+                            </table>
+                        </div>                                         
+                    </div>
+                </div>
+
+            </div>       
            	</div>
        	</div>
 <!-- __________________________________________________________________________________________________________________ -->
