@@ -1,26 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MeetMusic - Usuario</title>
+    <%@include file="../includes/head.jsp" %>
+</head>
 
-<div id="top">
-    	<div class="container">
-        	<div class="col-md-12" data-animate="fadeInDown">
-            	<ul class="menu nav-right">
-                	<c:choose>
-	            		<c:when test="${user != null}">
-		                	<li><a href="#">${user}</a></li>
-		                    <li><a href="#">Perfil</a></li>
-		                    <li><a href="home">Salir</a></li>
-	            		</c:when>
-	            		<c:otherwise>
-		                	<li><a href="login">Login</a></li>
-	                    	<li><a href="registro">Registrarse</a></li>
-	            		</c:otherwise>
-            		</c:choose>
-                </ul>
-            </div>
-        </div>
-	</div>
-<!-- _________________________________________________________________________________________________________________ -->
+<body>
+	<!-- barra superior -->
+	<%@include file="../includes/header.jsp" %>
+	<!-- Menú -->
 	<div class="navbar navbar-default yamm" role="navigation" id="navbar">
     	<div class="container">
         	<div class="navbar-header">
@@ -40,12 +30,33 @@
 
             <div class="navbar-collapse collapse" id="navigation">
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="home">Inicio</a></li>
+                    <li><a href="home">Inicio</a></li>
                     <li><a href="bandas">Bandas</a></li>
                     <li><a href="eventos">Eventos</a></li>
-                    <li><a href="#">Contacto</a></li>
+                    <li><a href="contacto">Contacto</a></li>
                 </ul>
             </div>
 	        <!-- Aca va el buscador desplegable q no funciona -->
 		</div>
 	</div>
+	<!-- Contenido del sitio -->
+	<div id="all">
+		<div id="content">
+		<div class="container">
+			<div class="col-md-3">
+                   <%@include file="../includes/menu.jsp" %>
+               	</div>
+               	
+               	<div class="col-md-9">
+               		<div class="jumbotron">
+               		sadasdsd
+               		</div>
+               	
+               	</div>
+      		</div>
+      	</div>	
+      	<!-- Footer -->
+		<%@include file="../includes/footer.jsp" %>
+	</div>
+</body>
+</html>

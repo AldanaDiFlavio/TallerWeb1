@@ -63,5 +63,9 @@ public class BandasController {
 		ModelAndView modelAndView = new ModelAndView("escucharalbum", miMapa);
 		return modelAndView;
 	}
+
+	public void setServicioAlbum(AlbumService servicioAlbum) {
+		this.servicioAlbum = servicioAlbum;
+	}
 	
 }

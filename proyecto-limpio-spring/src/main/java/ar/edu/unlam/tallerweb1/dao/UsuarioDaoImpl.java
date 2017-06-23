@@ -23,6 +23,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		return (Usuario) session.createCriteria(Usuario.class)
 				.add(Restrictions.eq("user", usuario.getUser()))
 				.add(Restrictions.eq("password", usuario.getPassword()))
+				.add(Restrictions.eq("aprobacion", usuario.getAprobacion()))
 				.uniqueResult();
 
 	}

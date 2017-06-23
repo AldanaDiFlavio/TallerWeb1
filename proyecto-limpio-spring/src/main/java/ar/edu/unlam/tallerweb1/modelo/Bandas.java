@@ -3,11 +3,14 @@ package ar.edu.unlam.tallerweb1.modelo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,8 +22,23 @@ public class Bandas {
 	private String nombre;
 	private String imagen;
 	private Integer cantidadAdheridos;
+	@ManyToOne(optional=false, cascade=CascadeType.ALL)
+	@JoinColumn(name="idGenero")
+	private Genero idGenero;
 
-	 @OneToMany(mappedBy="bandas" )
+	 public Genero getIdGenero() {
+		return idGenero;
+	}
+
+	public void setIdGenero(Genero idGenero) {
+		this.idGenero = idGenero;
+	}
+
+	public void setListaAlbum(List<Album> listaAlbum) {
+		this.listaAlbum = listaAlbum;
+	}
+
+	@OneToMany(mappedBy="bandas" )
 	    private List<Album> listaAlbum;
 	
 	/*Relación N a N entre banda y evento

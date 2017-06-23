@@ -10,6 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unlam.tallerweb1.modelo.Bandas;
+import ar.edu.unlam.tallerweb1.modelo.Genero;
 
 @Service("bandasDao")
 public class BandasDaoImpl implements BandasDao{
@@ -33,7 +34,7 @@ public class BandasDaoImpl implements BandasDao{
 		}	
 		
 		@Override
-		public Bandas traerUnaBana(Long id) {
+		public Bandas traerUnaBanda(Long id) {
 
 			return (Bandas) ( sessionFactory.getCurrentSession()
 					.createCriteria(Bandas.class)

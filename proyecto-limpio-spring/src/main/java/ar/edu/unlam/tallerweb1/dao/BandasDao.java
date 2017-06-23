@@ -3,6 +3,7 @@ package ar.edu.unlam.tallerweb1.dao;
 import java.util.List;
 
 import ar.edu.unlam.tallerweb1.modelo.Bandas;
+import ar.edu.unlam.tallerweb1.modelo.Genero;
 
 public interface BandasDao {
 
@@ -10,5 +11,6 @@ public interface BandasDao {
 	
 	void guardarBandas(Bandas bandas);
 	
-	Bandas traerUnaBana(Long id);
+	Bandas traerUnaBanda(Long id);
+
 }

@@ -3,26 +3,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-    <meta name="robots" content="all,follow">
-    <meta name="googlebot" content="index,follow,snippet,archive">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MeetMusic</title>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
-    <link href="css/font-awesome.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet">
-    <link href="css/owl.carousel.css" rel="stylesheet">
-    <link href="css/owl.theme.css" rel="stylesheet">
-    <link href="css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
-    <link href="css/custom.css" rel="stylesheet">
-    <script src="js/respond.min.js"></script>
-    <link rel="shortcut icon" href="images/logo/favicon.png">
+<title>MeetMusic - Login</title>
+   	<%@include file="../includes/head.jsp" %>
 </head>
 
 <body>
-	<%@include file="header.jsp" %>
-<!-- _________________________________________________________________________________________________________________ -->
+	<!-- Barra superior -->
+	<%@include file="../includes/header.jsp" %>
+	<div class="navbar navbar-default yamm" role="navigation" id="navbar">
+    	<div class="container">
+        	<div class="navbar-header">
+            	<a class="navbar-brand home" href="#" data-animate-hover="bounce">
+                	<img src="images/logo/logo.png" alt="MeetMusic logo" class="hidden-xs">
+                    <img src="images/logo/logo-small.png" alt="MeetMusic logo" class="visible-xs"><span class="sr-only"></span>
+                </a>
+                <div class="navbar-buttons">
+                	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+                    	<i class="fa fa-align-justify"></i>
+                    </button>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+           	</div>
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="active"><a href="home">Inicio</a></li>
+                    <li><a href="bandas">Bandas</a></li>
+                    <li><a href="eventos">Eventos</a></li>
+                    <li><a href="contacto">Contacto</a></li>
+                </ul>
+            </div>
+	        <!-- Aca va el buscador desplegable q no funciona -->
+		</div>
+	</div>
+	<!-- Contenido del sitio -->
    	<div id="all">
 		<div id="content">
            	<div class="container">
@@ -36,7 +52,7 @@
 					<div class="box">
 						<h1>Login</h1>
        		            <p class="lead">¿No te has registrado?</p>
-            	        <p class="text-muted"><a href="#"><strong>Registrarse ahora</strong></a>! Es simple y en un minuto podrás adherirte a tus bandas favoritas!!</p>
+            	        <p class="text-muted"><a href="registro"><strong>Registrarse ahora</strong></a>! Es simple y en un minuto podrás adherirte a tus bandas favoritas!!</p>
                 	    <hr>
 						<form:form action="validar-login" method="POST" modelAttribute="usuario">
 							<br>      
@@ -57,7 +73,7 @@
 			</div>
 		</div>
 <!-- ____________________________________________________________________________________________________________ -->
-	<%@include file="footer.jsp" %>
+	<%@include file="../includes/footer.jsp" %>
 	</div>
 </body>
 </html>

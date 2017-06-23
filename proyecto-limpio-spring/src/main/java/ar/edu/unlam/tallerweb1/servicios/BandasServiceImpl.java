@@ -20,29 +20,16 @@ public class BandasServiceImpl implements BandasService {
 	private BandasDao servicioBandasDao;
 	
 	@Override
-	public List<Bandas> obtenerGenero(List<Bandas> todasLasBandas, String genero){
-		List<Bandas> generoBandas = new LinkedList<Bandas>();
-		for (Bandas banda: todasLasBandas){
-			/*if(banda.getGenero() == genero){ 
-				generoBandas.add(banda);
-			}*/
-		}
-		
-		return generoBandas;
-	}
-	
-	
-	@Override
 	public List<Bandas> bandasRecomendadas(List<Bandas> todasLasBandas){
 		
-		List<Bandas> generoBandas = new LinkedList<Bandas>();
+		List<Bandas> bandasRecomendadas = new LinkedList<Bandas>();
 		for (Bandas banda: todasLasBandas){
 			/*if(banda.getCantidadAdheridos() >= 100){
 				generoBandas.add(banda);
 			}*/
 		}
 		
-		return generoBandas;
+		return bandasRecomendadas;
 	}
 
 

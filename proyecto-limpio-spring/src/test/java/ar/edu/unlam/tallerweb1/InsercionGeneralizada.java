@@ -11,12 +11,18 @@ import org.junit.Test;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.edu.unlam.tallerweb1.dao.AdministradorDao;
 import ar.edu.unlam.tallerweb1.dao.AlbumDao;
 import ar.edu.unlam.tallerweb1.dao.BandasDao;
+import ar.edu.unlam.tallerweb1.dao.GeneroDao;
 import ar.edu.unlam.tallerweb1.dao.TemaDao;
+import ar.edu.unlam.tallerweb1.dao.UsuarioDao;
+import ar.edu.unlam.tallerweb1.modelo.Administrador;
 import ar.edu.unlam.tallerweb1.modelo.Album;
 import ar.edu.unlam.tallerweb1.modelo.Bandas;
+import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.modelo.Tema;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 public class InsercionGeneralizada extends SpringTest {
 
@@ -29,15 +35,30 @@ public class InsercionGeneralizada extends SpringTest {
 	@Inject
 	private TemaDao temaDao;
 	
+	@Inject
+	private GeneroDao generoDao;
+	
+	@Inject
+	private UsuarioDao usuarioDao;
+	
+	@Inject
+	private AdministradorDao administradorDao;
+	
 	@Test
 	@Transactional
 	@Rollback(false)
 	public void insertarBanda1() {
-		
+		// Bueno definitivamente no funciona lo de genero o lo estoy implementando mal
+		Genero genero = new Genero();
+		genero.setDescripcion("Rock Nacional");		
+				
 		Bandas banda = new Bandas();
 		banda.setNombre("La beriso");
 		banda.setImagen("laberiso.jpg");
 		banda.setCantidadAdheridos(70);
+		
+		banda.setIdGenero(genero);
+		generoDao.guardarGenero(genero);
 		
 		List<Album> albums = new ArrayList<Album>();
 		
@@ -125,7 +146,7 @@ public class InsercionGeneralizada extends SpringTest {
 		albumDao.guardarAlbum(album2);
 		
 		albums.add(album2);
-			
+
 		banda.setListaAlbumnes(albums);
 		
 		bandasDao.guardarBandas(banda);
@@ -140,10 +161,16 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda2() {
 		
+		Genero genero = new Genero();
+		genero.setDescripcion("Rock Nacional");
+		
 		Bandas banda = new Bandas();
 		banda.setNombre("Callejeros");
 		banda.setImagen("callejeros.jpg");
 		banda.setCantidadAdheridos(70);
+		
+		banda.setIdGenero(genero);
+		generoDao.guardarGenero(genero);
 		
 		List<Album> albums = new ArrayList<Album>();
 		
@@ -151,8 +178,7 @@ public class InsercionGeneralizada extends SpringTest {
 		album1.setNombre("Disco escultura");
 		album1.setAnio(2008);
 		album1.setImagen("discoescultura.jpg");
-		
-		
+
 		
 	//	album1.setListaTemas(temasalbum1); // Estos sos los temas del album 1 de la banda callejeros	
 		album1.setIdBandas(banda);
@@ -255,6 +281,9 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda3() {
 		
+		Genero genero = new Genero();
+		genero.setDescripcion("Rock Nacional");
+		
 		Bandas b = new Bandas();
 		b.setNombre("La Renga");
 		b.setImagen("larenga.jpg");
@@ -272,10 +301,16 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda4() {
 		
+		Genero genero = new Genero();
+		genero.setDescripcion("Rock Nacional");
+		
 		Bandas b = new Bandas();
 		b.setNombre("Cielo Razzo");
 		b.setImagen("cielorazzo.jpg");
 		b.setCantidadAdheridos(80);
+		
+		b.setIdGenero(genero);
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -289,10 +324,16 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda5() {
 		
+		Genero genero = new Genero();
+		genero.setDescripcion("Rock internacional");
+		
 		Bandas b = new Bandas();
 		b.setNombre("AC DC");
 		b.setImagen("acdc.jpg");
 		b.setCantidadAdheridos(85);
+		
+		b.setIdGenero(genero);
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -306,10 +347,16 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda6() {
 		
+		Genero genero = new Genero();
+		genero.setDescripcion("Rock internacional");
+		
 		Bandas b = new Bandas();
 		b.setNombre("Metallica");
 		b.setImagen("metalica.jpg");
 		b.setCantidadAdheridos(150);
+		
+		b.setIdGenero(genero);
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -323,10 +370,16 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda7() {
 		
+		Genero genero = new Genero();
+		genero.setDescripcion("Rock internacional");
+		
 		Bandas b = new Bandas();
 		b.setNombre("System Of A Down");
 		b.setImagen("systemofadown.jpg");
 		b.setCantidadAdheridos(120);
+		
+		b.setIdGenero(genero);
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -340,10 +393,16 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda8() {
 		
+		Genero genero = new Genero();
+		genero.setDescripcion("Rock internacional");
+		
 		Bandas b = new Bandas();
 		b.setNombre("Iron Maiden");
 		b.setImagen("ironmaiden.jpg");
 		b.setCantidadAdheridos(100);
+		
+		b.setIdGenero(genero);
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -351,4 +410,45 @@ public class InsercionGeneralizada extends SpringTest {
 		Bandas bandas2 = currentSession.get(Bandas.class, b.getId());
 		Assert.assertNotNull(bandas2);
 	}
+	
+	@Test
+	@Transactional
+	@Rollback(false)
+	public void insertarUsuario() {
+		
+		Usuario u = new Usuario();
+		u.setNombreCompleto("Juanito Alcachofa");
+		u.setUser("pepe");
+		u.setPassword("1234");
+		u.setAprobacion(1);
+		u.setUbicacionLatitud(0);
+		u.setUbicacionLongitud(0);
+		u.setSeguidores(0);
+		u.setSiguiendo(0);
+		
+		
+		usuarioDao.guardarUsuario(u);
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		Usuario usuario2 = currentSession.get(Usuario.class, u.getId());
+		Assert.assertNotNull(usuario2);
+	}
+	
+	@Test
+	@Transactional
+	@Rollback(false)
+	public void insertarAdministrador() {
+		
+		Administrador a = new Administrador();
+
+		a.setUser("admin");
+		a.setPassword("admin");
+		
+		administradorDao.guardarAdministrador(a);
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		Administrador admin = currentSession.get(Administrador.class, a.getId());
+		Assert.assertNotNull(admin);
+	}
+	
 }

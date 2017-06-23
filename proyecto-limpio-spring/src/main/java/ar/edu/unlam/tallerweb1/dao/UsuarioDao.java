@@ -9,4 +9,5 @@ public interface UsuarioDao {
 	void guardarUsuario(Usuario usuario);
 	
 	Usuario buscarUsuario(Usuario usuario);
+
 }

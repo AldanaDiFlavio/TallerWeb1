@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unlam.tallerweb1.modelo.Administrador;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 
@@ -27,15 +28,21 @@ public class LoginController {
 	}
 	
 	@RequestMapping(path = "/validar-login", method = RequestMethod.POST)
-	public ModelAndView validarLogin(@ModelAttribute("usuario") Usuario usuario) {
+	public ModelAndView validarLogin(@ModelAttribute("usuario") Usuario usuario, Administrador administrador) {
 		ModelMap model = new ModelMap();
-
+		
+		//Verificar el usuario
 		if (servicioLogin.consultarUsuario(usuario) != null) {
 			model.put("user", usuario.getUser());
 			model.put("password", usuario.getPassword());
-			return new ModelAndView("home", model);
+			model.put("aprobacion", usuario.getAprobacion());
+			return new ModelAndView("panelUser", model);
+		} else if (servicioLogin.consultarAdministrador(administrador) != null){
+			model.put("user", administrador.getUser());
+			model.put("password", administrador.getPassword());
+			return new ModelAndView("panelAdmin", model);
 		} else {
-			model.put("error", "Usuario o clave incorrecta");
+			model.put("error", "Error al ingresar los datos. Intente nuevamente.");
 		}
 		return new ModelAndView("login", model);
 	}

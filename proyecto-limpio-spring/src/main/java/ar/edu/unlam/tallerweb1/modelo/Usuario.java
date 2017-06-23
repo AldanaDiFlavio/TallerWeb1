@@ -25,17 +25,16 @@ public class Usuario {
 	private float ubicacionLatitud;
 	private String user;
 	private String password;
-	private Integer aprobacion = 2; /* no esta aprobado */ 
-	private Integer rol = 2; /* por defecto es usuario */
-	private Integer seguidores;
-	private Integer siguiendo;
+	private Integer aprobacion = 1; /* está aprobado */ 
+	private Integer seguidores = 0;
+	private Integer siguiendo = 0;
 	
-	/*Relación N a N entre usuarios y usuarios*/
+	/*Relación N a N entre usuarios y usuarios
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(	name = "Seguidor-Siguiendo",
 				joinColumns = { @JoinColumn(name = "idSeguidor") }, 
 				inverseJoinColumns = {@JoinColumn(name = "idSiguiendo")})
-	private Set <Usuario> usuarios = new HashSet <Usuario>(0);
+	private Set <Usuario> usuarios = new HashSet <Usuario>(0);*/
 
 
 	public Usuario(){
@@ -97,14 +96,6 @@ public class Usuario {
 		this.aprobacion = aprobacion;
 	}
 	
-	public Integer getRol() {
-		return rol;
-	}
-
-	public void setRol(Integer rol) {
-		this.rol = rol;
-	}
-
 	public Integer getSeguidores() {
 		return seguidores;
 	}
@@ -121,12 +112,12 @@ public class Usuario {
 		this.siguiendo = siguiendo;
 	}
 
-	public Set <Usuario> getUsuarios() {
+	/*public Set <Usuario> getUsuarios() {
 		return usuarios;
 	}
 	
 	public void setUsuarios(Set <Usuario> usuarios) {
 		this.usuarios = usuarios;
-	}
+	}*/
 	
 }

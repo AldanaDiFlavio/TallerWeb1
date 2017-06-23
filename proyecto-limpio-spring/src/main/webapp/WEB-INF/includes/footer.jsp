@@ -23,7 +23,7 @@
 	                <div class="col-md-3 col-sm-6">
                     	<h4>¿Dónde nos encontramos?</h4>
                         <p><strong>MeetMusic - Viví tu música</strong>
-                        	<br>Florencio Varela 1905
+                        	<br>Florencio Varela 1903
                         	<br>San Justo
                         	<br>BA1754
                         	<br>Buenos Aires
