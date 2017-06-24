@@ -48,17 +48,27 @@ public class InsercionGeneralizada extends SpringTest {
 	@Transactional
 	@Rollback(false)
 	public void insertarBanda1() {
-		// Bueno definitivamente no funciona lo de genero o lo estoy implementando mal
-		Genero genero = new Genero();
-		genero.setDescripcion("Rock Nacional");		
-				
+		// Bueno definitivamente no funciona lo de genero o lo estoy implementando mal		
 		Bandas banda = new Bandas();
 		banda.setNombre("La beriso");
 		banda.setImagen("laberiso.jpg");
 		banda.setCantidadAdheridos(70);
 		
-		banda.setIdGenero(genero);
-		generoDao.guardarGenero(genero);
+		List<Genero> generos = new ArrayList<Genero>();
+		
+		Genero genero1 = new Genero();
+		genero1.setGenero("Rock Nacional");	
+		genero1.setIdBanda(banda);
+		generos.add(genero1);
+		generoDao.guardarGenero(genero1);
+		
+		Genero genero2 = new Genero();
+		genero2.setGenero("Pop");	
+		genero2.setIdBanda(banda);
+		generos.add(genero2);
+		generoDao.guardarGenero(genero2);
+		
+		banda.setListaGenero(generos);
 		
 		List<Album> albums = new ArrayList<Album>();
 		
@@ -147,7 +157,7 @@ public class InsercionGeneralizada extends SpringTest {
 		
 		albums.add(album2);
 
-		banda.setListaAlbumnes(albums);
+		banda.setListaAlbum(albums);
 		
 		bandasDao.guardarBandas(banda);
 						
@@ -160,17 +170,21 @@ public class InsercionGeneralizada extends SpringTest {
 	@Transactional
 	@Rollback(false)
 	public void insertarBanda2() {
-		
-		Genero genero = new Genero();
-		genero.setDescripcion("Rock Nacional");
-		
+
 		Bandas banda = new Bandas();
 		banda.setNombre("Callejeros");
 		banda.setImagen("callejeros.jpg");
 		banda.setCantidadAdheridos(70);
 		
-		banda.setIdGenero(genero);
-		generoDao.guardarGenero(genero);
+		List<Genero> generos = new ArrayList<Genero>();
+		
+		Genero genero1 = new Genero();
+		genero1.setGenero("Rock Nacional");	
+		genero1.setIdBanda(banda);
+		generos.add(genero1);
+		generoDao.guardarGenero(genero1);
+		
+		banda.setListaGenero(generos);
 		
 		List<Album> albums = new ArrayList<Album>();
 		
@@ -267,7 +281,7 @@ public class InsercionGeneralizada extends SpringTest {
 		
 		albums.add(album2);
 			
-		banda.setListaAlbumnes(albums);
+		banda.setListaAlbum(albums);
 		
 		bandasDao.guardarBandas(banda);
 						
@@ -280,10 +294,7 @@ public class InsercionGeneralizada extends SpringTest {
 	@Transactional
 	@Rollback(false)
 	public void insertarBanda3() {
-		
-		Genero genero = new Genero();
-		genero.setDescripcion("Rock Nacional");
-		
+
 		Bandas b = new Bandas();
 		b.setNombre("La Renga");
 		b.setImagen("larenga.jpg");
@@ -301,16 +312,10 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda4() {
 		
-		Genero genero = new Genero();
-		genero.setDescripcion("Rock Nacional");
-		
 		Bandas b = new Bandas();
 		b.setNombre("Cielo Razzo");
 		b.setImagen("cielorazzo.jpg");
 		b.setCantidadAdheridos(80);
-		
-		b.setIdGenero(genero);
-		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -324,16 +329,10 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda5() {
 		
-		Genero genero = new Genero();
-		genero.setDescripcion("Rock internacional");
-		
 		Bandas b = new Bandas();
 		b.setNombre("AC DC");
 		b.setImagen("acdc.jpg");
 		b.setCantidadAdheridos(85);
-		
-		b.setIdGenero(genero);
-		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -347,16 +346,10 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda6() {
 		
-		Genero genero = new Genero();
-		genero.setDescripcion("Rock internacional");
-		
 		Bandas b = new Bandas();
 		b.setNombre("Metallica");
 		b.setImagen("metalica.jpg");
 		b.setCantidadAdheridos(150);
-		
-		b.setIdGenero(genero);
-		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -369,17 +362,11 @@ public class InsercionGeneralizada extends SpringTest {
 	@Transactional
 	@Rollback(false)
 	public void insertarBanda7() {
-		
-		Genero genero = new Genero();
-		genero.setDescripcion("Rock internacional");
-		
+			
 		Bandas b = new Bandas();
 		b.setNombre("System Of A Down");
 		b.setImagen("systemofadown.jpg");
 		b.setCantidadAdheridos(120);
-		
-		b.setIdGenero(genero);
-		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -393,16 +380,10 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda8() {
 		
-		Genero genero = new Genero();
-		genero.setDescripcion("Rock internacional");
-		
 		Bandas b = new Bandas();
 		b.setNombre("Iron Maiden");
 		b.setImagen("ironmaiden.jpg");
 		b.setCantidadAdheridos(100);
-		
-		b.setIdGenero(genero);
-		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 

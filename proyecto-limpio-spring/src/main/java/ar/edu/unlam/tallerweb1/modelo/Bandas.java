@@ -22,24 +22,12 @@ public class Bandas {
 	private String nombre;
 	private String imagen;
 	private Integer cantidadAdheridos;
-	@ManyToOne(optional=false, cascade=CascadeType.ALL)
-	@JoinColumn(name="idGenero")
-	private Genero idGenero;
-
-	 public Genero getIdGenero() {
-		return idGenero;
+	
+	public Bandas(){
+		super();
+        listaAlbum =new ArrayList<Album>();
+        listaGenero =new ArrayList<Genero>();
 	}
-
-	public void setIdGenero(Genero idGenero) {
-		this.idGenero = idGenero;
-	}
-
-	public void setListaAlbum(List<Album> listaAlbum) {
-		this.listaAlbum = listaAlbum;
-	}
-
-	@OneToMany(mappedBy="bandas" )
-	    private List<Album> listaAlbum;
 	
 	/*Relación N a N entre banda y evento
 	
@@ -57,11 +45,29 @@ public class Bandas {
 				inverseJoinColumns = {@JoinColumn(name = "idUsuario")})
 	private Set <Usuario> usuarios = new HashSet <Usuario>(0); */
 	
-	public Bandas(){
-		super();
-        listaAlbum =new ArrayList<Album>();
+	@OneToMany(mappedBy="genero") // preguntar mappedBy
+    private List<Genero> listaGenero;
+	
+	public void setListaGenero(List<Genero> listaGenero) {
+		this.listaGenero = listaGenero;
 	}
+	
+	public List<Genero> getListaGenero() {
+	        return listaGenero;
+	}
+	 
+	public void addGenero(Genero ge) {
+	 
+	listaGenero.add(ge);
+	}	
+	
+	@OneToMany(mappedBy="bandas" )
+    private List<Album> listaAlbum;
 
+	public void setListaAlbum(List<Album> listaAlbum) {
+		this.listaAlbum = listaAlbum;
+	}
+	
 	public List<Album> getListaAlbum() {
 	        return listaAlbum;
 	}
@@ -69,10 +75,6 @@ public class Bandas {
 	public void addAlbum(Album al) {
 	 
 	listaAlbum.add(al);
-	}
-	 
-	public void setListaAlbumnes(List<Album> listaAlbum) {
-	this.listaAlbum = listaAlbum;
 	}	
 		
 	public Long getId() {
