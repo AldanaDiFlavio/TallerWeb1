@@ -60,6 +60,7 @@
                                 <li><a href="#">Rock Internacional<span class="badge pull-right">4</span></a></li>
                       		</ul>
                        	</div>
+                       	
                    	</div>
                	</div>
 

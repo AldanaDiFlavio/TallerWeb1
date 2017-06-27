@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.tallerweb1.modelo.Album;
 import ar.edu.unlam.tallerweb1.modelo.Tema;
 import ar.edu.unlam.tallerweb1.modelo.Bandas;
+import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.servicios.AlbumService;
 import ar.edu.unlam.tallerweb1.servicios.BandasService;
 import ar.edu.unlam.tallerweb1.servicios.TemaService;
@@ -34,7 +35,10 @@ public class BandasController {
 	public ModelAndView bandas() {
 		ModelMap miMapa = new ModelMap();	
 		List<Bandas> listaBandas = servicioBandas.traerListaBandas();
-
+		
+	//	List<Genero> genero = listaBandas.get(1).getListaGenero();
+		
+	//	miMapa.put("genero", genero);	
 		miMapa.put("bandas", listaBandas);	
 		ModelAndView modelAndView = new ModelAndView("bandas", miMapa);
 		return modelAndView;

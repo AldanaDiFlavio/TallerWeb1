@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +19,7 @@ public class Usuario {
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "idUsuario")
+	@Column(name = "id_Usuario")
 	private Long id;
 	private String nombreCompleto;
 	private float ubicacionLongitud;
@@ -29,14 +30,20 @@ public class Usuario {
 	private Integer seguidores = 0;
 	private Integer siguiendo = 0;
 	
-	/*Relación N a N entre usuarios y usuarios
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(	name = "Seguidor-Siguiendo",
-				joinColumns = { @JoinColumn(name = "idSeguidor") }, 
-				inverseJoinColumns = {@JoinColumn(name = "idSiguiendo")})
-	private Set <Usuario> usuarios = new HashSet <Usuario>(0);*/
-
-
+	@ManyToMany(fetch = FetchType.LAZY)
+	 @JoinTable(name = "usuarios_bandas", 
+	             joinColumns = { @JoinColumn(name = "id_Usuario") }, 
+	             inverseJoinColumns = { @JoinColumn(name = "id_Banda") })
+	 private Set<Bandas> bandas = new HashSet<Bandas>(0);
+		
+		public Set<Bandas> getBandas() {
+			return this.bandas;
+		}
+		
+		public void setBandas(Set<Bandas> bandas) {
+			this.bandas = bandas;
+		}
+	
 	public Usuario(){
 	}
 

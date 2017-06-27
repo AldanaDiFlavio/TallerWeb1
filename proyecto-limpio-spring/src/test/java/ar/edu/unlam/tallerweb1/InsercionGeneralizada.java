@@ -1,6 +1,8 @@
 package ar.edu.unlam.tallerweb1;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -20,6 +22,7 @@ import ar.edu.unlam.tallerweb1.dao.UsuarioDao;
 import ar.edu.unlam.tallerweb1.modelo.Administrador;
 import ar.edu.unlam.tallerweb1.modelo.Album;
 import ar.edu.unlam.tallerweb1.modelo.Bandas;
+import ar.edu.unlam.tallerweb1.modelo.Eventos;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.modelo.Tema;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
@@ -430,6 +433,28 @@ public class InsercionGeneralizada extends SpringTest {
 		Session currentSession = sessionFactory.getCurrentSession();
 		Administrador admin = currentSession.get(Administrador.class, a.getId());
 		Assert.assertNotNull(admin);
+	}
+		
+	@Test
+	@Transactional
+	@Rollback(false)
+	public void insertarUnEvento() {
+		
+		Eventos evento1 = new Eventos();
+		evento1.setNombre("Evento del Rock");
+		evento1.setImagen("imagen.jpg");
+		evento1.setDescripcion("Las mejores bandas de rock nacional");
+		evento1.setLatitud(2);
+		evento1.setLongitud(4);
+	//	SimpleDateFormat formateador = new SimpleDateFormat("yyyyMMdd");
+	//	formateador.parse("2012/12/31");
+	//	evento1.setFecha(formateador);
+		
+	//	eventosDao.guardarEventos(evento1);
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		Eventos evento = currentSession.get(Eventos.class, evento1.getId());
+		Assert.assertNotNull(evento);
 	}
 	
 }
