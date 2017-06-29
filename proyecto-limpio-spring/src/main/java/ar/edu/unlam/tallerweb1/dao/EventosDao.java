@@ -1,21 +1,20 @@
-package ar.edu.unlam.tallerweb1.servicios;
+package ar.edu.unlam.tallerweb1.dao;
 
 import java.util.List;
 import java.util.Set;
 
 import ar.edu.unlam.tallerweb1.modelo.Bandas;
+
 import ar.edu.unlam.tallerweb1.modelo.Eventos;
 
-public interface EventosService {
+public interface EventosDao {
 
 	void guardarEvento(Eventos evento);
-	
-	Eventos traerUnEvento(Long id);
-	
-	List<Eventos> eventosRecomendados(List<Eventos> todosLosEventos);
 
 	List<Eventos> traerListaEventos();
 
 	List<Bandas> traerBandasDeUnEvento(Set<Bandas> bandasdelevento);
-	
+
+	Eventos traerUnEvento(Long id);
+
 }

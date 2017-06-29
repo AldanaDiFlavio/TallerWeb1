@@ -26,24 +26,25 @@ public class Eventos {
 	private String descripcion;
 	private	float latitud;
 	private float longitud;
-	private Date fecha;
-	private Integer comienzo;
+	private String fecha;
+	private Integer capacidad;
+	private String comienzo;
 	private Integer finalizacion;
 	
 	 @ManyToMany(fetch = FetchType.LAZY)
 	 @JoinTable(name = "eventos_bandas", 
 	             joinColumns = { @JoinColumn(name = "id_Evento") }, 
 	             inverseJoinColumns = { @JoinColumn(name = "id_Banda") })
-	 private Set<Bandas> bandas = new HashSet<Bandas>(0);
-		
+	 private Set<Bandas> bandas = new HashSet<Bandas>();
+		 
 		public Set<Bandas> getBandas() {
-			return this.bandas;
+			return bandas;
 		}
-		
+
 		public void setBandas(Set<Bandas> bandas) {
 			this.bandas = bandas;
 		}
-		
+			
 		 @ManyToMany(fetch = FetchType.LAZY)
 		 @JoinTable(name = "eventos_usuarios", 
 		             joinColumns = { @JoinColumn(name = "id_Evento") }, 
@@ -77,6 +78,7 @@ public class Eventos {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	
 	public String getDescripcion() {
 		return descripcion;
@@ -86,11 +88,11 @@ public class Eventos {
 		this.descripcion = descripcion;
 	}
 	
-	public Integer getComienzo() {
+	public String getComienzo() {
 		return comienzo;
 	}
 	
-	public void setComienzo(Integer comienzo) {
+	public void setComienzo(String comienzo) {
 		this.comienzo = comienzo;
 	}
 	
@@ -102,11 +104,11 @@ public class Eventos {
 		this.finalizacion = finalizacion;
 	}
 	
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 	
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 	
@@ -141,5 +143,13 @@ public class Eventos {
 
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
+	}
+
+	public Integer getCapacidad() {
+		return capacidad;
+	}
+
+	public void setCapacidad(Integer capacidad) {
+		this.capacidad = capacidad;
 	}
 }
