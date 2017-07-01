@@ -1,10 +1,12 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -119,10 +121,9 @@ public class BandasController {
 		ModelAndView modelAndView = new ModelAndView("misBandas", miMapa);
 		return modelAndView;
 	}
-	
 	/*
-	@RequestMapping(value="/adherirse")
-	public ModelAndView adherirseABanda(@RequestParam("id") Long id, HttpServletRequest request){
+	@RequestMapping(value="/adherirse-bandas", method = RequestMethod.POST)
+	public ModelAndView adherirseABanda(@ModelAttribute("adherirseABanda") Usuario usuario, Bandas banda){
 		
 		Bandas banda = servicioBandas.traerUnaBanda(id);
 		Usuario usuario = (Usuario) request.getSession();		
@@ -137,4 +138,31 @@ public class BandasController {
 		return modelAndView;
 	}
 	*/
+	
+	@RequestMapping(value="/adherirse")
+	public ModelAndView adherirseABanda(@RequestParam("id") Long id, HttpServletRequest request){
+		HttpSession misession= (HttpSession) request.getSession();
+		
+		Bandas banda = servicioBandas.traerUnaBanda(id);
+			
+	//	Set<Bandas> bandas = new HashSet<Bandas>();
+	//	bandas.add(banda);	
+		
+		Usuario usuario = (Usuario) misession.getAttribute("usuario");
+		Long idUser = usuario.getId();
+		
+		Usuario usuariof = servicioRegistro.traerUnUsuario(idUser);
+		
+		Set<Bandas> todaslasbandas = usuariof.getBandas();
+		todaslasbandas.add(banda);
+		usuariof.setBandas(todaslasbandas);
+		
+		servicioRegistro.editarUsuario(usuariof);
+		
+		ModelMap miMapa = new ModelMap();
+	
+		ModelAndView modelAndView = new ModelAndView("registrook", miMapa);
+		return modelAndView;
+	}
+	
 }

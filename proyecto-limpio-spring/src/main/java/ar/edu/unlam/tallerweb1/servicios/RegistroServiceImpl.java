@@ -26,4 +26,14 @@ public class RegistroServiceImpl implements RegistroService{
 		
 	}
 
+	@Override
+	public Usuario traerUnUsuario(Long id) {
+		return registroDao.traerUnUsuario(id);
+	}
+
+	@Override
+	public void editarUsuario(Usuario usuario) {
+		registroDao.editarUsuario(usuario);		
+	}
+
 }
