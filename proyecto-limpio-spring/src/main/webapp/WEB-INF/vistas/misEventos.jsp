@@ -49,8 +49,20 @@
                	
                	<div class="col-md-9">
                		<div class="jumbotron">
-               		sadasdsd
-               		</div>
+             
+			<div class="row">
+				<h2>Mis Eventos</h2>
+				<c:choose>
+					<c:when test="${not empty comicsUsuario}">
+					</c:when>
+					<c:otherwise>
+						<p class="text-center">No tienes eventos a los que asisitir</p>
+					</c:otherwise>
+				</c:choose>
+			</div>
+
+		</div>
+       
                	
                	</div>
       		</div>

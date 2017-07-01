@@ -87,4 +87,15 @@ public class EventosController {
 		return modelAndView;
 	}
 	
+	@RequestMapping(path = "/mis-eventos", method = RequestMethod.GET)
+	public ModelAndView misEventos() {
+		ModelMap miMapa = new ModelMap();
+		//cambiar traerListaEventos por eventosALosQueAsisto()
+		List<Eventos> listaEventos = servicioEventos.traerListaEventos();
+	
+		miMapa.put("eventos", listaEventos);	
+		ModelAndView modelAndView = new ModelAndView("misEventos", miMapa);
+		return modelAndView;	
+	}
+	
 }

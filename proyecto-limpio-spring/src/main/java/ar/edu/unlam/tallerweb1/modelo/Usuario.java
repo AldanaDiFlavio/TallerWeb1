@@ -22,8 +22,6 @@ public class Usuario {
 	@Column(name = "id_Usuario")
 	private Long id;
 	private String nombreCompleto;
-	private float ubicacionLongitud;
-	private float ubicacionLatitud;
 	private String user;
 	private String password;
 	private Integer aprobacion = 1; /* está aprobado */ 
@@ -61,22 +59,6 @@ public class Usuario {
 
 	public void setNombreCompleto(String nombreCompleto) {
 		this.nombreCompleto = nombreCompleto;
-	}
-
-	public float getUbicacionLongitud() {
-		return ubicacionLongitud;
-	}
-
-	public void setUbicacionLongitud(float ubicacionLongitud) {
-		this.ubicacionLongitud = ubicacionLongitud;
-	}
-
-	public float getUbicacionLatitud() {
-		return ubicacionLatitud;
-	}
-
-	public void setUbicacionLatitud(float ubicacionLatitud) {
-		this.ubicacionLatitud = ubicacionLatitud;
 	}
 
 	public String getUser() {

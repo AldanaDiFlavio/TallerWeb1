@@ -1,4 +1,4 @@
-package ar.edu.unlam.tallerweb1;
+package ar.edu.unlam.tallerweb1.controladores;
 
 import java.util.ArrayList;
 import java.util.List;

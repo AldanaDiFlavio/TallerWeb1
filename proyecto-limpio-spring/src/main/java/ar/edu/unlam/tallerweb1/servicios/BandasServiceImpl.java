@@ -38,5 +38,20 @@ public class BandasServiceImpl implements BandasService {
 		return servicioBandasDao.traerListaBandas();
 	}
 	
-	
+	@Override
+	public List<Bandas> traerBandaGeneroRockNacional(Long id) {
+		return servicioBandasDao.traerBandaGeneroRockNacional(id);
+	}
+
+
+	@Override
+	public List<Bandas> CantidadBandasPorGenero() {
+		return servicioBandasDao.CantidadBandasPorGenero();
+	}
+
+
+	@Override
+	public Bandas traerUnaBanda(Long id) {
+		return servicioBandasDao.traerUnaBanda(id);
+	}
 }

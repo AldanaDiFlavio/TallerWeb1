@@ -1,20 +1,12 @@
-package ar.edu.unlam.tallerweb1.dao;
+package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.List;
 
-
+import ar.edu.unlam.tallerweb1.modelo.Bandas;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 
-public interface GeneroDao {
-
-	void guardarGenero(Genero genero);
+public interface GeneroService {
 
 	List<Genero> traerBandaDeUnGenero(Long id);
-
 	List<Genero> traerListaGenero();
-
-	Genero traerUnGenero(Long id);
-
-
-
 }

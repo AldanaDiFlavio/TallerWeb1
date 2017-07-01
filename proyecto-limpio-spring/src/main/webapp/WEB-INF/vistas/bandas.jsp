@@ -55,9 +55,16 @@
                        	</div>
                        	<div class="panel-body">
                            	<ul class="nav nav-pills nav-stacked category-menu">
-                               	<li class="active"><a href="#">Todos<span class="badge pull-right">8</span></a></li>
-                               	<li><a href="#">Rock Nacional<span class="badge pull-right">4</span></a></li>
-                                <li><a href="#">Rock Internacional<span class="badge pull-right">4</span></a></li>
+                           	
+                           	<c:forEach items = "${genero}" var="genero">                              	
+
+                                    	<li><a href="generob?id=${genero.id}">${genero.genero}<span class="badge pull-right">${cantidad}</span></a></li>
+                                                                                                  
+                                    </c:forEach>                            	                           	
+                           	
+<!--                                 	<li class="active"><a href="#">Todos<span class="badge pull-right">8</span></a></li>	-->
+<!--                                 	<li><a href="#">Rock Nacional<span class="badge pull-right">4</span></a></li>			-->
+<!--                                  <li><a href="#">Rock Internacional<span class="badge pull-right">4</span></a></li>		-->
                       		</ul>
                        	</div>
                        	
@@ -89,7 +96,7 @@
 		                                	<h3>${bandas.nombre}</h3>
 		                                    <p class="buttons">	                                        
 		                                    	<a href="infobandas?id=${bandas.id}" class="btn btn-default">+ info</a>
-		                                    	<a href="#" class="btn btn-primary">Adherirse</a>
+		                                    	<a href="adherirse?id=${bandas.id}" class="btn btn-primary">Adherirse</a>
 		                                    </p>
 		                                </div>
 		                            </div>

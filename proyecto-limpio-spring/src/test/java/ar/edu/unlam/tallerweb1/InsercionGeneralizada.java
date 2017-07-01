@@ -57,28 +57,18 @@ public class InsercionGeneralizada extends SpringTest {
 	@Transactional
 	@Rollback(false)
 	public void insertarBanda1() {
-		// Bueno definitivamente no funciona lo de genero o lo estoy implementando mal		
+		// Bueno definitivamente no funciona lo de genero o lo estoy implementando mal	
+		Genero genero1 = new Genero();
+		genero1.setGenero("Rock Nacional");	
+		
 		Bandas banda = new Bandas();
 		banda.setNombre("La beriso");
 		banda.setImagen("laberiso.jpg");
 		banda.setCantidadAdheridos(70);
+		banda.setGenero(genero1);
 		
-		List<Genero> generos = new ArrayList<Genero>();
-		
-		Genero genero1 = new Genero();
-		genero1.setGenero("Rock Nacional");	
-		genero1.setIdBanda(banda);
-		generos.add(genero1);
 		generoDao.guardarGenero(genero1);
-		
-		Genero genero2 = new Genero();
-		genero2.setGenero("Pop");	
-		genero2.setIdBanda(banda);
-		generos.add(genero2);
-		generoDao.guardarGenero(genero2);
-		
-		banda.setListaGenero(generos);
-		
+				
 		List<Album> albums = new ArrayList<Album>();
 		
 		Album album1 = new Album();
@@ -179,22 +169,18 @@ public class InsercionGeneralizada extends SpringTest {
 	@Transactional
 	@Rollback(false)
 	public void insertarBanda2() {
+		
+		Genero genero2 = new Genero();
+		genero2.setGenero("Rock Internacional");	
 
 		Bandas banda = new Bandas();
 		banda.setNombre("Callejeros");
 		banda.setImagen("callejeros.jpg");
 		banda.setCantidadAdheridos(70);
+		banda.setGenero(genero2);
 		
-		List<Genero> generos = new ArrayList<Genero>();
-		
-		Genero genero1 = new Genero();
-		genero1.setGenero("Rock Nacional");	
-		genero1.setIdBanda(banda);
-		generos.add(genero1);
-		generoDao.guardarGenero(genero1);
-		
-		banda.setListaGenero(generos);
-		
+		generoDao.guardarGenero(genero2);
+			
 		List<Album> albums = new ArrayList<Album>();
 		
 		Album album1 = new Album();
@@ -303,11 +289,17 @@ public class InsercionGeneralizada extends SpringTest {
 	@Transactional
 	@Rollback(false)
 	public void insertarBanda3() {
+		
+		Genero genero = new Genero();
+		genero.setGenero("Pop");	
 
 		Bandas b = new Bandas();
 		b.setNombre("La Renga");
 		b.setImagen("larenga.jpg");
 		b.setCantidadAdheridos(135);
+		b.setGenero(genero);
+		
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -321,10 +313,17 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda4() {
 		
+		Long id ;
+		id = (long) 1;
+		Genero genero = generoDao.traerUnGenero(id);	
+		
 		Bandas b = new Bandas();
 		b.setNombre("Cielo Razzo");
 		b.setImagen("cielorazzo.jpg");
 		b.setCantidadAdheridos(80);
+		b.setGenero(genero);
+		
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -338,10 +337,17 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda5() {
 		
+		Long id ;
+		id = (long) 1;
+		Genero genero = generoDao.traerUnGenero(id);	
+		
 		Bandas b = new Bandas();
 		b.setNombre("AC DC");
 		b.setImagen("acdc.jpg");
 		b.setCantidadAdheridos(85);
+		b.setGenero(genero);
+		
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -355,10 +361,17 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda6() {
 		
+		Long id ;
+		id = (long) 1;
+		Genero genero = generoDao.traerUnGenero(id);
+		
 		Bandas b = new Bandas();
 		b.setNombre("Metallica");
 		b.setImagen("metalica.jpg");
 		b.setCantidadAdheridos(150);
+		b.setGenero(genero);
+		
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -371,11 +384,18 @@ public class InsercionGeneralizada extends SpringTest {
 	@Transactional
 	@Rollback(false)
 	public void insertarBanda7() {
+		
+		Long id ;
+		id = (long) 1;
+		Genero genero = generoDao.traerUnGenero(id);
 			
 		Bandas b = new Bandas();
 		b.setNombre("System Of A Down");
 		b.setImagen("systemofadown.jpg");
 		b.setCantidadAdheridos(120);
+		b.setGenero(genero);
+		
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -389,10 +409,17 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda8() {
 		
+		Long id ;
+		id = (long) 1;
+		Genero genero = generoDao.traerUnGenero(id);
+		
 		Bandas b = new Bandas();
 		b.setNombre("Iron Maiden");
 		b.setImagen("ironmaiden.jpg");
 		b.setCantidadAdheridos(100);
+		b.setGenero(genero);
+		
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -411,8 +438,6 @@ public class InsercionGeneralizada extends SpringTest {
 		u.setUser("pepe");
 		u.setPassword("1234");
 		u.setAprobacion(1);
-		u.setUbicacionLatitud(0);
-		u.setUbicacionLongitud(0);
 		u.setSeguidores(0);
 		u.setSiguiendo(0);
 		
@@ -561,6 +586,42 @@ public class InsercionGeneralizada extends SpringTest {
 		Session currentSession = sessionFactory.getCurrentSession();
 		Eventos eventox = currentSession.get(Eventos.class, evento.getId());
 		Assert.assertNotNull(eventox);
+	}
+	
+	@Test
+	@Transactional
+	@Rollback(false)
+	public void insertarUsuarioYAdherirloABandas() {
+		
+		Usuario u = new Usuario();
+		u.setNombreCompleto("Jose Martinez");
+		u.setUser("jmartinez");
+		u.setPassword("1234");
+		u.setAprobacion(1);
+		u.setSeguidores(0);
+		u.setSiguiendo(0);
+		
+		Set<Bandas> bandas = new HashSet<Bandas>();
+		
+		Long id ;
+		id = (long) 1;
+		Bandas banda1 = bandasDao.traerUnaBanda(id);
+		
+		bandas.add(banda1);
+		
+		Long id2 ;
+		id2 = (long) 2;
+		Bandas banda2 = bandasDao.traerUnaBanda(id2);
+		
+		bandas.add(banda2);
+		
+		u.setBandas(bandas);
+		
+		usuarioDao.guardarUsuario(u);
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		Usuario usuario2 = currentSession.get(Usuario.class, u.getId());
+		Assert.assertNotNull(usuario2);
 	}
 	
 }
