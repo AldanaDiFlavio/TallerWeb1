@@ -87,6 +87,7 @@ public class EventosController {
 		return modelAndView;
 	}
 	
+<<<<<<< HEAD
 	@RequestMapping(path = "/mis-eventos", method = RequestMethod.GET)
 	public ModelAndView misEventos() {
 		ModelMap miMapa = new ModelMap();
@@ -98,4 +99,6 @@ public class EventosController {
 		return modelAndView;	
 	}
 	
+=======
+>>>>>>> origin/master
 }
