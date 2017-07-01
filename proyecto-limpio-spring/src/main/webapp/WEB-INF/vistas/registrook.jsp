@@ -55,16 +55,9 @@
                        	</div>
                        	<div class="panel-body">
                            	<ul class="nav nav-pills nav-stacked category-menu">
-                           	
-                           	<c:forEach items = "${genero}" var="genero">                              	
-
-                                    	<li><a href="generob?id=${genero.id}">${genero.genero}<span class="badge pull-right">${cantidad}</span></a></li>
-                                                                                                  
-                                    </c:forEach>                            	                           	
-                           	
-<!--                                 	<li class="active"><a href="#">Todos<span class="badge pull-right">8</span></a></li>	-->
-<!--                                 	<li><a href="#">Rock Nacional<span class="badge pull-right">4</span></a></li>			-->
-<!--                                  <li><a href="#">Rock Internacional<span class="badge pull-right">4</span></a></li>		-->
+                               	<li class="active"><a href="#">Todos<span class="badge pull-right">8</span></a></li>
+                               	<li><a href="#">Rock Nacional<span class="badge pull-right">4</span></a></li>
+                                <li><a href="#">Rock Internacional<span class="badge pull-right">4</span></a></li>
                       		</ul>
                        	</div>
                        	
@@ -73,35 +66,9 @@
 
                	<div class="col-md-9">
                    	<div class="box">
-                       	<h1>Bandas</h1>
+                       	<h1>Registrado exitosamente</h1>
                    	</div>
-                   	<div class="row products">
-                    	<c:forEach items = "${bandas}" var="bandas">
-		                   	<div class="col-md-4 col-sm-6">
-	                            	<div class="product">
-	                                	<div class="flip-container">
-	                                    	<div class="flipper">
-	                                        	<div class="front">
-		                                        	<img src="images/bandas/${bandas.imagen}" alt="" class="img-responsive">
-		                                    	</div>
-		                                    	<div class="back">
-		                                        	<img src="images/bandas/${bandas.imagen}" alt="" class="img-responsive">
-		                                    	</div>
-		                                	</div>
-			                        	</div>
-		                            	<div class="invisible">
-			                            	<img src="images/bandas/${bandas.imagen}" alt="" class="img-responsive">
-		                            	</div>
-			                        	<div class="text">
-		                                	<h3>${bandas.nombre}</h3>
-		                                    <p class="buttons">	                                        
-		                                    	<a href="infobandas?id=${bandas.id}" class="btn btn-default">+ info</a>
-		                                    	<a href="#" class="btn btn-primary">Adherirse</a>
-		                                    </p>
-		                                </div>
-		                            </div>
-                         	</div>
-                       	</c:forEach>
+                  			
                    	</div>
 		    	</div>          
            	</div>

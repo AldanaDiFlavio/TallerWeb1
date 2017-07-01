@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>MeetMusic - Bandas</title>
+<title>MeetMusic - Bandas</title>
    	<%@include file="../includes/head.jsp" %>
 </head>
 
@@ -42,40 +42,50 @@
 	<div id="all">
 		<div id="content">
            	<div class="container">
-               	<div class="col-md-12">
-                   	<ul class="breadcrumb">
-                       	<li><a href="home">Inicio</a></li>
-                       	<li>Bandas</li>
-                   	</ul>
-               	</div>
-               	<div class="col-md-3">
-                   	<div class="panel panel-default sidebar-menu">
+               <div class="col-md-3">
+               	    <div class="panel panel-default sidebar-menu">
                        	<div class="panel-heading">
                            	<h3 class="panel-title">Género</h3>
                        	</div>
                        	<div class="panel-body">
                            	<ul class="nav nav-pills nav-stacked category-menu">
-                           	
-                           	<c:forEach items = "${genero}" var="genero">                              	
-
-                                    	<li><a href="generob?id=${genero.id}">${genero.genero}<span class="badge pull-right">${cantidad}</span></a></li>
-                                                                                                  
-                                    </c:forEach>                            	                           	
-                           	
-<!--                                 	<li class="active"><a href="#">Todos<span class="badge pull-right">8</span></a></li>	-->
-<!--                                 	<li><a href="#">Rock Nacional<span class="badge pull-right">4</span></a></li>			-->
-<!--                                  <li><a href="#">Rock Internacional<span class="badge pull-right">4</span></a></li>		-->
+                               	<li class="active"><a href="#">Todos<span class="badge pull-right">8</span></a></li>
+                               	<li><a href="#">Rock Nacional<span class="badge pull-right">4</span></a></li>
+                                <li><a href="#">Rock Internacional<span class="badge pull-right">4</span></a></li>
                       		</ul>
                        	</div>
-                       	
                    	</div>
                	</div>
+				<div class="col-sm-9" id="blog-listing">
 
-               	<div class="col-md-9">
-                   	<div class="box">
-                       	<h1>Bandas</h1>
-                   	</div>
-                   	<div class="row products">
+                    <div class="box">
+
+                        <h1>${evento.nombre}</h1>
+                        <p>${evento.descripcion}</p>
+						<p>${evento.fecha}</p>
+						<p>${evento.capacidad}</p>			
+                    </div>
+
+                    <div class="post">
+                        <h2><a href="post.html">Algo Mas</a></h2>
+                        <p class="author-category">By <a href="#">info</a> in <a href="">info</a>
+                        </p>
+                        <hr>
+                        <p class="date-comments">
+                            <a href="post.html"><i class="fa fa-calendar-o"></i>info</a>
+                            <a href="post.html"><i class="fa fa-comment-o"></i>info</a>
+                        </p>
+                        <div class="image">
+                            
+                        </div>
+                        <p class="intro">info</p>
+                        <p class="read-more"><a href="post.html" class="btn btn-primary">info</a>
+                        </p>
+                    </div>
+
+
+                    <div class="post">
+                        <div class="row products">
                     	<c:forEach items = "${bandas}" var="bandas">
 		                   	<div class="col-md-4 col-sm-6">
 	                            	<div class="product">
@@ -98,12 +108,14 @@
 		                                    	<a href="infobandas?id=${bandas.id}" class="btn btn-default">+ info</a>
 		                                    	<a href="#" class="btn btn-primary">Adherirse</a>
 		                                    </p>
-		                                </div>
+		                                </div>                                
 		                            </div>
                          	</div>
                        	</c:forEach>
                    	</div>
-		    	</div>          
+
+                    </div>
+                </div>      
            	</div>
        	</div>
 		<!-- Footer -->

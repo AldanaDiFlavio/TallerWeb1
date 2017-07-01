@@ -10,4 +10,8 @@ public interface BandasService {
 	
 	List<Bandas> traerListaBandas();
 	
+	List<Bandas> traerBandaGeneroRockNacional(Long id);
+	
+	List<Bandas> CantidadBandasPorGenero();
+	
 }

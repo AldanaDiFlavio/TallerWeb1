@@ -17,6 +17,7 @@ import ar.edu.unlam.tallerweb1.modelo.Bandas;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.servicios.AlbumService;
 import ar.edu.unlam.tallerweb1.servicios.BandasService;
+import ar.edu.unlam.tallerweb1.servicios.GeneroService;
 import ar.edu.unlam.tallerweb1.servicios.TemaService;
 
 @Controller
@@ -31,15 +32,20 @@ public class BandasController {
 	@Inject
 	private TemaService servicioTema; 
 	
+	@Inject
+	private GeneroService servicioGenero; 
+	
 	@RequestMapping(path = "/bandas", method = RequestMethod.GET)
 	public ModelAndView bandas() {
 		ModelMap miMapa = new ModelMap();	
 		List<Bandas> listaBandas = servicioBandas.traerListaBandas();
+		List<Genero> listaGenero = servicioGenero.traerListaGenero();
+
+		List<Bandas> cantbanxgen = servicioBandas.CantidadBandasPorGenero();
 		
-	//	List<Genero> genero = listaBandas.get(1).getListaGenero();
-		
-	//	miMapa.put("genero", genero);	
+		miMapa.put("genero", listaGenero);	
 		miMapa.put("bandas", listaBandas);	
+		miMapa.put("cantidad", cantbanxgen);
 		ModelAndView modelAndView = new ModelAndView("bandas", miMapa);
 		return modelAndView;
 	}
@@ -70,6 +76,41 @@ public class BandasController {
 
 	public void setServicioAlbum(AlbumService servicioAlbum) {
 		this.servicioAlbum = servicioAlbum;
+	}	
+	
+	@RequestMapping(value="/generob")
+	public ModelAndView mostrarBandaxGenero(@RequestParam("id") Long id){
+		
+		List<Genero> listaGenero = servicioGenero.traerListaGenero();
+
+	//	List<Bandas> cantbanxgen = servicioBandas.CantidadBandasPorGenero();
+		
+		List<Bandas> bandas = servicioBandas.traerBandaGeneroRockNacional(id);
+		Long Cant = (long) bandas.size();
+		
+	//	List<Bandas> listaGeneroB  = (List<Bandas>) bandas.get(0).getGenero();		
+		
+		ModelMap miMapa = new ModelMap();
+			
+		miMapa.put("bandas", bandas);	
+		miMapa.put("genero", listaGenero);	
+		miMapa.put("cantidad", Cant);
+		ModelAndView modelAndView = new ModelAndView("bandas", miMapa);
+		return modelAndView;
+	}
+	
+	@RequestMapping(path = "/mis-bandas", method = RequestMethod.GET)
+	public ModelAndView misBandas() {
+		ModelMap miMapa = new ModelMap();	
+		//cambiar traerListaBandas por BandasALasQueMeAdheri()
+		List<Bandas> listaBandas = servicioBandas.traerListaBandas();
+		
+	//	List<Genero> genero = listaBandas.get(1).getListaGenero();
+		
+	//	miMapa.put("genero", genero);	
+		miMapa.put("bandas", listaBandas);	
+		ModelAndView modelAndView = new ModelAndView("misBandas", miMapa);
+		return modelAndView;
 	}
 	
 }

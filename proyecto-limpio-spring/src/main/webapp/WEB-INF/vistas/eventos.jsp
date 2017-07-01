@@ -76,22 +76,23 @@
                     			<div class="flip-container">
                         			<div class="flipper">
                             			<div class="front">
-                       						<img src="${eventos.imagen}" alt="" class="img-responsive">
+                       						<img src="images/eventos/${eventos.imagen}" alt="" class="img-responsive">
                            				</div>
                             			<div class="back">
-                                			<img src="${eventos.imagen}" alt="" class="img-responsive">
+                                			<img src="images/eventos/${eventos.imagen}" alt="" class="img-responsive">
                             			</div>
                         			</div>
                     			</div>
 	                    		<div class="invisible">
-	                        		<img src="${eventos.imagen}" alt="" class="img-responsive">
+	                        		<img src="images/eventos/${eventos.imagen}" alt="" class="img-responsive">
 	                   			</div>
-	                    		<div class="text">
-		                        	<h3>${eventos.banda}</h3>
-		                        	<h5>${eventos.lugar}</h5>
-		                        	<h5>${eventos.fecha}</h5>
+	                    		<div class="text-center">
+		                        	<h3>${eventos.nombre}</h3>
+		                        	<h5>Capacidad: ${eventos.capacidad}</h5>
+		                        	<h5>Inicio: ${eventos.comienzo}</h5>
+		                        	<h5>Fecha: ${eventos.fecha}</h5>
 		                        	<p class="buttons">
-		                            	<a href="#" class="btn btn-default">+ info</a>
+		                            	<a href="infoeventos?id=${eventos.id}" class="btn btn-default">+ info</a>
 		                        	</p>
 		                    	</div>  
 		                	</div>

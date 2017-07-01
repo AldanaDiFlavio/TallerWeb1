@@ -3,7 +3,9 @@ package ar.edu.unlam.tallerweb1;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 
@@ -16,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unlam.tallerweb1.dao.AdministradorDao;
 import ar.edu.unlam.tallerweb1.dao.AlbumDao;
 import ar.edu.unlam.tallerweb1.dao.BandasDao;
+import ar.edu.unlam.tallerweb1.dao.EventosDao;
 import ar.edu.unlam.tallerweb1.dao.GeneroDao;
 import ar.edu.unlam.tallerweb1.dao.TemaDao;
 import ar.edu.unlam.tallerweb1.dao.UsuarioDao;
@@ -31,6 +34,9 @@ public class InsercionGeneralizada extends SpringTest {
 
 	@Inject
 	private BandasDao bandasDao;
+	
+	@Inject
+	private EventosDao eventosDao;
 	
 	@Inject
 	private AlbumDao albumDao;
@@ -51,28 +57,18 @@ public class InsercionGeneralizada extends SpringTest {
 	@Transactional
 	@Rollback(false)
 	public void insertarBanda1() {
-		// Bueno definitivamente no funciona lo de genero o lo estoy implementando mal		
+		// Bueno definitivamente no funciona lo de genero o lo estoy implementando mal	
+		Genero genero1 = new Genero();
+		genero1.setGenero("Rock Nacional");	
+		
 		Bandas banda = new Bandas();
 		banda.setNombre("La beriso");
 		banda.setImagen("laberiso.jpg");
 		banda.setCantidadAdheridos(70);
+		banda.setGenero(genero1);
 		
-		List<Genero> generos = new ArrayList<Genero>();
-		
-		Genero genero1 = new Genero();
-		genero1.setGenero("Rock Nacional");	
-		genero1.setIdBanda(banda);
-		generos.add(genero1);
 		generoDao.guardarGenero(genero1);
-		
-		Genero genero2 = new Genero();
-		genero2.setGenero("Pop");	
-		genero2.setIdBanda(banda);
-		generos.add(genero2);
-		generoDao.guardarGenero(genero2);
-		
-		banda.setListaGenero(generos);
-		
+				
 		List<Album> albums = new ArrayList<Album>();
 		
 		Album album1 = new Album();
@@ -173,22 +169,18 @@ public class InsercionGeneralizada extends SpringTest {
 	@Transactional
 	@Rollback(false)
 	public void insertarBanda2() {
+		
+		Genero genero2 = new Genero();
+		genero2.setGenero("Rock Internacional");	
 
 		Bandas banda = new Bandas();
 		banda.setNombre("Callejeros");
 		banda.setImagen("callejeros.jpg");
 		banda.setCantidadAdheridos(70);
+		banda.setGenero(genero2);
 		
-		List<Genero> generos = new ArrayList<Genero>();
-		
-		Genero genero1 = new Genero();
-		genero1.setGenero("Rock Nacional");	
-		genero1.setIdBanda(banda);
-		generos.add(genero1);
-		generoDao.guardarGenero(genero1);
-		
-		banda.setListaGenero(generos);
-		
+		generoDao.guardarGenero(genero2);
+			
 		List<Album> albums = new ArrayList<Album>();
 		
 		Album album1 = new Album();
@@ -297,11 +289,17 @@ public class InsercionGeneralizada extends SpringTest {
 	@Transactional
 	@Rollback(false)
 	public void insertarBanda3() {
+		
+		Genero genero = new Genero();
+		genero.setGenero("Pop");	
 
 		Bandas b = new Bandas();
 		b.setNombre("La Renga");
 		b.setImagen("larenga.jpg");
 		b.setCantidadAdheridos(135);
+		b.setGenero(genero);
+		
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -315,10 +313,17 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda4() {
 		
+		Long id ;
+		id = (long) 1;
+		Genero genero = generoDao.traerUnGenero(id);	
+		
 		Bandas b = new Bandas();
 		b.setNombre("Cielo Razzo");
 		b.setImagen("cielorazzo.jpg");
 		b.setCantidadAdheridos(80);
+		b.setGenero(genero);
+		
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -332,10 +337,17 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda5() {
 		
+		Long id ;
+		id = (long) 1;
+		Genero genero = generoDao.traerUnGenero(id);	
+		
 		Bandas b = new Bandas();
 		b.setNombre("AC DC");
 		b.setImagen("acdc.jpg");
 		b.setCantidadAdheridos(85);
+		b.setGenero(genero);
+		
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -349,10 +361,17 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda6() {
 		
+		Long id ;
+		id = (long) 1;
+		Genero genero = generoDao.traerUnGenero(id);
+		
 		Bandas b = new Bandas();
 		b.setNombre("Metallica");
 		b.setImagen("metalica.jpg");
 		b.setCantidadAdheridos(150);
+		b.setGenero(genero);
+		
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -365,11 +384,18 @@ public class InsercionGeneralizada extends SpringTest {
 	@Transactional
 	@Rollback(false)
 	public void insertarBanda7() {
+		
+		Long id ;
+		id = (long) 1;
+		Genero genero = generoDao.traerUnGenero(id);
 			
 		Bandas b = new Bandas();
 		b.setNombre("System Of A Down");
 		b.setImagen("systemofadown.jpg");
 		b.setCantidadAdheridos(120);
+		b.setGenero(genero);
+		
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -383,10 +409,17 @@ public class InsercionGeneralizada extends SpringTest {
 	@Rollback(false)
 	public void insertarBanda8() {
 		
+		Long id ;
+		id = (long) 1;
+		Genero genero = generoDao.traerUnGenero(id);
+		
 		Bandas b = new Bandas();
 		b.setNombre("Iron Maiden");
 		b.setImagen("ironmaiden.jpg");
 		b.setCantidadAdheridos(100);
+		b.setGenero(genero);
+		
+		generoDao.guardarGenero(genero);
 		
 		bandasDao.guardarBandas(b);
 
@@ -438,23 +471,123 @@ public class InsercionGeneralizada extends SpringTest {
 	@Test
 	@Transactional
 	@Rollback(false)
-	public void insertarUnEvento() {
+	public void insertarEventos() {
 		
 		Eventos evento1 = new Eventos();
-		evento1.setNombre("Evento del Rock");
-		evento1.setImagen("imagen.jpg");
-		evento1.setDescripcion("Las mejores bandas de rock nacional");
-		evento1.setLatitud(2);
-		evento1.setLongitud(4);
-	//	SimpleDateFormat formateador = new SimpleDateFormat("yyyyMMdd");
-	//	formateador.parse("2012/12/31");
-	//	evento1.setFecha(formateador);
+		evento1.setNombre("Evento 1");
+		evento1.setImagen("evento1.jpg");
+		evento1.setCapacidad(500);
+		evento1.setComienzo("22:30");
+		evento1.setFecha("14/07/2017");
+		eventosDao.guardarEvento(evento1);
 		
-	//	eventosDao.guardarEventos(evento1);
+		Eventos evento2 = new Eventos();
+		evento2.setNombre("Evento 2");
+		evento2.setImagen("evento2.jpg");
+		evento2.setCapacidad(1000);
+		evento2.setComienzo("00:00");
+		evento2.setFecha("24/07/2017");
+		eventosDao.guardarEvento(evento2);
+		
+		Eventos evento3 = new Eventos();
+		evento3.setNombre("Evento 3");
+		evento3.setImagen("evento3.jpg");
+		evento3.setCapacidad(400);
+		evento3.setComienzo("23:00");
+		evento3.setFecha("31/07/2017");
+		eventosDao.guardarEvento(evento3);
 
 		Session currentSession = sessionFactory.getCurrentSession();
 		Eventos evento = currentSession.get(Eventos.class, evento1.getId());
 		Assert.assertNotNull(evento);
+	}
+	
+	@Test
+	@Transactional
+	@Rollback(false)
+	public void insertarEventoYAsignarBandas() {
+		
+		Eventos evento4 = new Eventos();
+		evento4.setNombre("Evento 4");
+		evento4.setImagen("evento4.jpg");
+		evento4.setCapacidad(500);
+		evento4.setComienzo("22:30");
+		evento4.setFecha("14/07/2017");
+		
+		Set<Bandas> bandas = new HashSet<Bandas>();
+			
+		Long id ;
+		id = (long) 1;
+		Bandas banda1 = bandasDao.traerUnaBanda(id);
+		
+		bandas.add(banda1);
+		
+		Long id2 ;
+		id2 = (long) 2;
+		Bandas banda2 = bandasDao.traerUnaBanda(id2);
+		
+		bandas.add(banda2);
+		
+		Long id3 ;
+		id3 = (long) 3;
+		Bandas banda3 = bandasDao.traerUnaBanda(id3);
+		
+		bandas.add(banda3);
+		
+		
+		evento4.setBandas(bandas);
+		
+		eventosDao.guardarEvento(evento4);
+
+		
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		Eventos evento = currentSession.get(Eventos.class, evento4.getId());
+		Assert.assertNotNull(evento);
+	}
+	
+	@Test
+	@Transactional
+	@Rollback(false)
+	public void insertarEventoYAsignarLasMismasBandas() {
+		
+		Eventos evento = new Eventos();
+		evento.setNombre("Evento 25");
+		evento.setImagen("evento1.jpg");
+		evento.setCapacidad(500);
+		evento.setComienzo("22:30");
+		evento.setFecha("14/07/2017");
+		
+		Set<Bandas> bandas = new HashSet<Bandas>();
+			
+		Long id ;
+		id = (long) 1;
+		Bandas banda1 = bandasDao.traerUnaBanda(id);
+		
+		bandas.add(banda1);
+		
+		Long id2 ;
+		id2 = (long) 2;
+		Bandas banda2 = bandasDao.traerUnaBanda(id2);
+		
+		bandas.add(banda2);
+		
+		Long id3 ;
+		id3 = (long) 3;
+		Bandas banda3 = bandasDao.traerUnaBanda(id3);
+		
+		bandas.add(banda3);
+		
+		
+		evento.setBandas(bandas);
+		
+		eventosDao.guardarEvento(evento);
+
+		
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		Eventos eventox = currentSession.get(Eventos.class, evento.getId());
+		Assert.assertNotNull(eventox);
 	}
 	
 }

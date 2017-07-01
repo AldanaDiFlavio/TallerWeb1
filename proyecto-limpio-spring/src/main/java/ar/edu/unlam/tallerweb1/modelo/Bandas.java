@@ -31,7 +31,6 @@ public class Bandas {
 	public Bandas(){
 		super();
         listaAlbum =new ArrayList<Album>();
-        listaGenero =new ArrayList<Genero>();
 	}
 			
 	/*Relación N a N entre banda y evento
@@ -50,20 +49,16 @@ public class Bandas {
 				inverseJoinColumns = {@JoinColumn(name = "idUsuario")})
 	private Set <Usuario> usuarios = new HashSet <Usuario>(0); */
 	
-	@OneToMany(mappedBy="genero") // preguntar mappedBy
-    private List<Genero> listaGenero;
+	@ManyToOne(optional=false, cascade=CascadeType.ALL)
+	@JoinColumn(name="id")
+    private Genero genero;
 	
-	public void setListaGenero(List<Genero> listaGenero) {
-		this.listaGenero = listaGenero;
+	public Genero getGenero() {
+		return genero;
 	}
-	
-	public List<Genero> getListaGenero() {
-	        return listaGenero;
-	}
-	 
-	public void addGenero(Genero ge) {
-	 
-	listaGenero.add(ge);
+
+	public void setGenero(Genero genero) {
+		this.genero = genero;
 	}	
 	
 	@OneToMany(mappedBy="bandas" )

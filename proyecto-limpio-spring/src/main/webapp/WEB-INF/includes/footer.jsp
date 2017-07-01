@@ -4,7 +4,7 @@
         	<div class="container">
 	        	<div class="row">
 	            	<div class="col-md-3 col-sm-6">
-	                	<h4>Panel de administrador</h4>
+	                	<h4>Login</h4>
                         <ul>
                             <li><a href="login">Login</a></li>
 	                    </ul>
@@ -16,6 +16,7 @@
                         <ul>
                         	<li><a href="bandas">Bandas</a></li>
                             <li><a href="#">Eventos</a></li>
+                            <li><a href="contacto">Contacto</a></li>
 	                    </ul>
 	                    <hr class="hidden-md hidden-lg">
                     </div>
@@ -30,24 +31,10 @@
                         	<br>
                         	<strong>Argentina</strong>
                         </p>
-                        <a href="#">Contacto</a>
-                        <hr class="hidden-md hidden-lg">
                     </div>
 
                     <div class="col-md-3 col-sm-6">
-                        <h4>Suscribite ya!!</h4>
-                        <p class="text-muted">Te enviaremos las últimas bandas agregadas y lo próximos eventos!!</p>
-                        <form>
-                            <div class="input-group">
-                                <input type="email" class="form-control">
-                                <span class="input-group-btn">
-			                         <button class="btn btn-default" type="button">Subscribirse!</button>
-                                </span>
-                            </div>
-                        </form>
-                        <hr>
-	
-                        <h4>Redes Sociales</h4>
+                       <h4>Redes Sociales</h4>
                         <p class="social">
                             <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
                             <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>

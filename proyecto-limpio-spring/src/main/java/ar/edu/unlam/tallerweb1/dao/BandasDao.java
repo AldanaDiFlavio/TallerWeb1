@@ -12,5 +12,11 @@ public interface BandasDao {
 	void guardarBandas(Bandas bandas);
 	
 	Bandas traerUnaBanda(Long id);
+	
+	List<Bandas> traerBandaGeneroRockNacional(Long id);
+
+	List<Bandas> CantidadBandasPorGenero();
+
+	List<Bandas> buscarPor(Genero rock);
 
 }
