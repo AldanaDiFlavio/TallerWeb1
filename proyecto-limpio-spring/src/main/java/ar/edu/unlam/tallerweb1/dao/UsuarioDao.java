@@ -10,4 +10,8 @@ public interface UsuarioDao {
 	
 	Usuario buscarUsuario(Usuario usuario);
 
+	Usuario traerUnUsuario(Long id);
+
+	void editarUsuario(Usuario usuario);
+
 }

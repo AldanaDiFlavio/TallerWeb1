@@ -96,7 +96,7 @@
 		                                	<h3>${bandas.nombre}</h3>
 		                                    <p class="buttons">	                                        
 		                                    	<a href="infobandas?id=${bandas.id}" class="btn btn-default">+ info</a>
-		                                    	<a href="#" class="btn btn-primary">Adherirse</a>
+		                                    	<a href="adherirse?id=${bandas.id}" class="btn btn-primary">Adherirse</a>
 		                                    </p>
 		                                </div>
 		                            </div>

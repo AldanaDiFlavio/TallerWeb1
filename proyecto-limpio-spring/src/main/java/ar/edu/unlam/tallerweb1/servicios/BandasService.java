@@ -5,6 +5,8 @@ import java.util.List;
 import ar.edu.unlam.tallerweb1.modelo.Bandas;
 
 public interface BandasService {
+	
+	Bandas traerUnaBanda(Long id);
 		
 	List<Bandas> bandasRecomendadas(List<Bandas> todasLasBandas);
 	

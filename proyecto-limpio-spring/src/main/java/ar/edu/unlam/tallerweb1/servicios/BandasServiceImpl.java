@@ -48,4 +48,13 @@ public class BandasServiceImpl implements BandasService {
 	public List<Bandas> CantidadBandasPorGenero() {
 		return servicioBandasDao.CantidadBandasPorGenero();
 	}
+<<<<<<< HEAD
+=======
+
+
+	@Override
+	public Bandas traerUnaBanda(Long id) {
+		return servicioBandasDao.traerUnaBanda(id);
+	}
+>>>>>>> origin/master
 }

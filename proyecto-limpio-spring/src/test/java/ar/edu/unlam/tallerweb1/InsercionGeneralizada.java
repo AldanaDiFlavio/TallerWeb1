@@ -438,8 +438,6 @@ public class InsercionGeneralizada extends SpringTest {
 		u.setUser("pepe");
 		u.setPassword("1234");
 		u.setAprobacion(1);
-		u.setUbicacionLatitud(0);
-		u.setUbicacionLongitud(0);
 		u.setSeguidores(0);
 		u.setSiguiendo(0);
 		
@@ -588,6 +586,42 @@ public class InsercionGeneralizada extends SpringTest {
 		Session currentSession = sessionFactory.getCurrentSession();
 		Eventos eventox = currentSession.get(Eventos.class, evento.getId());
 		Assert.assertNotNull(eventox);
+	}
+	
+	@Test
+	@Transactional
+	@Rollback(false)
+	public void insertarUsuarioYAdherirloABandas() {
+		
+		Usuario u = new Usuario();
+		u.setNombreCompleto("Jose Martinez");
+		u.setUser("jmartinez");
+		u.setPassword("1234");
+		u.setAprobacion(1);
+		u.setSeguidores(0);
+		u.setSiguiendo(0);
+		
+		Set<Bandas> bandas = new HashSet<Bandas>();
+		
+		Long id ;
+		id = (long) 1;
+		Bandas banda1 = bandasDao.traerUnaBanda(id);
+		
+		bandas.add(banda1);
+		
+		Long id2 ;
+		id2 = (long) 2;
+		Bandas banda2 = bandasDao.traerUnaBanda(id2);
+		
+		bandas.add(banda2);
+		
+		u.setBandas(bandas);
+		
+		usuarioDao.guardarUsuario(u);
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		Usuario usuario2 = currentSession.get(Usuario.class, u.getId());
+		Assert.assertNotNull(usuario2);
 	}
 	
 }
