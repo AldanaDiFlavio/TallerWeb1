@@ -1,13 +1,27 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 	<div id="footer" data-animate="fadeInUp">
         	<div class="container">
 	        	<div class="row">
 	            	<div class="col-md-3 col-sm-6">
-	                	<h4>Login</h4>
-                        <ul>
-                            <li><a href="login">Login</a></li>
-	                    </ul>
+	                	<c:choose>
+	                		<c:when  test="${usuario.user != null}">
+	                			<h4>Dashboard</h4>
+		                        <ul>
+		                            <li><a href="notificaciones">Notificaciones</a></li>
+		                            <li><a href="mis-bandas">Mis bandas</a></li>
+		                            <li><a href="mis-eventos">Mis eventos</a></li>
+			                    </ul>
+	                		</c:when>
+	                		<c:otherwise>
+	                			<h4>Login</h4>
+		                        <ul>
+		                            <li><a href="login">Login</a></li>
+			                    </ul>
+	                		</c:otherwise>
+	                	</c:choose>
+	                	
 	                    <hr class="hidden-md hidden-lg hidden-sm">
 					</div>
 	
@@ -31,6 +45,7 @@
                         	<br>
                         	<strong>Argentina</strong>
                         </p>
+                        <hr class="hidden-md hidden-lg">
                     </div>
 
                     <div class="col-md-3 col-sm-6">

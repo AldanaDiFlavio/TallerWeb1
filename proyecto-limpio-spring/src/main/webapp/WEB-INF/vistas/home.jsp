@@ -77,21 +77,35 @@
 	                                <div class="flip-container">
 	                                    <div class="flipper">
 	                                        <div class="front">
-	                                            <img src="${bandas.imagen}" alt="" class="img-responsive">
+	                                            <img src="images/bandas/${bandas.imagen}" alt="" class="img-responsive">
 	                                        </div>
 	                                        <div class="back">
-	                                            <img src="${bandas.imagen}" alt="" class="img-responsive">
+	                                            <img src="images/bandas/${bandas.imagen}" alt="" class="img-responsive">
 	                                        </div>
 	                                    </div>
 	                                </div>
 	                                <div class="invisible">
-	                                    <img src="${bandas.imagen}" alt="" class="img-responsive">
+	                                    <img src="images/bandas/${bandas.imagen}" alt="" class="img-responsive">
 	                                </div>
 	                                <div class="text">
 	                                    <h3>${bandas.nombre}</h3>
 	                                    <p class="buttons">
-	                                        <a href="#" class="btn btn-default">+ info</a>
-	                                        <a href="#" class="btn btn-primary">Adherirse</a>
+	                                        <a href="infobandas?id=${bandas.id}" class="btn btn-default">+ info</a>
+	                                        <c:choose>
+		                                    		<c:when test="${usuario.user != null }">
+		                                    			<c:choose>
+		                                    				<c:when test="${Adherirse }">
+		                                    					<h4>Ya te adheriste</h4>
+		                                    				</c:when>
+		                                    				<c:otherwise>
+		                                    					<form:form action="adherirse-bandas" modelAttribute="adherirseBanda" method = "POST">
+		                                    						<input type="hidden" value="true" name="verdadero"/>
+		                                    						<button type="submit" class="btn btn-primary">+ Adherirse</button>
+		                                    					</form:form>
+		                                    				</c:otherwise>
+		                                    			</c:choose>
+		                                    		</c:when>
+		                                    	</c:choose>
 	                                    </p>
 	                                </div>
 	                            </div>

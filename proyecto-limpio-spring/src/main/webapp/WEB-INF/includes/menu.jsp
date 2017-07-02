@@ -10,8 +10,8 @@
  	<div class="panel-body">
      	<ul class="nav nav-pills nav-stacked category-menu">
      		<li><a href="notificaciones">Notificaciones</a></li>
-          	<li><a href="misBandas">Mis bandas</a></li>
-          	<li><a href="misEventos">Mis eventos</a></li>
+          	<li><a href="mis-bandas">Mis bandas</a></li>
+          	<li><a href="mis-eventos">Mis eventos</a></li>
 		</ul>
 	</div>
 </div>
