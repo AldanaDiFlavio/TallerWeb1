@@ -14,7 +14,7 @@
 	<div class="navbar navbar-default yamm" role="navigation" id="navbar">
     	<div class="container">
         	<div class="navbar-header">
-            	<a class="navbar-brand home" href="#" data-animate-hover="bounce">
+            	<a class="navbar-brand home"data-animate-hover="bounce">
                 	<img src="images/logo/logo.png" alt="MeetMusic logo" class="hidden-xs">
                     <img src="images/logo/logo-small.png" alt="MeetMusic logo" class="visible-xs"><span class="sr-only"></span>
                 </a>
@@ -88,7 +88,8 @@
                         <hr>
 
                         <div id="map">
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.3988756722815!2d-58.56479398512851!3d-34.66988116850816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc62cc3e02599%3A0x5f178c9d980d3f8b!2sFlorencio+Varela+1903%2C+B1754JEC+San+Justo%2C+Buenos+Aires!5e0!3m2!1ses!2sar!4v1498154565681" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe></iframe>                        </div>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.3988756722815!2d-58.56479398512851!3d-34.66988116850816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc62cc3e02599%3A0x5f178c9d980d3f8b!2sFlorencio+Varela+1903%2C+B1754JEC+San+Justo%2C+Buenos+Aires!5e0!3m2!1ses!2sar!4v1498154565681" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+						</div>
                         <hr>
                         <h2>Contáctanos</h2>
                         <!-- cambiar el formulario para jsp -->

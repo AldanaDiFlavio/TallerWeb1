@@ -14,7 +14,7 @@
 	<div class="navbar navbar-default yamm" role="navigation" id="navbar">
     	<div class="container">
         	<div class="navbar-header">
-            	<a class="navbar-brand home" href="#" data-animate-hover="bounce">
+            	<a class="navbar-brand home"data-animate-hover="bounce">
                 	<img src="images/logo/logo.png" alt="MeetMusic logo" class="hidden-xs">
                     <img src="images/logo/logo-small.png" alt="MeetMusic logo" class="visible-xs"><span class="sr-only"></span>
                 </a>

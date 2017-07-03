@@ -13,7 +13,6 @@
 	            		</c:when>
 	            		<c:otherwise>
 		                	<li><a href="login">Login</a></li>
-	                    	<li><a href="registro">Registrarse</a></li>
 	            		</c:otherwise>
             		</c:choose>
                 </ul>

@@ -14,7 +14,7 @@
 	<div class="navbar navbar-default yamm" role="navigation" id="navbar">
     	<div class="container">
         	<div class="navbar-header">
-            	<a class="navbar-brand home" href="#" data-animate-hover="bounce">
+            	<a class="navbar-brand home"data-animate-hover="bounce">
                 	<img src="images/logo/logo.png" alt="MeetMusic logo" class="hidden-xs">
                     <img src="images/logo/logo-small.png" alt="MeetMusic logo" class="visible-xs"><span class="sr-only"></span>
                 </a>
@@ -49,7 +49,9 @@
                	
                	<div class="col-md-9">
                		<div class="jumbotron">
-               		Aca se mostrarian las notificaciones
+               			<h2><b>Bienvenido, ${usuario.user }!!!</b></h2>
+               			<p>Desde acá vas a poder getionar tus bandas favoritas y los eventos a los que vas
+               			a asistir!!</p>
                		</div>
                	
                	</div>
