@@ -99,11 +99,13 @@
 		                                    	<c:choose>
 		                                    		<c:when test="${usuario.user != null }">
 		                                    			<c:choose>
-		                                    				<c:when test="${Adherirse }">
+		                                    				<c:when test="${Adherirse}">
+		                                    				<%-- De alguna manera hay que acceder a el id de la banda asociada a usuario y comparalo con bandas.id --%>
+		                                    				<%-- Se ponemos test="${usuario.bandas == usuario.bandas}"> Nos dice que ya todo esta adherido es decir el when funciona, se me complica el manejo de set --%>
 		                                    					<h4>Ya te adheriste</h4>
 		                                    				</c:when>
 		                                    				<c:otherwise>
-		                                    					<form:form action="adherirse-bandas" modelAttribute="adherirseBanda" method = "POST">
+		                                    					<form:form action="adherirse-bandas?id=${bandas.id}" modelAttribute="adherirseBanda" method = "POST">
 		                                    						<input type="hidden" value="true" name="verdadero"/>
 		                                    						<button type="submit" class="btn btn-primary">+ Adherirse</button>
 		                                    					</form:form>

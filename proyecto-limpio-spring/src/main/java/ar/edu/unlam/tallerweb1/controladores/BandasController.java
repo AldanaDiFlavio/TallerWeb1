@@ -16,9 +16,11 @@ import ar.edu.unlam.tallerweb1.modelo.Album;
 import ar.edu.unlam.tallerweb1.modelo.Bandas;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 import ar.edu.unlam.tallerweb1.modelo.Tema;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.AlbumService;
 import ar.edu.unlam.tallerweb1.servicios.BandasService;
 import ar.edu.unlam.tallerweb1.servicios.GeneroService;
+import ar.edu.unlam.tallerweb1.servicios.RegistroService;
 import ar.edu.unlam.tallerweb1.servicios.TemaService;
 
 @Controller
@@ -36,6 +38,8 @@ public class BandasController {
 	@Inject
 	private GeneroService servicioGenero; 
 	
+	@Inject
+	private RegistroService servicioRegistro;
 	
 	@RequestMapping(path = "/bandas", method = RequestMethod.GET)
 	public ModelAndView bandas() {
@@ -108,34 +112,21 @@ public class BandasController {
 			return new ModelAndView("misBandas");
 		
 		return new ModelAndView("redirect:/login");
-		
-//		ModelMap miMapa = new ModelMap();	
-//		//cambiar traerListaBandas por BandasALasQueMeAdheri()
-//		List<Bandas> listaBandas = servicioBandas.traerListaBandas();
-//		
-//	//	List<Genero> genero = listaBandas.get(1).getListaGenero();
-//		
-//	//	miMapa.put("genero", genero);	
-//		miMapa.put("bandas", listaBandas);	
-//		ModelAndView modelAndView = new ModelAndView("misBandas", miMapa);
-//		return modelAndView;
 	}
-	
-	/*
-	@RequestMapping(value="/adherirse")
-	public ModelAndView adherirseABanda(@RequestParam("id") Long id, HttpServletRequest request){
 		
-		Bandas banda = servicioBandas.traerUnaBanda(id);
-		Usuario usuario = (Usuario) request.getSession();		
+	@RequestMapping(path = "/adherirse-bandas")
+	public ModelAndView adherirseBandas(@RequestParam("id") Long id, HttpServletRequest request) {
 		
-		usuario.setBandas((Set<Bandas>) banda);
-		
-		servicioRegistro.guardarUsuario(usuario);
-		
-		ModelMap miMapa = new ModelMap();
-	
-		ModelAndView modelAndView = new ModelAndView("registrook", miMapa);
-		return modelAndView;
+		if ( request.getSession().getAttribute("usuario") != null ){
+			Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
+			String User = usuario.getUser();
+			
+			Bandas banda = servicioBandas.traerUnaBanda(id);
+			
+			servicioRegistro.adherirUsuarioABanda(User,banda);
+			
+		return new ModelAndView("misBandas");
 	}
-	*/
+		return new ModelAndView("redirect:/login");
+	}
 }

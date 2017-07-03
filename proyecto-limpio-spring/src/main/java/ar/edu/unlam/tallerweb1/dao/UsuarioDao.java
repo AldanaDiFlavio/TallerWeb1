@@ -9,5 +9,8 @@ public interface UsuarioDao {
 	void guardarUsuario(Usuario usuario);
 	
 	Usuario buscarUsuario(Usuario usuario);
+	
+	Usuario traerUnUsuarioPorUser(String user);
 
+	void editarUsuario(Usuario usuario);
 }

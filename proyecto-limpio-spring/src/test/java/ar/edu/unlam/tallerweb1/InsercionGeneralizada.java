@@ -437,7 +437,41 @@ public class InsercionGeneralizada extends SpringTest {
 		Usuario usuario2 = currentSession.get(Usuario.class, u.getId());
 		Assert.assertNotNull(usuario2);
 	}
-			
+	
+	@Test
+	@Transactional
+	@Rollback(false)
+	public void insertarUsuario2() {
+		
+		Usuario u = new Usuario();
+		u.setUser("jmartinez");
+		u.setPassword("1234");
+		u.setAprobacion(1);	
+		
+		usuarioDao.guardarUsuario(u);
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		Usuario usuario2 = currentSession.get(Usuario.class, u.getId());
+		Assert.assertNotNull(usuario2);
+	}
+	
+	@Test
+	@Transactional
+	@Rollback(false)
+	public void insertarUsuario3() {
+		
+		Usuario u = new Usuario();
+		u.setUser("jalonzo");
+		u.setPassword("1234");
+		u.setAprobacion(1);	
+		
+		usuarioDao.guardarUsuario(u);
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		Usuario usuario2 = currentSession.get(Usuario.class, u.getId());
+		Assert.assertNotNull(usuario2);
+	}
+	
 	@Test
 	@Transactional
 	@Rollback(false)
