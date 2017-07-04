@@ -42,8 +42,22 @@ public class BandasController {
 	private RegistroService servicioRegistro;
 	
 	@RequestMapping(path = "/bandas", method = RequestMethod.GET)
-	public ModelAndView bandas() {
+	public ModelAndView bandas(HttpServletRequest request) {
+		
 		ModelMap miMapa = new ModelMap();	
+		
+		if ( request.getSession().getAttribute("usuario") != null )
+		{
+			Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
+			String User = usuario.getUser();
+			
+			Usuario UsuarioC = servicioRegistro.traerUnUsuarioPorUser(User);
+			
+			List<Bandas> listaBUser = servicioBandas.traerEnListaBandasDeUsuario(UsuarioC.getBandas());
+			
+			miMapa.put("uadherido", listaBUser);
+		}	
+	
 		List<Bandas> listaBandas = servicioBandas.traerListaBandas();
 		List<Genero> listaGenero = servicioGenero.traerListaGenero();
 
@@ -109,8 +123,17 @@ public class BandasController {
 	public ModelAndView misBandas(HttpServletRequest request) {
 		
 		if ( request.getSession().getAttribute("usuario") != null )
-			return new ModelAndView("misBandas");
-		
+		{
+			Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
+			String User = usuario.getUser();
+			
+			ModelMap miMapa = new ModelMap();
+			
+			Usuario UsuarioC = servicioRegistro.traerUnUsuarioPorUser(User);
+			
+			miMapa.put("ubandas", UsuarioC.getBandas());			
+			return new ModelAndView("misBandas", miMapa);
+	}
 		return new ModelAndView("redirect:/login");
 	}
 		
@@ -125,7 +148,13 @@ public class BandasController {
 			
 			servicioRegistro.adherirUsuarioABanda(User,banda);
 			
-		return new ModelAndView("misBandas");
+			ModelMap miMapa = new ModelMap();
+			
+			Usuario UsuarioC = servicioRegistro.traerUnUsuarioPorUser(User);
+			
+			miMapa.put("ubandas", UsuarioC.getBandas());
+			
+		return new ModelAndView("misBandas", miMapa);
 	}
 		return new ModelAndView("redirect:/login");
 	}

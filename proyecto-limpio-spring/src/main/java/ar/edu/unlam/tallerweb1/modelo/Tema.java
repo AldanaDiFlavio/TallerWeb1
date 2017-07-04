@@ -1,6 +1,5 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,13 +18,13 @@ public class Tema {
 	private String duracion;
 	private String link;
 	
-	@ManyToOne(optional=false, cascade=CascadeType.ALL)
+	@ManyToOne()
 	@JoinColumn(name="id_Album")
 	private Album album;
 
 	//Constructor
 	public Tema() {
-		super();
+		
 	}
 	
 	//Getters y setters

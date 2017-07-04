@@ -47,20 +47,37 @@
                    <%@include file="../includes/menu.jsp" %>
                	</div>
                	
-               	<div class="col-md-9">
-               		<div class="jumbotron">
-               			<div class="row">
-							<h2>Bandas adheridas</h2>
-							<c:choose>
-								<c:when test="${not empty coleccionesUsuario}">
+               	<div class="col-md-9" id="customer-orders">				  	
+                	<div class="box">
+                        <p class="lead">Bandas adheridas</p>
+                        <hr>
+                        <div class="table-responsive">
+			                            <table class="table table-hover">
+			                                <thead>
+			                                    <tr>
+			                                        <th>Nombre</th>
+			                                    </tr>
+			                                </thead>
+			                                <tbody>
+			                                	<c:forEach items = "${ubandas}" var="i">                              	
+			                                    <tr>
+			                                        <th>${i.nombre}</th>                                                    
+			                                    </tr>                                                                                                   
+			                                    </c:forEach>                                                                                                 
+			                                </tbody>
+			                            </table>
+                        			</div>      
+                        <c:choose>
+								<c:when test="${ubandas == ubandas} ">
+									 
 								</c:when>
 								<c:otherwise>
 									<p class="text-center">No estás adherido a ninguna banda</p>
 								</c:otherwise>
-							</c:choose>
-						</div>			
-					</div>
-               	</div>
+							</c:choose>						
+                                                          
+                    </div>
+                </div>                           
       		</div>
       	</div>	
       	<!-- Footer -->

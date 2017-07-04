@@ -1,6 +1,8 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.inject.Inject;
 
@@ -45,5 +47,15 @@ public class BandasServiceImpl implements BandasService {
 	@Override
 	public Bandas traerUnaBanda(Long id) {
 		return servicioBandasDao.traerUnaBanda(id);
+	}
+
+
+	@Override
+	public List<Bandas> traerEnListaBandasDeUsuario(Set<Bandas> b) {
+		List<Bandas> bandas = new ArrayList<Bandas>();
+		  for ( Bandas banda : b ) {			 			
+				bandas.add(banda);
+		  		}
+		  return bandas;
 	}
 }

@@ -24,9 +24,9 @@ public class Usuario {
 	private String password;
 	private Integer aprobacion = 1; 
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "usuarios_bandas", joinColumns = { @JoinColumn(name = "id_Usuario") }, inverseJoinColumns = { @JoinColumn(name = "id_Banda") })
-	private Set<Bandas> bandas = new HashSet<Bandas>(0);
+	private Set<Bandas> bandas = new HashSet<Bandas>();
 		
 	//Constructor
 	public Usuario(){

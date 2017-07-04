@@ -1,7 +1,11 @@
 package ar.edu.unlam.tallerweb1.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -58,6 +62,16 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	public void editarUsuario(Usuario usuario) {
 		final Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(usuario);		
+	}
+	
+	@Override
+	public List<Usuario> traerListaUsuario() {
+		
+		return( sessionFactory.getCurrentSession()
+				.createCriteria(Usuario.class)
+				.setFetchMode("usuarios_bandas", FetchMode.JOIN)
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+				.list());	   
 	}
 	
 }

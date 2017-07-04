@@ -98,8 +98,11 @@
 		                                    	<a href="infobandas?id=${bandas.id}" class="btn btn-default">+ info</a>
 		                                    	<c:choose>
 		                                    		<c:when test="${usuario.user != null }">
-		                                    			<c:choose>
-		                                    				<c:when test="${Adherirse}">
+		                                    			<c:choose>		   		                              				                              				
+		                                    				<c:when test="${usuario.user != null }">
+		                                    				<c:forEach items = "${uadherido}" var="uadherido">
+		                                    					${uadherido.id}  
+		                                    				</c:forEach> 
 		                                    				<%-- De alguna manera hay que acceder a el id de la banda asociada a usuario y comparalo con bandas.id --%>
 		                                    				<%-- Se ponemos test="${usuario.bandas == usuario.bandas}"> Nos dice que ya todo esta adherido es decir el when funciona, se me complica el manejo de set --%>
 		                                    					<h4>Ya te adheriste</h4>
@@ -107,7 +110,7 @@
 		                                    				<c:otherwise>
 		                                    					<form:form action="adherirse-bandas?id=${bandas.id}" modelAttribute="adherirseBanda" method = "POST">
 		                                    						<input type="hidden" value="true" name="verdadero"/>
-		                                    						<button type="submit" class="btn btn-primary">+ Adherirse</button>
+		                                    						<p class="buttons"><button type="submit" class="btn btn-primary">+ Adherirse</button></p>
 		                                    					</form:form>
 		                                    				</c:otherwise>
 		                                    			</c:choose>

@@ -600,7 +600,7 @@ public class InsercionGeneralizada extends SpringTest {
 	public void insertarUsuarioYAdherirloABandas() {
 		
 		Usuario u = new Usuario();
-		u.setUser("jmartinez");
+		u.setUser("jsuarez");
 		u.setPassword("1234");
 		u.setAprobacion(1);
 		

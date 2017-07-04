@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.util.List;
+
 import ar.edu.unlam.tallerweb1.modelo.Bandas;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
@@ -14,4 +16,6 @@ public interface RegistroService {
 	void adherirUsuarioABanda(String user, Bandas banda);
 	
 	void editarUsuario(Usuario usuario);
+	
+	List<Usuario> traerListaUsuario();
 }

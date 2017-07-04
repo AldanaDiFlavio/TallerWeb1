@@ -1,15 +1,18 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -24,14 +27,16 @@ public class Bandas {
 	private String imagen;
 	private Integer cantidadAdheridos;
 	
-	@ManyToOne(optional=false, cascade=CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy="bandas")
+	private Set<Usuario> usuarios = new HashSet<Usuario>();
+	
+	@ManyToOne()
 	@JoinColumn(name="id")
     private Genero genero;
 	
 	//Constructor 
 	public Bandas(){
-		super();
-        listaAlbum =new ArrayList<Album>();
+
 	}
 	
 	//Getters y setters
@@ -43,8 +48,9 @@ public class Bandas {
 		this.genero = genero;
 	}	
 	
-	@OneToMany(mappedBy="bandas" )
-    private List<Album> listaAlbum;
+	
+	@OneToMany(mappedBy = "bandas", fetch = FetchType.LAZY, orphanRemoval = true)
+	private List<Album> listaAlbum = new LinkedList<Album>();
 
 	public void setListaAlbum(List<Album> listaAlbum) {
 		this.listaAlbum = listaAlbum;
@@ -91,4 +97,11 @@ public class Bandas {
 		this.imagen = imagen;
 	}
 
+	public Set<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(Set<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 }

@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
@@ -25,6 +27,8 @@ public class BandasDaoImpl implements BandasDao{
 			
 			return( sessionFactory.getCurrentSession()
 					.createCriteria(Bandas.class)
+					.setFetchMode("usuarios_bandas", FetchMode.JOIN)
+					.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
 					.list());	
 		}
 

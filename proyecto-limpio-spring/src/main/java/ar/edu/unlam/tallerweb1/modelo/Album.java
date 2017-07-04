@@ -1,9 +1,7 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,9 +25,10 @@ public class Album {
 	@OneToMany(mappedBy="album" ) 	// RELACION 1 A N ENTRE ALBUMS Y TEMAS
 	private List<Tema> listaTemas;
 
-	@ManyToOne(optional=false, cascade=CascadeType.ALL) // RELACION 1 A N ENTRE BANDAS Y ALBUMS
-	@JoinColumn(name="id_Banda")
+	@ManyToOne
+	@JoinColumn(name = "id_Banda", nullable = true)
 	private Bandas bandas;
+	
 	
 	//Getters y setters
 	public Bandas getIdBandas() {
@@ -41,8 +40,7 @@ public class Album {
 	}
 	
 	public Album() {
-		super();
-		 listaTemas =new ArrayList<Tema>();
+
 	}
 
 	public List<Tema> getListaTemas() {

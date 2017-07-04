@@ -1,7 +1,7 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.HashSet;
-
+import java.util.List;
 import java.util.Set;
 
 import javax.inject.Inject;
@@ -57,5 +57,10 @@ public class RegistroServiceImpl implements RegistroService{
 		usuarioCompleto.setBandas(bandasquetiene);
 		
 		editarUsuario(usuarioCompleto);		
+	}
+
+	@Override
+	public List<Usuario> traerListaUsuario() {
+		return registroDao.traerListaUsuario();
 	}
 }
