@@ -6,7 +6,7 @@
         	<div class="col-md-12" data-animate="fadeInDown">
             	<ul class="menu nav-right">
                 	<c:choose>
-	            		<c:when test="${usuario.user != null}">
+	            		<c:when test="${usuario.id != null}">
 		                	<li style="color: white">${usuario.user}</li>
 		                    <li><a href="dashboard">Dashboard</a></li>
 		                    <li><a href="cerrarSesion">Salir</a></li>
