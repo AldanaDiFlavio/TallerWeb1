@@ -39,16 +39,18 @@ public class LoginController {
 	@RequestMapping(path = "/validar-login", method = RequestMethod.POST)
 	public ModelAndView validarLogin(@ModelAttribute("usuario") Usuario usuario, HttpServletRequest request, HttpServletResponse response) {
 		ModelMap model = new ModelMap();
-		Usuario user = servicioLogin.consultarUsuario(usuario);
+		Usuario user = servicioLogin.buscarUsuario(usuario);
 		
 		if (user != null) {
-			request.getSession().setAttribute("usuario", usuario);
-			return new ModelAndView("dashboard");
+			request.getSession().setAttribute("usuario", user);
+		
+			model.put("usuario", user);
+			return new ModelAndView("dashboard",model);
 		} else {
 			model.put("error", "Error al ingresar los datos. Intente nuevamente.");
-			
+		
 		}
-		return new ModelAndView("redirect:/login", model);
+		return new ModelAndView("login", model);
 	}
 	
 	@RequestMapping("/cerrarSesion")

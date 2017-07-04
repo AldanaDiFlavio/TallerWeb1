@@ -7,4 +7,6 @@ public interface ServicioLogin {
 	
 	Usuario consultarUsuario(Usuario usuario);
 
+	Usuario buscarUsuario(Usuario usuario);
+
 }
