@@ -30,8 +30,8 @@
             <div class="navbar-collapse collapse" id="navigation">
                 <ul class="nav navbar-nav navbar-left">
                     <li><a href="home">Inicio</a></li>
-                    <li class="active"><a href="bandas">Bandas</a></li>
-                    <li><a href="eventos">Eventos</a></li>
+                    <li><a href="bandas">Bandas</a></li>
+                    <li class="active"><a href="eventos">Eventos</a></li>
                     <li><a href="contacto">Contacto</a></li>
                 </ul>
             </div>
@@ -41,77 +41,37 @@
 	<!-- Contenido del sitio -->
 	<div id="all">
 		<div id="content">
-           	<div class="container">
-               <div class="col-md-3">
-               	    <div class="panel panel-default sidebar-menu">
-                       	<div class="panel-heading">
-                           	<h3 class="panel-title">Género</h3>
-                       	</div>
-                       	<div class="panel-body">
-                           	<ul class="nav nav-pills nav-stacked category-menu">
-                               	<li class="active"><a href="#">Todos<span class="badge pull-right">8</span></a></li>
-                               	<li><a href="#">Rock Nacional<span class="badge pull-right">4</span></a></li>
-                                <li><a href="#">Rock Internacional<span class="badge pull-right">4</span></a></li>
-                      		</ul>
-                       	</div>
-                   	</div>
-               	</div>
-				<div class="col-sm-9" id="blog-listing">
+           	<div class="container">        
+				<div class="col-sm-12" id="blog-listing">
 
                     <div class="box">
-
                         <h1>${evento.nombre}</h1>
-                        <p>${evento.descripcion}</p>
-						<p>${evento.fecha}</p>
-						<p>${evento.capacidad}</p>			
+                        <h4>Cantidad de personas: ${evento.capacidad}</h4>
+						<h4>Fecha del evento: ${evento.fecha}</h4>												
                     </div>
 
                     <div class="post">
-                        <h2><a href="post.html">Algo Mas</a></h2>
-                        <p class="author-category">By <a href="#">info</a> in <a href="">info</a>
-                        </p>
-                        <hr>
+                        <h3>Bandas que asisten</h3>
                         <p class="date-comments">
-                            <a href="post.html"><i class="fa fa-calendar-o"></i>info</a>
-                            <a href="post.html"><i class="fa fa-comment-o"></i>info</a>
+                        	<c:forEach items = "${bandasdelevento}" var="bandasdelevento">
+		                     <i>  -	 "${bandasdelevento.nombre}"</i>
+		               		 </c:forEach> 	
+                        </p>
+                        <hr>                      
+                        <p class="author-category">- <a href="#">Solicita tu entrada en ticketek</a>
                         </p>
                         <div class="image">
                             
                         </div>
-                        <p class="intro">info</p>
-                        <p class="read-more"><a href="post.html" class="btn btn-primary">info</a>
+                        <p class="intro">${evento.descripcion}</p>
+                        <p class="read-more"><a href="post.html" class="btn btn-primary">Solicitar</a>
                         </p>
                     </div>
 
 
                     <div class="post">
                         <div class="row products">
-                    	<c:forEach items = "${bandas}" var="bandas">
-		                   	<div class="col-md-4 col-sm-6">
-	                            	<div class="product">
-	                                	<div class="flip-container">
-	                                    	<div class="flipper">
-	                                        	<div class="front">
-		                                        	<img src="images/bandas/${bandas.imagen}" alt="" class="img-responsive">
-		                                    	</div>
-		                                    	<div class="back">
-		                                        	<img src="images/bandas/${bandas.imagen}" alt="" class="img-responsive">
-		                                    	</div>
-		                                	</div>
-			                        	</div>
-		                            	<div class="invisible">
-			                            	<img src="images/bandas/${bandas.imagen}" alt="" class="img-responsive">
-		                            	</div>
-			                        	<div class="text">
-		                                	<h3>${bandas.nombre}</h3>
-		                                    <p class="buttons">	                                        
-		                                    	<a href="infobandas?id=${bandas.id}" class="btn btn-default">+ info</a>
-		                                    	<a href="#" class="btn btn-primary">Adherirse</a>
-		                                    </p>
-		                                </div>                                
-		                            </div>
-                         	</div>
-                       	</c:forEach>
+                    	
                    	</div>
 
                     </div>

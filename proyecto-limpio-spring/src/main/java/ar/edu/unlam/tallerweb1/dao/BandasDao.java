@@ -21,4 +21,5 @@ public interface BandasDao {
 
 	List<Bandas> bandasRecomendadas(List<Bandas> todasLasBandas);
 
+	void editarBandas(Bandas bandas);
 }

@@ -169,7 +169,7 @@ public class InsercionGeneralizada extends SpringTest {
 		Bandas banda = new Bandas();
 		banda.setNombre("Callejeros");
 		banda.setImagen("callejeros.jpg");
-		banda.setCantidadAdheridos(70);
+		banda.setCantidadAdheridos(79);
 		banda.setGenero(genero2);
 		
 		generoDao.guardarGenero(genero2);
@@ -313,7 +313,7 @@ public class InsercionGeneralizada extends SpringTest {
 		Bandas b = new Bandas();
 		b.setNombre("Cielo Razzo");
 		b.setImagen("cielorazzo.jpg");
-		b.setCantidadAdheridos(80);
+		b.setCantidadAdheridos(79);
 		b.setGenero(genero);
 		
 		generoDao.guardarGenero(genero);
@@ -627,4 +627,28 @@ public class InsercionGeneralizada extends SpringTest {
 		Assert.assertNotNull(usuario2);
 	}
 	
+	@Test
+	@Transactional
+	@Rollback(false)
+	public void DesAdherirUsuarioABandas() {
+		
+		String sjsuarez = "jsuarez";
+		Usuario jsuarez = usuarioDao.traerUnUsuarioPorUser(sjsuarez);
+						
+		Long id2 ;
+		id2 = (long) 2;
+		Bandas banda2 = bandasDao.traerUnaBanda(id2);
+				
+		Set<Bandas> bandasquetiene = jsuarez.getBandas();
+		
+		bandasquetiene.remove(banda2);
+		
+		jsuarez.setBandas(bandasquetiene);
+		
+		usuarioDao.guardarUsuario(jsuarez);
+
+		Session currentSession = sessionFactory.getCurrentSession();
+		Usuario usuario2 = currentSession.get(Usuario.class, jsuarez.getId());
+		Assert.assertNotNull(usuario2);
+	}
 }

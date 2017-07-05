@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -31,6 +33,8 @@ public class EventosDaoImpl implements EventosDao{
 		public List<Eventos> traerListaEventos() {
 			return( sessionFactory.getCurrentSession()
 					.createCriteria(Eventos.class)
+					.setFetchMode("eventos_bandas", FetchMode.JOIN)
+					.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
 					.list());	
 		}
 

@@ -51,31 +51,32 @@
                 	<div class="box">
                         <p class="lead">Bandas adheridas</p>
                         <hr>
-                        <div class="table-responsive">
-			                            <table class="table table-hover">
-			                                <thead>
-			                                    <tr>
-			                                        <th>Nombre</th>
-			                                    </tr>
-			                                </thead>
-			                                <tbody>
-			                                	<c:forEach items = "${ubandas}" var="i">                              	
-			                                    <tr>
-			                                        <th>${i.nombre}</th>                                                    
-			                                    </tr>                                                                                                   
-			                                    </c:forEach>                                                                                                 
-			                                </tbody>
-			                            </table>
-                        			</div>      
-                        <c:choose>
-								<c:when test="${ubandas == ubandas} ">
-									 
-								</c:when>
-								<c:otherwise>
-									<p class="text-center">No estás adherido a ninguna banda</p>
-								</c:otherwise>
-							</c:choose>						
-                                                          
+                       								<c:choose>		   		                              				                              				
+		                                    				<c:when test="${not empty ubandas}">
+		                                    					<div class="table-responsive">
+										                            <table class="table table-hover">
+										                                <thead>
+										                                    <tr>
+										                                        <th>Nombre</th>
+										                                        <th>Eliminar adhesión</th>
+										                                    </tr>
+										                                </thead>
+										                                <tbody>
+										                                	<c:forEach items = "${ubandas}" var="i">                              	
+										                                    <tr>
+										                                        <th>${i.nombre}</th>  
+										                                        <td><a href="desadherirse?id=${i.id}" class="btn btn-primary">Desadherirse</a></td>                                              
+										                                    </tr>                                                                                                   
+										                                    </c:forEach>                                                                                                 
+										                                </tbody>
+										                            </table>
+							                        			</div>
+		                                    					
+		                                    				</c:when>
+		                                    				<c:otherwise>
+		                                    					<p class="text-center">No estás adherido a ninguna banda</p>	
+		                                    				</c:otherwise>
+		                                    			</c:choose>                   
                     </div>
                 </div>                           
       		</div>

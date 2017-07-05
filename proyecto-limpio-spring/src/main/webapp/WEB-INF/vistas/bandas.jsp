@@ -55,7 +55,7 @@
                        	</div>
                        	<div class="panel-body">
                            	<ul class="nav nav-pills nav-stacked category-menu">
-                           	
+                           				<li><a href="bandas">TODAS<span class="badge pull-right">${cantidadentotal}</span></a></li>
                            	<c:forEach items = "${genero}" var="genero">                              	
 
                                     	<li><a href="generob?id=${genero.id}">${genero.genero}<span class="badge pull-right">${cantidad}</span></a></li>
@@ -99,7 +99,7 @@
 		                                    	<c:choose>
 		                                    		<c:when test="${usuario.user != null }">
 		                                    			<c:choose>		   		                              				                              				
-		                                    				<c:when test="${usuario.user != null }">
+		                                    				<c:when test="${usuario.user}">
 		                                    				<c:forEach items = "${uadherido}" var="uadherido">
 		                                    					${uadherido.id}  
 		                                    				</c:forEach> 

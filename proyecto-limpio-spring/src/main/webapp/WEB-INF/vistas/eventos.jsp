@@ -49,57 +49,45 @@
                    	</ul>
                	</div>
                	
-               	<div class="col-md-3">
-                   	<div class="panel panel-default sidebar-menu">
-                       	<div class="panel-heading">
-                           	<h3 class="panel-title">Género</h3>
-                       	</div>
-                       	<div class="panel-body">
-                           	<ul class="nav nav-pills nav-stacked category-menu">
-                               	<li class="active"><a href="#">Todos<span class="badge pull-right">8</span></a></li>
-                               	<li><a href="#">Rock Nacional<span class="badge pull-right">4</span></a></li>
-                                <li><a href="#">Rock Internacional<span class="badge pull-right">4</span></a></li>
-                      		</ul>
-                       	</div>
-                   	</div>
-               	</div>
-
-               	<div class="col-md-9">
+               	<div class="col-md-12">
                    	<div class="box">
                        	<h1>Eventos</h1>
-                   	</div>      	
-                   	                 
+                   	</div>
                    	<div class="row products">
                     	<c:forEach items = "${eventos}" var="eventos">
-                    	<div class="col-md-4 col-sm-6">
-                			<div class="product">
-                    			<div class="flip-container">
-                        			<div class="flipper">
-                            			<div class="front">
-                       						<img src="images/eventos/${eventos.imagen}" alt="" class="img-responsive">
-                           				</div>
-                            			<div class="back">
-                                			<img src="images/eventos/${eventos.imagen}" alt="" class="img-responsive">
-                            			</div>
-                        			</div>
-                    			</div>
-	                    		<div class="invisible">
-	                        		<img src="images/eventos/${eventos.imagen}" alt="" class="img-responsive">
-	                   			</div>
-	                    		<div class="text-center">
-		                        	<h3>${eventos.nombre}</h3>
-		                        	<h5>Capacidad: ${eventos.capacidad}</h5>
-		                        	<h5>Inicio: ${eventos.comienzo}</h5>
-		                        	<h5>Fecha: ${eventos.fecha}</h5>
-		                        	<p class="buttons">
-		                            	<a href="infoeventos?id=${eventos.id}" class="btn btn-default">+ info</a>
-		                        	</p>
-		                    	</div>  
-		                	</div>
-			            </div>
-		            </c:forEach>
+		                   	<div class="col-md-4 col-sm-6">
+	                            	<div class="product">
+	                                	<div class="flip-container">
+	                                    	<div class="flipper">
+	                                        	<div class="front">
+		                                        	<img src="images/eventos/${eventos.imagen}" alt="" class="img-responsive">
+		                                    	</div>
+		                                    	<div class="back">
+		                                        	<img src="images/eventos/${eventos.imagen}" alt="" class="img-responsive">
+		                                    	</div>
+		                                	</div>
+			                        	</div>
+		                            	<div class="invisible">
+			                            	<img src="images/eventos/${eventos.imagen}" alt="" class="img-responsive">
+		                            	</div>
+			                        	<div class="text">
+		                                	<h3>${eventos.nombre}</h3>
+		                                    <p class="buttons">	                                        
+		                                    	<a href="infoeventos?id=${eventos.id}" class="btn btn-default">+ info</a>	                                    		                                    		                                    
+		                                    </p>
+		                                    <h3>Bandas que asisten</h3>
+		                                    <p class="buttons">		                                    
+		                                    <c:forEach items = "${eventos.bandas}" var="eb">  
+
+		                                 		<a href="infobandas?id=${eb.id}" class="btn btn-default">${eb.nombre}</a>                                 	
+		                                    </c:forEach>
+		                                    </p>
+		                                </div>
+		                            </div>
+                         	</div>
+                       	</c:forEach>
                    	</div>
-		    	</div>          
+		    	</div>     
            	</div>
        	</div>
 	<!-- Footer -->

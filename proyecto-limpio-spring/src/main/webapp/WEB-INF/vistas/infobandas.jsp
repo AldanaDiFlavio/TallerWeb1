@@ -42,24 +42,9 @@
 	<div id="all">
 		<div id="content">
            	<div class="container">
-               <div class="col-md-3">
-               	    <div class="panel panel-default sidebar-menu">
-                       	<div class="panel-heading">
-                           	<h3 class="panel-title">Género</h3>
-                       	</div>
-                       	<div class="panel-body">
-                           	<ul class="nav nav-pills nav-stacked category-menu">
-                               	<li class="active"><a href="#">Todos<span class="badge pull-right">8</span></a></li>
-                               	<li><a href="#">Rock Nacional<span class="badge pull-right">4</span></a></li>
-                                <li><a href="#">Rock Internacional<span class="badge pull-right">4</span></a></li>
-                      		</ul>
-                       	</div>
-                   	</div>
-               	</div>
-
-               	<div class="col-md-9">
+               	<div class="col-md-12">
                    	<div class="box">
-                       	<h1>Albumes</h1>
+                       	<h1>${banda.nombre}</h1>
                    	</div>
                    	<div class="row products">
                     	<c:forEach items = "${album}" var="album">

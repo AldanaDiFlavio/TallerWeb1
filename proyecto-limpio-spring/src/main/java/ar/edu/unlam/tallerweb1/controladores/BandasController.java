@@ -63,6 +63,9 @@ public class BandasController {
 
 		List<Bandas> cantbanxgen = servicioBandas.CantidadBandasPorGenero();
 		
+		int cantidadentotal = listaBandas.size();
+		
+		miMapa.put("cantidadentotal", cantidadentotal);	
 		miMapa.put("genero", listaGenero);	
 		miMapa.put("bandas", listaBandas);	
 		miMapa.put("cantidad", cantbanxgen);
@@ -73,10 +76,13 @@ public class BandasController {
 	@RequestMapping(value="/infobandas")
 	public ModelAndView mostrarAlbum(@RequestParam("id") Long id){
 		
+		Bandas banda = servicioBandas.traerUnaBanda(id);
+		
 		List<Album> album = servicioAlbum.traerAlbumesDeUnaBanda(id);
 
 		ModelMap miMapa = new ModelMap();
-			
+		
+		miMapa.put("banda", banda);	
 		miMapa.put("album", album);	
 		ModelAndView modelAndView = new ModelAndView("infobandas", miMapa);
 		return modelAndView;
@@ -100,6 +106,7 @@ public class BandasController {
 	
 	@RequestMapping(value="/generob")
 	public ModelAndView mostrarBandaxGenero(@RequestParam("id") Long id){
+		List<Bandas> listaBandas = servicioBandas.traerListaBandas();
 		
 		List<Genero> listaGenero = servicioGenero.traerListaGenero();
 
@@ -111,7 +118,10 @@ public class BandasController {
 	//	List<Bandas> listaGeneroB  = (List<Bandas>) bandas.get(0).getGenero();		
 		
 		ModelMap miMapa = new ModelMap();
-			
+		
+		int cantidadentotal = listaBandas.size();
+		
+		miMapa.put("cantidadentotal", cantidadentotal);	
 		miMapa.put("bandas", bandas);	
 		miMapa.put("genero", listaGenero);	
 		miMapa.put("cantidad", Cant);
@@ -143,10 +153,28 @@ public class BandasController {
 		if ( request.getSession().getAttribute("usuario") != null ){
 			Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
 			String User = usuario.getUser();
+						
+			servicioRegistro.adherirUsuarioABanda(User,id);
 			
-			Bandas banda = servicioBandas.traerUnaBanda(id);
+			ModelMap miMapa = new ModelMap();
 			
-			servicioRegistro.adherirUsuarioABanda(User,banda);
+			Usuario UsuarioC = servicioRegistro.traerUnUsuarioPorUser(User);
+			
+			miMapa.put("ubandas", UsuarioC.getBandas());
+			
+		return new ModelAndView("misBandas", miMapa);
+	}
+		return new ModelAndView("redirect:/login");
+	}
+	
+	@RequestMapping(path = "/desadherirse")
+	public ModelAndView desadherirseBandas(@RequestParam("id") Long id, HttpServletRequest request) {
+		
+		if ( request.getSession().getAttribute("usuario") != null ){
+			Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
+			String User = usuario.getUser();
+					
+			servicioRegistro.desadherirUsuarioABanda(User,id);
 			
 			ModelMap miMapa = new ModelMap();
 			

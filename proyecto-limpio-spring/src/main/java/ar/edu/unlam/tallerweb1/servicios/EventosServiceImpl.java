@@ -45,4 +45,10 @@ public class EventosServiceImpl  implements EventosService {
 		return servicioEventosDao.traerBandasDeUnEvento(bandasdelevento);
 	}
 
+	@Override
+	public List<Eventos> traerEnListaBandasDeUsuario(Set<Bandas> bandas) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

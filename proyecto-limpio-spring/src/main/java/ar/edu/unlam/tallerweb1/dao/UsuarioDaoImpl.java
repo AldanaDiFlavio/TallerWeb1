@@ -61,9 +61,11 @@ public class UsuarioDaoImpl implements UsuarioDao {
 	@Override
 	public void editarUsuario(Usuario usuario) {
 		final Session session = sessionFactory.getCurrentSession();
+		
 		session.saveOrUpdate(usuario);		
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Usuario> traerListaUsuario() {
 		
@@ -72,6 +74,16 @@ public class UsuarioDaoImpl implements UsuarioDao {
 				.setFetchMode("usuarios_bandas", FetchMode.JOIN)
 				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
 				.list());	   
+	}
+	
+	public void eliminarAdhesion(Usuario usuario) {
+
+		final Session session = sessionFactory.getCurrentSession();
+		
+		Criteria crit = session.createCriteria(Usuario.class);
+		crit.createAlias("bandas", "bandasAlias");
+		crit.add(Restrictions.eq("bandasAlias.id", usuario.getId()));
+
 	}
 	
 }

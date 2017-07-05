@@ -83,5 +83,10 @@ public class BandasDaoImpl implements BandasDao{
 					.add(Restrictions.ge("cantidadAdheridos", 80))
 					.list());
 		}
-			
+		
+		@Override
+		public void editarBandas(Bandas bandas) {			
+			final Session session = sessionFactory.getCurrentSession();
+			session.saveOrUpdate(bandas);		
+		}
 }

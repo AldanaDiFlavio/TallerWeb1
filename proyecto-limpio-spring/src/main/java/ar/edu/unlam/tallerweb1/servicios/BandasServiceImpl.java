@@ -58,4 +58,9 @@ public class BandasServiceImpl implements BandasService {
 		  		}
 		  return bandas;
 	}
+	
+	@Override
+	public void editarBanda(Bandas banda) {
+		servicioBandasDao.editarBandas(banda);			
+	}
 }

@@ -20,6 +20,9 @@ public class RegistroServiceImpl implements RegistroService{
 	@Inject
 	private UsuarioDao registroDao;
 	
+	@Inject
+	private BandasService servicioBandas;
+	
 	@Override
 	public Usuario buscarUsuario(Usuario usuario) {
 		return registroDao.buscarUsuario(usuario);
@@ -42,8 +45,11 @@ public class RegistroServiceImpl implements RegistroService{
 	}
 
 	@Override
-	public void adherirUsuarioABanda(String user, Bandas banda) {
+	public void adherirUsuarioABanda(String user, Long id) {
+		
 		Usuario usuarioCompleto = traerUnUsuarioPorUser(user);
+		
+		Bandas banda = servicioBandas.traerUnaBanda(id);
 		
 		Set<Bandas> bandas = new HashSet<Bandas>();
 	//	List<Bandas> bandas = new ArrayList<Bandas>();
@@ -56,11 +62,45 @@ public class RegistroServiceImpl implements RegistroService{
 		
 		usuarioCompleto.setBandas(bandasquetiene);
 		
-		editarUsuario(usuarioCompleto);		
+		editarUsuario(usuarioCompleto);	
+		
+		Integer cantadh = banda.getCantidadAdheridos();
+		cantadh = cantadh + 1; 
+		banda.setCantidadAdheridos(cantadh);
+		
+		servicioBandas.editarBanda(banda);
 	}
 
 	@Override
 	public List<Usuario> traerListaUsuario() {
 		return registroDao.traerListaUsuario();
+	}
+
+	@Override
+	public void eliminarAdhesion(Usuario usuario) {
+		registroDao.eliminarAdhesion(usuario);		
+	}
+
+	@Override
+	public void desadherirUsuarioABanda(String user, Long id) {
+		
+		Bandas banda = servicioBandas.traerUnaBanda(id);
+		
+		Usuario usuarioCompleto = traerUnUsuarioPorUser(user);
+			
+		Set<Bandas> bandasquetiene = usuarioCompleto.getBandas();
+		
+		bandasquetiene.remove(banda);
+		
+		usuarioCompleto.setBandas(bandasquetiene);
+				
+		editarUsuario(usuarioCompleto);	
+		
+		Integer cantadh = banda.getCantidadAdheridos();
+		cantadh = cantadh - 1; 
+		banda.setCantidadAdheridos(cantadh);
+		
+		servicioBandas.editarBanda(banda);
+		
 	}
 }

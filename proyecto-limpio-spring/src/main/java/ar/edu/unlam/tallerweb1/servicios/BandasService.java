@@ -19,4 +19,5 @@ public interface BandasService {
 
 	List<Bandas> traerEnListaBandasDeUsuario(Set<Bandas> bandas);
 	
+	void editarBanda(Bandas banda);
 }

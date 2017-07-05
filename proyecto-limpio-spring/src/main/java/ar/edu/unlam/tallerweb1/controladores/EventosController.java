@@ -30,6 +30,7 @@ public class EventosController {
 	@RequestMapping(path = "/eventos", method = RequestMethod.GET)
 	public ModelAndView eventos() {
 		ModelMap miMapa = new ModelMap();	
+		
 		List<Eventos> listaEventos = servicioEventos.traerListaEventos();
 	
 		miMapa.put("eventos", listaEventos);	
@@ -59,33 +60,25 @@ public class EventosController {
 		return new ModelAndView("registrook", modelo);
 	}
 	
-	@RequestMapping(value="/infoeventos")
-	public ModelAndView mostrarEvento(@RequestParam("id") Long id){
+	@RequestMapping(path = "/infoeventos", method = RequestMethod.GET)
+	public ModelAndView infoEventos(@RequestParam("id") Long id) {
 		
-		ModelMap miMapa = new ModelMap();
+		Eventos evento = servicioEventos.traerUnEvento(id);
 		
-		Eventos evento = new Eventos();		
-		evento	= servicioEventos.traerUnEvento(id);
-			
+		ModelMap miMapa = new ModelMap();	
+
 		miMapa.put("nombre", evento.getNombre());
 		miMapa.put("imagen", evento.getImagen());
 		miMapa.put("descripcion", evento.getDescripcion());
 		miMapa.put("fecha", evento.getFecha());	
 		miMapa.put("capacidad", evento.getCapacidad());		
-		miMapa.put("comienzo", evento.getComienzo());		
-	//    miMapa.put("bandas", evento.getBandas());
-	// Queria mostrar las bandas del evento
-		
-	//	Set<Bandas> bandasdelevento = evento.getBandas();
-		
-	//	List<Bandas> bandas = servicioEventos.traerBandasDeUnEvento(bandasdelevento);
-		
-		miMapa.put("evento", evento);		
-	//	miMapa.put("bandas", bandas);	
+		miMapa.put("comienzo", evento.getComienzo());			
+		miMapa.put("evento", evento);	
+		miMapa.put("bandasdelevento", evento.getBandas());
 		ModelAndView modelAndView = new ModelAndView("infoeventos", miMapa);
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(path = "/mis-eventos", method = RequestMethod.GET)
 	public ModelAndView misEventos(HttpServletRequest request) {
 		

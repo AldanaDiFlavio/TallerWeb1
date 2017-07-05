@@ -17,4 +17,6 @@ public interface UsuarioDao {
 	void editarUsuario(Usuario usuario);
 
 	List<Usuario> traerListaUsuario();
+	
+	void eliminarAdhesion(Usuario usuario);
 }

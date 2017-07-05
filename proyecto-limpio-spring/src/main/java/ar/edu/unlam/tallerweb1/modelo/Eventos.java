@@ -28,7 +28,7 @@ public class Eventos {
 	private String comienzo;
 	private Integer finalizacion;
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER) // Si no le pongo EAGER por ej en eventos no me trae el getBandas.
 	@JoinTable(name = "eventos_bandas", joinColumns = { @JoinColumn(name = "id_Evento") }, inverseJoinColumns = { @JoinColumn(name = "id_Banda") })
 	private Set<Bandas> bandas = new HashSet<Bandas>();
 	
