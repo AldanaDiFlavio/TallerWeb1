@@ -69,7 +69,7 @@ public class InsercionGeneralizada extends SpringTest {
 		album1.setAnio(2016);
 		album1.setImagen("pecadocapital.jpg");
 			
-		album1.setIdBandas(banda);
+		album1.setBandas(banda);
 		albumDao.guardarAlbum(album1);
 		
 		List<Tema> temasalbum1 = new ArrayList<Tema>();
@@ -102,7 +102,7 @@ public class InsercionGeneralizada extends SpringTest {
 		temaDao.guardarTema(album1tema3);
 		
 		album1.setListaTemas(temasalbum1); 	
-		album1.setIdBandas(banda);
+		album1.setBandas(banda);
 		albumDao.guardarAlbum(album1);
 		
 				
@@ -111,7 +111,7 @@ public class InsercionGeneralizada extends SpringTest {
 		album2.setAnio(2014);
 		album2.setImagen("historias.jpg");
 				
-		album2.setIdBandas(banda);
+		album2.setBandas(banda);
 		albumDao.guardarAlbum(album2);
 		
 		List<Tema> temasalbum2 = new ArrayList<Tema>();
@@ -144,7 +144,7 @@ public class InsercionGeneralizada extends SpringTest {
 		temaDao.guardarTema(album2tema3);
 		
 		album2.setListaTemas(temasalbum2); // Estos sos los temas del album 2 de la banda callejeros	
-		album2.setIdBandas(banda);
+		album2.setBandas(banda);
 		albumDao.guardarAlbum(album2);
 		
 		albums.add(album2);
@@ -183,7 +183,7 @@ public class InsercionGeneralizada extends SpringTest {
 
 		
 	//	album1.setListaTemas(temasalbum1); // Estos sos los temas del album 1 de la banda callejeros	
-		album1.setIdBandas(banda);
+		album1.setBandas(banda);
 		albumDao.guardarAlbum(album1);
 		
 		List<Tema> temasalbum1 = new ArrayList<Tema>();
@@ -216,7 +216,7 @@ public class InsercionGeneralizada extends SpringTest {
 		temaDao.guardarTema(album1tema3);
 		
 		album1.setListaTemas(temasalbum1); // Estos sos los temas del album 1 de la banda callejeros	
-		album1.setIdBandas(banda);
+		album1.setBandas(banda);
 		albumDao.guardarAlbum(album1);
 //		albums.add(album1); // NO FUNCO POR LISTA // Aca agregamos el album1 a la lista de albums de callejeros
 		
@@ -231,7 +231,7 @@ public class InsercionGeneralizada extends SpringTest {
 		
 		
 	//	album2.setListaTemas(temasalbum2); // Estos sos los temas del album 2 de la banda callejeros	
-		album2.setIdBandas(banda);
+		album2.setBandas(banda);
 		albumDao.guardarAlbum(album2);
 		
 		List<Tema> temasalbum2 = new ArrayList<Tema>();
@@ -264,7 +264,7 @@ public class InsercionGeneralizada extends SpringTest {
 		temaDao.guardarTema(album2tema3);
 		
 		album2.setListaTemas(temasalbum2); // Estos sos los temas del album 2 de la banda callejeros	
-		album2.setIdBandas(banda);
+		album2.setBandas(banda);
 		albumDao.guardarAlbum(album2);
 		
 		albums.add(album2);
@@ -481,18 +481,16 @@ public class InsercionGeneralizada extends SpringTest {
 		evento1.setNombre("Evento 1");
 		evento1.setImagen("evento1.jpg");
 		evento1.setCapacidad(500);
-		evento1.setCantactual(230);
-		evento1.setComienzo("22:30");
-		evento1.setFecha("14/07/2017");
+		evento1.setCantactual(230);	
+		evento1.setFecha("14-07-2017");
 		eventosDao.guardarEvento(evento1);
 		
 		Eventos evento2 = new Eventos();
 		evento2.setNombre("Evento 2");
 		evento2.setImagen("evento2.jpg");
 		evento2.setCapacidad(1000);
-		evento2.setCantactual(580);
-		evento2.setComienzo("00:00");
-		evento2.setFecha("24/07/2017");
+		evento2.setCantactual(580);		
+		evento2.setFecha("24-07-2017");
 		eventosDao.guardarEvento(evento2);
 		
 		Eventos evento3 = new Eventos();
@@ -500,8 +498,7 @@ public class InsercionGeneralizada extends SpringTest {
 		evento3.setImagen("evento3.jpg");
 		evento3.setCapacidad(400);
 		evento3.setCantactual(399);
-		evento3.setComienzo("23:00");
-		evento3.setFecha("31/07/2017");
+		evento3.setFecha("31-07-2017");
 		eventosDao.guardarEvento(evento3);
 
 		Session currentSession = sessionFactory.getCurrentSession();
@@ -512,15 +509,14 @@ public class InsercionGeneralizada extends SpringTest {
 	@Test
 	@Transactional
 	@Rollback(false)
-	public void insertarEventoYAsignarBandas() {
+	public void insertarEventoYAsignarBandas(){
 		
 		Eventos evento4 = new Eventos();
 		evento4.setNombre("Evento 5");
 		evento4.setImagen("evento5.jpg");
 		evento4.setCapacidad(500);
 		evento4.setCantactual(500);
-		evento4.setComienzo("22:30");
-		evento4.setFecha("14/07/2017");
+		evento4.setFecha("14-07-2017");
 		
 		Set<Bandas> bandas = new HashSet<Bandas>();
 			
@@ -557,15 +553,14 @@ public class InsercionGeneralizada extends SpringTest {
 	@Test
 	@Transactional
 	@Rollback(false)
-	public void insertarEventoYAsignarLasMismasBandas() {
+	public void insertarEventoYAsignarLasMismasBandas(){
 		
 		Eventos evento = new Eventos();
 		evento.setNombre("Evento 4");
 		evento.setImagen("evento4.jpg");
 		evento.setCapacidad(500);
 		evento.setCantactual(500);
-		evento.setComienzo("22:30");
-		evento.setFecha("14/07/2017");
+		evento.setFecha("28-07-2017");
 		
 		Set<Bandas> bandas = new HashSet<Bandas>();
 			

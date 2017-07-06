@@ -78,8 +78,7 @@ public class EventosController {
 		miMapa.put("imagen", evento.getImagen());
 		miMapa.put("descripcion", evento.getDescripcion());
 		miMapa.put("fecha", evento.getFecha());	
-		miMapa.put("capacidad", evento.getCapacidad());		
-		miMapa.put("comienzo", evento.getComienzo());			
+		miMapa.put("capacidad", evento.getCapacidad());				
 		miMapa.put("evento", evento);	
 		miMapa.put("bandasdelevento", evento.getBandas());
 		

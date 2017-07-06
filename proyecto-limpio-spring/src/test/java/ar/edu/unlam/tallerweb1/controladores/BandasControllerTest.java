@@ -38,7 +38,7 @@ public class BandasControllerTest {
 		when(servicioAlbumMock.traerAlbumesDeUnaBanda(id)).thenReturn(listaEsperada);
 		
 		/*Operación*/
-		ModelAndView resultado = controlador.mostrarAlbum(id);
+		ModelAndView resultado = controlador.mostrarAlbum(id, null);
 		
 		/*Verificación*/
 		@SuppressWarnings("unchecked")//agregue esto para que no tire mas el warning

@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -54,6 +56,16 @@ public class EventosServiceImpl  implements EventosService {
 	@Override
 	public void editarEvento(Eventos evento) {
 		servicioEventosDao.editarEvento(evento);		
+	}
+
+	@Override
+	public List<Eventos> traerEventosProximosACompletarse() {
+		List<Eventos> evento = new ArrayList<Eventos>();
+		evento = servicioEventosDao.traerListaEventos();
+		
+		Collections.sort(evento,Collections.reverseOrder());
+			
+		return evento;
 	}
 
 }

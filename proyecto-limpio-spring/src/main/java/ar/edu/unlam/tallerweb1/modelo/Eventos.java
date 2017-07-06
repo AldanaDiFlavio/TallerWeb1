@@ -14,7 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Eventos {
+public class Eventos implements Comparable<Eventos> {
 	//Atributos
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,8 +26,7 @@ public class Eventos {
 	private String fecha;
 	private Integer capacidad;
 	private Integer cantactual;
-	private String comienzo;
-	private Integer finalizacion;
+	private Integer fechaenentero = 0;
 	
 	@ManyToMany(fetch = FetchType.EAGER) // Si no le pongo EAGER por ej en eventos no me trae el getBandas.
 	@JoinTable(name = "eventos_bandas", joinColumns = { @JoinColumn(name = "id_Evento") }, inverseJoinColumns = { @JoinColumn(name = "id_Banda") })
@@ -67,23 +66,7 @@ public class Eventos {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-	public String getComienzo() {
-		return comienzo;
-	}
-	
-	public void setComienzo(String comienzo) {
-		this.comienzo = comienzo;
-	}
-	
-	public Integer getFinalizacion() {
-		return finalizacion;
-	}
-	
-	public void setFinalizacion(Integer finalizacion) {
-		this.finalizacion = finalizacion;
-	}
-	
+		
 	public Set<Bandas> getBandas() {
 		return bandas;
 	}
@@ -131,4 +114,26 @@ public class Eventos {
 	public void setCantactual(Integer cantactual) {
 		this.cantactual = cantactual;
 	}
+
+	@Override
+	public int compareTo(Eventos o) {
+		  int resultado=0;
+	        if (this.cantactual<o.cantactual) {   resultado = -1;      }
+	        else if (this.cantactual>o.cantactual) {    resultado = 1;      }
+	        else {
+	            if (this.capacidad<o.capacidad) {  resultado = -1;    }
+	            else if (this.capacidad>o.capacidad) {   resultado = 1;   }
+	            else {   resultado = 0;   }
+	        }
+	        return resultado;
+	    }
+
+	public Integer getFechaenentero() {
+		return fechaenentero;
+	}
+
+	public void setFechaenentero(Integer fechaenentero) {
+		this.fechaenentero = fechaenentero;
+	}
+	
 }

@@ -21,5 +21,7 @@ public interface EventosService {
 	List<Eventos> traerEnListaBandasDeUsuario(Set<Bandas> bandas);
 
 	void editarEvento(Eventos evento);
+
+	List<Eventos> traerEventosProximosACompletarse();
 	
 }
