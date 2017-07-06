@@ -4,11 +4,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
 
+import ar.edu.unlam.tallerweb1.modelo.Bandas;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 
 @Service("generoDao")
@@ -39,7 +42,10 @@ public class GeneroDaoImpl implements GeneroDao {
 		
 		return( sessionFactory.getCurrentSession()
 				.createCriteria(Genero.class)
-				.list());	
+				.setFetchMode("genero", FetchMode.JOIN)
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+
+				.list());
 	}
 
 	@SuppressWarnings("unchecked")
@@ -47,6 +53,8 @@ public class GeneroDaoImpl implements GeneroDao {
 	public List<Genero> traerBandaDeUnGenero(Long id) {
 		return (List<Genero>) ( sessionFactory.getCurrentSession()
 				.createCriteria(Genero.class)
+				.setFetchMode("genero", FetchMode.JOIN)
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
 				.add(Restrictions.eq("id", id))
 				.list());
 	}

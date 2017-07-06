@@ -30,8 +30,8 @@ public class Bandas {
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy="bandas")
 	private Set<Usuario> usuarios = new HashSet<Usuario>();
 	
-	@ManyToOne()
-	@JoinColumn(name="id")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id", nullable = true)
     private Genero genero;
 	
 	//Constructor 

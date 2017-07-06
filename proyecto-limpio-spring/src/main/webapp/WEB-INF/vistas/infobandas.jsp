@@ -43,7 +43,7 @@
 		<div id="content">
            	<div class="container">
                	<div class="col-md-12">
-                   	<div class="box">
+                   	<div class="box"><div class="pull-right"><h3>Cantidad de adheridos: <strong class="text-info">${banda.cantidadAdheridos}</strong></h3></div>
                        	<h1>${banda.nombre}</h1>
                        							<c:choose>		   		                              				                              				
 								                      <c:when test="${not empty error}">
