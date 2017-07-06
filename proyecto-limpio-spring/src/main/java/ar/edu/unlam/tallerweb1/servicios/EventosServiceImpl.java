@@ -51,4 +51,9 @@ public class EventosServiceImpl  implements EventosService {
 		return null;
 	}
 
+	@Override
+	public void editarEvento(Eventos evento) {
+		servicioEventosDao.editarEvento(evento);		
+	}
+
 }

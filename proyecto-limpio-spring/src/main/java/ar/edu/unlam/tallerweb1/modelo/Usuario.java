@@ -28,6 +28,9 @@ public class Usuario {
 	@JoinTable(name = "usuarios_bandas", joinColumns = { @JoinColumn(name = "id_Usuario") }, inverseJoinColumns = { @JoinColumn(name = "id_Banda") })
 	private Set<Bandas> bandas = new HashSet<Bandas>();
 		
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy="usuario")
+	private Set<Eventos> eventos = new HashSet<Eventos>();
+	
 	//Constructor
 	public Usuario(){
 	}
@@ -72,4 +75,12 @@ public class Usuario {
 	public void setBandas(Set<Bandas> bandas) {
 		this.bandas = bandas;
 	}	
+	
+	public Set<Eventos> getEventos() {
+		return eventos;
+	}
+
+	public void setEventos(Set<Eventos> eventos) {
+		this.eventos = eventos;
+	}
 }

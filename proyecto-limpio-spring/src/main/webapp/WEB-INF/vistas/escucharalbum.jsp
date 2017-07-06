@@ -41,22 +41,8 @@
 	<!-- Contenido del sitio -->
     <div id="all">
 		<div id="content">
-           	<div class="container">
-               	<div class="col-md-3">
-                   	<div class="panel panel-default sidebar-menu">
-                       	<div class="panel-heading">
-                           	<h3 class="panel-title">Género</h3>
-                       	</div>
-                       	<div class="panel-body">
-                           	<ul class="nav nav-pills nav-stacked category-menu">
-                               	<li class="active"><a href="#">Todos<span class="badge pull-right">8</span></a></li>
-                               	<li><a href="#">Rock Nacional<span class="badge pull-right">4</span></a></li>
-                                <li><a href="#">Rock Internacional<span class="badge pull-right">4</span></a></li>
-                      		</ul>
-                       	</div>
-                   	</div>
-               	</div>
-				<div class="col-md-9" id="customer-orders">				  	
+           	<div class="container">              	
+				<div class="col-md-12" id="customer-orders">				  	
                 	<div class="box">
                         <p class="lead">Temas</p>
                         <hr>						

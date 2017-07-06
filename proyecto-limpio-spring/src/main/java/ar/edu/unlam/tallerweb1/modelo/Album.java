@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,17 +26,17 @@ public class Album {
 	@OneToMany(mappedBy="album" ) 	// RELACION 1 A N ENTRE ALBUMS Y TEMAS
 	private List<Tema> listaTemas;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_Banda", nullable = true)
 	private Bandas bandas;
 	
 	
 	//Getters y setters
-	public Bandas getIdBandas() {
+	public Bandas getBandas() {
 		return this.bandas;
 	}
 
-	public void setIdBandas(Bandas b) {
+	public void setBandas(Bandas b) {
 		this.bandas = b;
 	}
 	

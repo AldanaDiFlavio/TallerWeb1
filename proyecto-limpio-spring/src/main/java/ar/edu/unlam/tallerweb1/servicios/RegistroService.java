@@ -21,4 +21,12 @@ public interface RegistroService {
 	List<Usuario> traerListaUsuario();
 
 	void desadherirUsuarioABanda(String user, Long id);
+
+	void reservarUsuarioEnEvento(String user, Long id);
+
+	void desvincularUsuarioDelEvento(String user, Long id);
+
+	boolean consultarSiUsuarioPerteneceAEvento(String user, Long id);
+
+	boolean consultarSiUsuarioEstaAdheridoAUnaBanda(String user, Long id);
 }

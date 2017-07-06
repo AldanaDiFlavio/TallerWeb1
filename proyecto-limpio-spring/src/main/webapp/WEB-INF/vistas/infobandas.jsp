@@ -45,6 +45,17 @@
                	<div class="col-md-12">
                    	<div class="box">
                        	<h1>${banda.nombre}</h1>
+                       							<c:choose>		   		                              				                              				
+								                      <c:when test="${not empty error}">
+								                       <h4><span class="alert alert-danger"><strong>${error}</strong></span></h4>
+								                      </c:when>
+								                      <c:otherwise>
+								                      	  <form:form action="adherirse-bandas?id=${banda.id}" modelAttribute="adherirseBanda" method = "POST">
+		                                    						<input type="hidden" value="true" name="verdadero"/>
+		                                    						<p class="buttons"><button type="submit" class="btn btn-primary">+ Adherirse</button></p>
+		                                    			 </form:form>
+								                      </c:otherwise>
+								                </c:choose>
                    	</div>
                    	<div class="row products">
                     	<c:forEach items = "${album}" var="album">

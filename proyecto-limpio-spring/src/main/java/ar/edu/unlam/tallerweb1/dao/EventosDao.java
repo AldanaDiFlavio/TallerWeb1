@@ -19,4 +19,6 @@ public interface EventosDao {
 
 	List<Eventos> eventosAnteriores(List<Eventos> todosLosEventos);
 
+	void editarEvento(Eventos evento);
+
 }

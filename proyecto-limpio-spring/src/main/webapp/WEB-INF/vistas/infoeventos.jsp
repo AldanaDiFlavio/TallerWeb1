@@ -45,8 +45,12 @@
 				<div class="col-sm-12" id="blog-listing">
 
                     <div class="box">
-                        <h1>${evento.nombre}</h1>
-                        <h4>Cantidad de personas: ${evento.capacidad}</h4>
+                        <h1>${evento.nombre}</h1><c:if test="${not empty error}">
+					    	    <h4><span class="alert alert-danger"><strong>${error}</strong></span></h4>
+					        	<br>
+				        	</c:if>
+                        <h4>Capacidad: ${evento.capacidad}</h4>
+                        <h4>Cantidad de personas: ${evento.cantactual}</h4>
 						<h4>Fecha del evento: ${evento.fecha}</h4>												
                     </div>
 
@@ -63,9 +67,19 @@
                         <div class="image">
                             
                         </div>
+                        
                         <p class="intro">${evento.descripcion}</p>
-                        <p class="read-more"><a href="post.html" class="btn btn-primary">Solicitar</a>
-                        </p>
+                        
+                        <c:choose>		   		                              				                              				
+		                      <c:when test="${not empty error}">
+		                       <h4><span class="alert alert-danger"><strong>${error}</strong></span></h4>
+		                      </c:when>
+		                      <c:otherwise>
+		                      	  <p class="intro">${evento.descripcion}</p>
+                       			  <p class="read-more"><a href="solicitarEvento?id=${evento.id}" class="btn btn-primary">Solicitar</a></p>		                           	
+		                      </c:otherwise>
+		                </c:choose>
+                         
                     </div>
 
 

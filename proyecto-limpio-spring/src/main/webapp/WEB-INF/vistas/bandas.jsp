@@ -55,13 +55,14 @@
                        	</div>
                        	<div class="panel-body">
                            	<ul class="nav nav-pills nav-stacked category-menu">
-                           				<li><a href="bandas">TODAS<span class="badge pull-right">${cantidadentotal}</span></a></li>
+                           				<li><a href="bandas">TODAS</a></li><!-- <span class="badge pull-right">${cantidadentotal}</span> -->
                            	<c:forEach items = "${genero}" var="genero">                              	
 
-                                    	<li><a href="generob?id=${genero.id}">${genero.genero}<span class="badge pull-right">${cantidad}</span></a></li>
+                                    	<li><a href="generob?id=${genero.id}">${genero.genero}</a></li>
                                                                                                   
-                                    </c:forEach>                            	                           	
-                           	
+                                    </c:forEach>    
+                                                            	                           	
+<!--    							<span class="badge pull-right">${cantidad}</span></a></li>	-->																				                       	
 <!--                                 	<li class="active"><a href="#">Todos<span class="badge pull-right">8</span></a></li>	-->
 <!--                                 	<li><a href="#">Rock Nacional<span class="badge pull-right">4</span></a></li>			-->
 <!--                                  <li><a href="#">Rock Internacional<span class="badge pull-right">4</span></a></li>		-->
@@ -95,28 +96,7 @@
 			                        	<div class="text">
 		                                	<h3>${bandas.nombre}</h3>
 		                                    <p class="buttons">	                                        
-		                                    	<a href="infobandas?id=${bandas.id}" class="btn btn-default">+ info</a>
-		                                    	<c:choose>
-		                                    		<c:when test="${usuario.user != null }">
-		                                    			<c:choose>		   		                              				                              				
-		                                    				<c:when test="${usuario.user}">
-		                                    				<c:forEach items = "${uadherido}" var="uadherido">
-		                                    					${uadherido.id}  
-		                                    				</c:forEach> 
-		                                    				<%-- De alguna manera hay que acceder a el id de la banda asociada a usuario y comparalo con bandas.id --%>
-		                                    				<%-- Se ponemos test="${usuario.bandas == usuario.bandas}"> Nos dice que ya todo esta adherido es decir el when funciona, se me complica el manejo de set --%>
-		                                    					<h4>Ya te adheriste</h4>
-		                                    				</c:when>
-		                                    				<c:otherwise>
-		                                    					<form:form action="adherirse-bandas?id=${bandas.id}" modelAttribute="adherirseBanda" method = "POST">
-		                                    						<input type="hidden" value="true" name="verdadero"/>
-		                                    						<p class="buttons"><button type="submit" class="btn btn-primary">+ Adherirse</button></p>
-		                                    					</form:form>
-		                                    				</c:otherwise>
-		                                    			</c:choose>
-		                                    		</c:when>
-		                                    	</c:choose>
-<%-- 		                                    	<a href="adherirse?id=${bandas.id}" class="btn btn-primary">Adherirse</a> --%>
+		                                    	<a href="infobandas?id=${bandas.id}" class="btn btn-default">+ info</a>         
 		                                    </p>
 		                                </div>
 		                            </div>

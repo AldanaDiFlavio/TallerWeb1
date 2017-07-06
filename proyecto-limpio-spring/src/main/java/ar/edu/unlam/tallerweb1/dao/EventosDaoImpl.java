@@ -27,6 +27,13 @@ public class EventosDaoImpl implements EventosDao{
 			session.save(evento);		
 			
 		}
+		
+		@Override
+		public void editarEvento(Eventos evento) {
+			final Session session = sessionFactory.getCurrentSession();
+			session.saveOrUpdate(evento);		
+			
+		}
 
 		@SuppressWarnings("unchecked")
 		@Override

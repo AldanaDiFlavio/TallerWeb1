@@ -2,6 +2,8 @@ package ar.edu.unlam.tallerweb1.dao;
 
 import javax.inject.Inject;
 
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -28,12 +30,13 @@ public class AlbumDaoImpl implements AlbumDao{
 	
 		@SuppressWarnings("unchecked")
 		@Override
-		public List<Album> traerAlbumesDeUnaBanda(Long id) {
-			
-			return (List<Album>) ( sessionFactory.getCurrentSession()
+		public List<Album> traerAlbumesDeUnaBanda(Long id) {			
+			return( sessionFactory.getCurrentSession()
 					.createCriteria(Album.class)
 					.add(Restrictions.eq("bandas.id", id))
-					.list());
+					.setFetchMode("bandas", FetchMode.JOIN)
+					.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+					.list());	
 		}
 		
 		@Override

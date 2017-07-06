@@ -49,7 +49,7 @@ public class Bandas {
 	}	
 	
 	
-	@OneToMany(mappedBy = "bandas", fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(mappedBy = "bandas", fetch = FetchType.EAGER, orphanRemoval = true)
 	private List<Album> listaAlbum = new LinkedList<Album>();
 
 	public void setListaAlbum(List<Album> listaAlbum) {

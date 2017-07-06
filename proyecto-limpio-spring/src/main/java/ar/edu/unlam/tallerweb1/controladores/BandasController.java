@@ -74,8 +74,8 @@ public class BandasController {
 	}
 	
 	@RequestMapping(value="/infobandas")
-	public ModelAndView mostrarAlbum(@RequestParam("id") Long id){
-		
+	public ModelAndView mostrarAlbum(@RequestParam("id") Long id, HttpServletRequest request){
+	
 		Bandas banda = servicioBandas.traerUnaBanda(id);
 		
 		List<Album> album = servicioAlbum.traerAlbumesDeUnaBanda(id);
@@ -84,9 +84,26 @@ public class BandasController {
 		
 		miMapa.put("banda", banda);	
 		miMapa.put("album", album);	
+		
+		if ( request.getSession().getAttribute("usuario") != null ){
+			Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
+			String User = usuario.getUser();
+						
+			boolean usuarioYaAdherido = false;
+			
+			usuarioYaAdherido = servicioRegistro.consultarSiUsuarioEstaAdheridoAUnaBanda(User,id);
+
+			if (usuarioYaAdherido == true){
+					miMapa.put("error", "Estas adherido");
+					return new ModelAndView("infobandas", miMapa);
+					}else{	
+						ModelAndView modelAndView = new ModelAndView("infobandas", miMapa);
+						return modelAndView;
+					}
+		}
 		ModelAndView modelAndView = new ModelAndView("infobandas", miMapa);
 		return modelAndView;
-	}
+		}
 	
 	@RequestMapping(value="/escucharalbum")
 	public ModelAndView mostrarEscucharUnAlbum(@RequestParam("id") Long id){

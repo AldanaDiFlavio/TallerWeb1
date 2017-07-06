@@ -19,5 +19,7 @@ public interface EventosService {
 	List<Bandas> traerBandasDeUnEvento(Set<Bandas> bandasdelevento);
 
 	List<Eventos> traerEnListaBandasDeUsuario(Set<Bandas> bandas);
+
+	void editarEvento(Eventos evento);
 	
 }

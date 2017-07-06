@@ -481,6 +481,7 @@ public class InsercionGeneralizada extends SpringTest {
 		evento1.setNombre("Evento 1");
 		evento1.setImagen("evento1.jpg");
 		evento1.setCapacidad(500);
+		evento1.setCantactual(230);
 		evento1.setComienzo("22:30");
 		evento1.setFecha("14/07/2017");
 		eventosDao.guardarEvento(evento1);
@@ -489,6 +490,7 @@ public class InsercionGeneralizada extends SpringTest {
 		evento2.setNombre("Evento 2");
 		evento2.setImagen("evento2.jpg");
 		evento2.setCapacidad(1000);
+		evento2.setCantactual(580);
 		evento2.setComienzo("00:00");
 		evento2.setFecha("24/07/2017");
 		eventosDao.guardarEvento(evento2);
@@ -497,6 +499,7 @@ public class InsercionGeneralizada extends SpringTest {
 		evento3.setNombre("Evento 3");
 		evento3.setImagen("evento3.jpg");
 		evento3.setCapacidad(400);
+		evento3.setCantactual(399);
 		evento3.setComienzo("23:00");
 		evento3.setFecha("31/07/2017");
 		eventosDao.guardarEvento(evento3);
@@ -512,9 +515,10 @@ public class InsercionGeneralizada extends SpringTest {
 	public void insertarEventoYAsignarBandas() {
 		
 		Eventos evento4 = new Eventos();
-		evento4.setNombre("Evento 4");
-		evento4.setImagen("evento4.jpg");
+		evento4.setNombre("Evento 5");
+		evento4.setImagen("evento5.jpg");
 		evento4.setCapacidad(500);
+		evento4.setCantactual(500);
 		evento4.setComienzo("22:30");
 		evento4.setFecha("14/07/2017");
 		
@@ -556,9 +560,10 @@ public class InsercionGeneralizada extends SpringTest {
 	public void insertarEventoYAsignarLasMismasBandas() {
 		
 		Eventos evento = new Eventos();
-		evento.setNombre("Evento 25");
-		evento.setImagen("evento1.jpg");
+		evento.setNombre("Evento 4");
+		evento.setImagen("evento4.jpg");
 		evento.setCapacidad(500);
+		evento.setCantactual(500);
 		evento.setComienzo("22:30");
 		evento.setFecha("14/07/2017");
 		

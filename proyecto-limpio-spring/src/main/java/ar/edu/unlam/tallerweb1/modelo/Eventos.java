@@ -25,6 +25,7 @@ public class Eventos {
 	private String descripcion;
 	private String fecha;
 	private Integer capacidad;
+	private Integer cantactual;
 	private String comienzo;
 	private Integer finalizacion;
 	
@@ -32,9 +33,9 @@ public class Eventos {
 	@JoinTable(name = "eventos_bandas", joinColumns = { @JoinColumn(name = "id_Evento") }, inverseJoinColumns = { @JoinColumn(name = "id_Banda") })
 	private Set<Bandas> bandas = new HashSet<Bandas>();
 	
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "eventos_usuarios", joinColumns = { @JoinColumn(name = "id_Evento") }, inverseJoinColumns = { @JoinColumn(name = "id_Usuario") })
-	private Set<Usuario> usuario = new HashSet<Usuario>(0);
+	private Set<Usuario> usuario = new HashSet<Usuario>();
 	
 	//Constructor
 	public Eventos(){
@@ -121,5 +122,13 @@ public class Eventos {
 
 	public void setCapacidad(Integer capacidad) {
 		this.capacidad = capacidad;
+	}
+
+	public Integer getCantactual() {
+		return cantactual;
+	}
+
+	public void setCantactual(Integer cantactual) {
+		this.cantactual = cantactual;
 	}
 }

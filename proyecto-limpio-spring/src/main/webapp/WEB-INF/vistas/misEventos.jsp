@@ -47,24 +47,39 @@
                    <%@include file="../includes/menu.jsp" %>
                	</div>
                	
-               	<div class="col-md-9">
-               		<div class="jumbotron">
-             
-			<div class="row">
-				<h2>Mis Eventos</h2>
-				<c:choose>
-					<c:when test="${not empty comicsUsuario}">
-					</c:when>
-					<c:otherwise>
-						<p class="text-center">No tienes eventos a los que asisitir</p>
-					</c:otherwise>
-				</c:choose>
-			</div>
-
-		</div>
-       
+               	<div class="col-md-9" id="customer-orders">				  	
+                	<div class="box">
+                        <p class="lead">Eventos Solicitados</p>
+                        <hr>
+                       								<c:choose>		   		                              				                              				
+		                                    				<c:when test="${not empty ueventos}">
+		                                    					<div class="table-responsive">
+										                            <table class="table table-hover">
+										                                <thead>
+										                                    <tr>
+										                                        <th>Nombre</th>
+										                                        <th>Eliminar asistencia</th>
+										                                    </tr>
+										                                </thead>
+										                                <tbody>
+										                                	<c:forEach items = "${ueventos}" var="i">                              	
+										                                    <tr>
+										                                        <th>${i.nombre}</th>  
+										                                        <td><a href="desvinculardelevento?id=${i.id}" class="btn btn-primary">No asistire</a></td>                                              
+										                                    </tr>                                                                                                   
+										                                    </c:forEach>                                                                                                 
+										                                </tbody>
+										                            </table>
+							                        			</div>
+		                                    					
+		                                    				</c:when>
+		                                    				<c:otherwise>
+		                                    					<p class="text-center">No participas de ningun evento</p>	
+		                                    				</c:otherwise>
+		                                    			</c:choose>                   
+                    </div>
+                </div>
                	
-               	</div>
       		</div>
       	</div>	
       	<!-- Footer -->

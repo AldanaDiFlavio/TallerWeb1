@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.UsuarioDao;
 import ar.edu.unlam.tallerweb1.modelo.Bandas;
+import ar.edu.unlam.tallerweb1.modelo.Eventos;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 @Service("registroService")
@@ -22,6 +23,9 @@ public class RegistroServiceImpl implements RegistroService{
 	
 	@Inject
 	private BandasService servicioBandas;
+	
+	@Inject
+	private EventosService servicioEventos;
 	
 	@Override
 	public Usuario buscarUsuario(Usuario usuario) {
@@ -52,12 +56,11 @@ public class RegistroServiceImpl implements RegistroService{
 		Bandas banda = servicioBandas.traerUnaBanda(id);
 		
 		Set<Bandas> bandas = new HashSet<Bandas>();
-	//	List<Bandas> bandas = new ArrayList<Bandas>();
 		
 		bandas.add(banda);
 		
 		Set<Bandas> bandasquetiene = usuarioCompleto.getBandas();
-	//	List<Bandas> bandasquetiene = usuarioCompleto.getBandas();
+
 		bandasquetiene.addAll(bandas);
 		
 		usuarioCompleto.setBandas(bandasquetiene);
@@ -102,5 +105,75 @@ public class RegistroServiceImpl implements RegistroService{
 		
 		servicioBandas.editarBanda(banda);
 		
+	}
+
+	@Override
+	public void reservarUsuarioEnEvento(String user, Long id) {
+		
+		Eventos evento = servicioEventos.traerUnEvento(id);
+		
+		Usuario usuario = traerUnUsuarioPorUser(user);
+		
+		Set<Usuario> usuariosquetiene = evento.getUsuarios();
+		
+		usuariosquetiene.add(usuario);
+		
+		evento.setUsuario(usuariosquetiene);
+			
+		Integer cantactual = evento.getCantactual();
+		
+		cantactual = cantactual + 1;
+		
+		evento.setCantactual(cantactual);
+				
+		servicioEventos.editarEvento(evento);	
+		
+	}
+
+	@Override
+	public void desvincularUsuarioDelEvento(String user, Long id) {
+
+		Eventos evento = servicioEventos.traerUnEvento(id);
+		
+		Usuario usuario = traerUnUsuarioPorUser(user);
+			
+		Set<Usuario> usuariosquetiene = evento.getUsuarios();
+		
+		usuariosquetiene.remove(usuario);
+		
+		evento.setUsuario(usuariosquetiene);
+				
+		Integer cantactual = evento.getCantactual();
+		
+		cantactual = cantactual - 1;
+		
+		evento.setCantactual(cantactual);
+				
+		servicioEventos.editarEvento(evento);	
+		
+	}
+
+	@Override
+	public boolean consultarSiUsuarioPerteneceAEvento(String user, Long id) {
+		
+		Usuario UsuarioC = traerUnUsuarioPorUser(user);
+		
+		Eventos evento = servicioEventos.traerUnEvento(id);
+		
+		Set<Usuario> usuariosquetiene = evento.getUsuarios();
+		
+		return usuariosquetiene.contains(UsuarioC);
+	}
+
+	@Override
+	public boolean consultarSiUsuarioEstaAdheridoAUnaBanda(String user, Long id) {
+		
+		Usuario UsuarioC = traerUnUsuarioPorUser(user);
+		
+		Bandas banda = servicioBandas.traerUnaBanda(id);
+		
+		Set<Usuario> usuariosquetiene = banda.getUsuarios();
+		
+		return usuariosquetiene.contains(UsuarioC);
 	}
 }
