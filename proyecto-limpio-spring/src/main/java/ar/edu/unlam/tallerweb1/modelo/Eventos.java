@@ -26,7 +26,6 @@ public class Eventos implements Comparable<Eventos> {
 	private String fecha;
 	private Integer capacidad;
 	private Integer cantactual;
-	private Integer fechaenentero = 0;
 	
 	@ManyToMany(fetch = FetchType.EAGER) // Si no le pongo EAGER por ej en eventos no me trae el getBandas.
 	@JoinTable(name = "eventos_bandas", joinColumns = { @JoinColumn(name = "id_Evento") }, inverseJoinColumns = { @JoinColumn(name = "id_Banda") })
@@ -127,13 +126,5 @@ public class Eventos implements Comparable<Eventos> {
 	        }
 	        return resultado;
 	    }
-
-	public Integer getFechaenentero() {
-		return fechaenentero;
-	}
-
-	public void setFechaenentero(Integer fechaenentero) {
-		this.fechaenentero = fechaenentero;
-	}
 	
 }

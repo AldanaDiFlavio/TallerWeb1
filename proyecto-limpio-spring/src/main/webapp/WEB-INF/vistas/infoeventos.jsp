@@ -74,8 +74,7 @@
 		                      <c:when test="${not empty error}">
 		                       <h4><span class="alert alert-danger"><strong>${error}</strong></span></h4>
 		                      </c:when>
-		                      <c:otherwise>
-		                      	  <p class="intro">${evento.descripcion}</p>
+		                      <c:otherwise>		                      	  
                        			  <p class="read-more"><a href="solicitarEvento?id=${evento.id}" class="btn btn-primary">Solicitar</a></p>		                           	
 		                      </c:otherwise>
 		                </c:choose>

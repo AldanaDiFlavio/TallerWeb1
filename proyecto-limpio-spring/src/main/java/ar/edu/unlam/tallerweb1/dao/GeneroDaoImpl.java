@@ -11,7 +11,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
 
-import ar.edu.unlam.tallerweb1.modelo.Bandas;
 import ar.edu.unlam.tallerweb1.modelo.Genero;
 
 @Service("generoDao")
@@ -36,15 +35,20 @@ public class GeneroDaoImpl implements GeneroDao {
 		
 	}
 	
+	@Override
+	public void editarGenero(Genero genero) {
+		final Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(genero);
+		
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Genero> traerListaGenero() {
 		
 		return( sessionFactory.getCurrentSession()
 				.createCriteria(Genero.class)
-				.setFetchMode("genero", FetchMode.JOIN)
 				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
-
 				.list());
 	}
 

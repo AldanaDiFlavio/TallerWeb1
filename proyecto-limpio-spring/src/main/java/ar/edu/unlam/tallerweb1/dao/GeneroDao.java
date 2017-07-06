@@ -15,6 +15,8 @@ public interface GeneroDao {
 
 	Genero traerUnGenero(Long id);
 
+	void editarGenero(Genero genero);
+
 
 
 }

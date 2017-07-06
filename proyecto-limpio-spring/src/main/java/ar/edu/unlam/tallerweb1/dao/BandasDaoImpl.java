@@ -53,8 +53,7 @@ public class BandasDaoImpl implements BandasDao{
 		public List<Bandas> traerBandaGeneroRockNacional(Long id) {
 			return (List<Bandas>) ( sessionFactory.getCurrentSession()
 					.createCriteria(Bandas.class)
-					.add(Restrictions.eq("genero.id", id))
-				
+					.add(Restrictions.eq("genero.id", id))			
 					.list());
 		}
 
@@ -80,6 +79,8 @@ public class BandasDaoImpl implements BandasDao{
 		public List<Bandas> bandasRecomendadas(List<Bandas> todasLasBandas) {
 			return ( sessionFactory.getCurrentSession()
 					.createCriteria(Bandas.class)
+					.setFetchMode("usuarios_bandas", FetchMode.JOIN)
+					.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
 					.add(Restrictions.ge("cantidadAdheridos", 80))
 					.list());
 		}
